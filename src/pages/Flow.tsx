@@ -1,10 +1,14 @@
 import React from "react";
-import NormalEdge from "../components/Flow/NormalEdge";
 import EdgeWithButtonFlow from "../components/Flow/EdgeWithButtonFlow";
 import {DndFlow} from "../components/Flow/DnDFlow";
+import SubFlow from "../components/Flow/SubFlow";
 
 const Flow = () => {
-  return <DndFlow/>
+  return (
+      <div style={{height:500}}>
+        <SubFlow/>
+      </div>
+  )
 };
 
 export default Flow;
