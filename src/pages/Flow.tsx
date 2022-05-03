@@ -6,7 +6,8 @@ import SubFlow from "../components/Flow/SubFlow";
 const Flow = () => {
   return (
       <div style={{height:500}}>
-        <SubFlow/>
+        {/*<SubFlow/>*/}
+          <DndFlow/>
       </div>
   )
 };

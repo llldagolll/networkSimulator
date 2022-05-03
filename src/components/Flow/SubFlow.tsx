@@ -90,19 +90,23 @@ const NestedFlow = () => {
     }, [])
 
     return (
-        <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            className={"react-flow-subflows-example"}
-            fitView
-        >
-            <MiniMap/>
-            <Controls/>
-            <Background/>
-        </ReactFlow>
+        <div style={{height: 500}}>
+            <ReactFlow
+                nodes={nodes}
+                edges={edges}
+                onNodesChange={onNodesChange}
+                onEdgesChange={onEdgesChange}
+                onConnect={onConnect}
+                className={"react-flow-subflows-example"}
+                fitView
+            >
+                <MiniMap/>
+                <Controls/>
+                <Background/>
+            </ReactFlow>
+
+        </div>
+
     )
 }
 

@@ -11,7 +11,6 @@ import ReactFlow, {
     applyEdgeChanges, getConnectedEdges, isEdge
 } from "react-flow-renderer";
 import ButtonEdge from "./atom/EdgeWithButtonFlow/ButtonEdge";
-import {log} from "util";
 
 
 const initialNodes = [

@@ -2,14 +2,9 @@ import React, {forwardRef } from "react";
 import InputEc2Node from "./atom/DnDFlow/InputWebServerNode";
 import InputGatewayNode from "./atom/DnDFlow/InputGatewayNode";
 import InputClientNode from "./atom/DnDFlow/InputClientNode";
+import InputLanNode from "./atom/DnDFlow/InputLanNode";
 
 const Sidebar = () => {
-    // const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {
-    //     event.dataTransfer.setData('application/reactflow', nodeType);
-    //     event.dataTransfer.effectAllowed = 'move'
-    // }
-    //@ts-ignore
-
     // @ts-ignore
     return (
         <aside>
@@ -17,6 +12,7 @@ const Sidebar = () => {
             <InputGatewayNode />
             <InputEc2Node />
             <InputClientNode/>
+            <InputLanNode/>
         </aside>
     )
 }
