@@ -8,7 +8,7 @@ const location = new ReactLocation();
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <Router location={location} routes={routes}></Router>
     </div>
   );

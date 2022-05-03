@@ -1,7 +1,7 @@
-import Box from "./pages/Box";
 import Flow from "./pages/Flow";
+import SubFlow from "./components/Flow/SubFlow";
 
 export const routes = [
-  { path: "/", element: <Box /> },
-  { path: "/flow", element: <Flow /> },
+  { path: "/", element: <Flow /> },
+  { path: "/sub", element: <SubFlow /> },
 ];

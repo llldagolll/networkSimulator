@@ -9,7 +9,7 @@ import ReactFlow,{
     Edge
 } from "react-flow-renderer";
 
-import Sidebar from "./atom/SideBar";
+import Sidebar from "./SideBar";
 import './DnDFlow.css'
 
 const initialNodes = [
@@ -18,11 +18,19 @@ const initialNodes = [
         type: 'input',
         data: {label: 'input node'},
         position: {x: 250, y: 5},
-    }
+    },
 ]
 
 let id = 0;
 const getId = () => `dndnode ${id++}`;
+
+type NewNode = {
+    id: any,
+    type: any,
+    position: any,
+    data: any,
+    style?: any,
+}
 
 export const DndFlow = () => {
     const reactFlowWrapper = useRef(null);
@@ -51,8 +59,10 @@ export const DndFlow = () => {
                 var labelName =  "Gateway"
             } else if (type === "input") {
                 var labelName =  "Web Server"
-            } else {
+            } else if(type==="output") {
                 var labelName = "Client"
+            }else {
+                var labelName="LAN"
             }
 
             if (typeof type === 'undefined' || !type) {
@@ -64,11 +74,25 @@ export const DndFlow = () => {
                 x: event.clientX - reactFlowBounds.left,
                 y: event.clientY - reactFlowBounds.top,
             })
-            const newNode = {
-                id: getId(),
-                type,
-                position,
-                data: {label: `${labelName} `},
+            if (type === 'group') {
+                var newNode:NewNode = {
+                    id: getId(),
+                    type,
+                    position,
+                    data: {label: `${labelName} `},
+                    style: {
+                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                        width: 200,
+                        height: 200
+                    },
+                }
+            }else{
+                var newNode:NewNode = {
+                    id: getId(),
+                    type,
+                    position,
+                    data: {label: `${labelName} `},
+                }
             }
             setNodes((nds) => nds.concat(newNode))
         },
