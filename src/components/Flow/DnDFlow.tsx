@@ -9,7 +9,7 @@ import ReactFlow,{
     Edge
 } from "react-flow-renderer";
 
-import Sidebar from "./atom/SideBar";
+import Sidebar from "./SideBar";
 import './DnDFlow.css'
 
 const initialNodes = [

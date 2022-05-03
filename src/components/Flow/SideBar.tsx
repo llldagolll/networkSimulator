@@ -1,7 +1,7 @@
 import React, {forwardRef } from "react";
-import InputEc2Node from "./InputWebServerNode";
-import InputGatewayNode from "./InputGatewayNode";
-import InputClientNode from "./InputClientNode";
+import InputEc2Node from "./atom/DnDFlow/InputWebServerNode";
+import InputGatewayNode from "./atom/DnDFlow/InputGatewayNode";
+import InputClientNode from "./atom/DnDFlow/InputClientNode";
 
 const Sidebar = () => {
     // const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {

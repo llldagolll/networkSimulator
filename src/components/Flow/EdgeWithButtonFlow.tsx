@@ -10,7 +10,7 @@ import ReactFlow, {
     Edge,
     applyEdgeChanges, getConnectedEdges, isEdge
 } from "react-flow-renderer";
-import ButtonEdge from "./atom/ButtonEdge";
+import ButtonEdge from "./atom/EdgeWithButtonFlow/ButtonEdge";
 import {log} from "util";
 
 
