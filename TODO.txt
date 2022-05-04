@@ -1,6 +1,8 @@
 TODO:
-    - Create set parent button component
-    - Manage  type group nodes
+    - using getNodes() API
+        - https://reactflow.dev/docs/api/react-flow-instance/#getnodes
+    - Create  parent button component
+    - Manage  type "group" nodes
     - When right mouse is clicked, show menu
     - Right mouse click menu associate nodes
 
