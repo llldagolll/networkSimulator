@@ -11,8 +11,9 @@ import ReactFlow,{
 } from "react-flow-renderer";
 import Sidebar from "./SideBar";
 import './DnDFlow.css'
-import './atom/DnDFlow/text-updater-node.css'
-import {initialNodes, nodeTypes} from "./atom/Nodes";
+import './atom/DnDFlow/CustomNodes/text-updater-node.css'
+import {initialNodes} from "./atom/InitialNodes";
+import {nodeTypes} from "./atom/DnDFlow/CustomNodes/NodeTypes";
 
 let id = 0;
 const getId = () => `dndnode ${id++}`;
@@ -28,6 +29,7 @@ const getNodeName = (type: string | undefined) => {
     }
     return labelName
 }
+
 
 const getNewNode = ({type, position,nodeName}:{type:any, position:any, nodeName:any}) => {
     if (type === 'group') {

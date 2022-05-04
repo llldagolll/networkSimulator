@@ -1,6 +1,6 @@
 import React  from "react";
 
-const InputLanNode = () => {
+const InputSubnetNode = () => {
     const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {
         event.dataTransfer.setData('application/reactflow', nodeType);
         event.dataTransfer.effectAllowed = 'move'
@@ -15,4 +15,4 @@ const InputLanNode = () => {
     )
 }
 
-export  default InputLanNode
+export  default InputSubnetNode

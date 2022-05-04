@@ -1,5 +1,4 @@
 TODO:
-    - Split codes of DnDFlow.tsx on their role
     - Create set parent button component
     - Manage  type group nodes
     - When right mouse is clicked, show menu
@@ -9,10 +8,12 @@ TODO:
 WANT:
     - When nodes are on the same position, they are parented
     - Create Custom Nodes of Network devices
+    - commonality Function onDragStart in node codes
 
 ---------------------------------------------------------
 DONE:
     - Input form data are posted to local storage
+    - Split codes of DnDFlow.tsx on their role
 
 
 

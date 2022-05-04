@@ -1,6 +1,6 @@
 import {Node} from "react-flow-renderer";
-import TextUpdaterNode from "./DnDFlow/TextUpdaterNode";
-import ParentUpdaterNode from "./DnDFlow/ParentUpdaterNode";
+import TextUpdaterNode from "./DnDFlow/CustomNodes/TextUpdaterNode";
+import ParentUpdaterNode from "./DnDFlow/CustomNodes/ParentUpdaterNode";
 
 export const initialNodes: Node[] = [
     {
@@ -28,27 +28,5 @@ export const initialNodes: Node[] = [
         parentNode: '2',
         extent:'parent'
     },
-    {
-        id:'4',
-        type:'textUpdater',
-        position:{
-            x:0,
-            y:0
-        },
-        data:{value: 123}
-    },
-    {
-        id:'5',
-        type:'parentUpdater',
-        position:{
-            x:0,
-            y:0
-        },
-        data:{value: 456}
-    },
 ]
 
-export const nodeTypes= {
-    textUpdater: TextUpdaterNode,
-    parentUpdater: ParentUpdaterNode,
-}

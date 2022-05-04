@@ -3,7 +3,7 @@ import {Handle, Position} from "react-flow-renderer";
 
 const handleStyle = { left: 10}
 
-const ParentUpdaterNode = ({data}:{data:any}) => {
+const ParentUpdaterNode = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
@@ -11,9 +11,10 @@ const ParentUpdaterNode = ({data}:{data:any}) => {
     }
 
 
-
     return (
-        <div className="text-updater-node">
+        <div
+            className="text-updater-node"
+        >
             <Handle type="target" position={Position.Top}/>
             <div>
                 <form onSubmit={handleSubmit}>
