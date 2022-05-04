@@ -12,6 +12,8 @@ import ReactFlow,{
 
 import Sidebar from "./SideBar";
 import './DnDFlow.css'
+import TextUpdaterNode from "./atom/DnDFlow/TextUpdaterNode";
+import './atom/DnDFlow/text-updater-node.css'
 
 const initialNodes: Node[] = [
     {
@@ -39,11 +41,20 @@ const initialNodes: Node[] = [
         parentNode: '2',
         extent:'parent'
     },
+    {
+        id:'4',
+        type:'textUpdater',
+        position:{
+            x:0,
+            y:0
+        },
+        data:{value: 123}
+    }
 ]
 
 let id = 0;
 const getId = () => `dndnode ${id++}`;
-
+const nodeTypes={textUpdater: TextUpdaterNode}
 
 export const DndFlow = () => {
     const reactFlowWrapper = useRef(null);
@@ -119,6 +130,8 @@ export const DndFlow = () => {
                     <ReactFlow
                         nodes={nodes}
                         edges={edges}
+                        //@ts-ignore
+                        nodeTypes={nodeTypes}
                         onNodesChange={onNodesChange}
                         onEdgesChange={onEdgesChange}
                         onConnect={onConnect}
