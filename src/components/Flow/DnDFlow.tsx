@@ -9,65 +9,49 @@ import ReactFlow,{
     Edge,
     Node
 } from "react-flow-renderer";
-
 import Sidebar from "./SideBar";
 import './DnDFlow.css'
-import TextUpdaterNode from "./atom/DnDFlow/TextUpdaterNode";
 import './atom/DnDFlow/text-updater-node.css'
-import ParentUpdaterNode from "./atom/DnDFlow/ParentUpdaterNode";
-
-const initialNodes: Node[] = [
-    {
-        id: '1',
-        type: 'input',
-        data: {label: 'input node'},
-        position: {x: 250, y: 5},
-    },
-    {
-        id: '2',
-        type: 'group',
-        data: {label: 'lan node'},
-        position: {x: 250, y: 15},
-        style: {
-            backgroundColor: 'rgba(255, 0, 0, 0.2)',
-            width: 200,
-            height: 200
-        },
-    },
-    {
-        id: '3',
-        type: 'input',
-        data: {label: 'input node in lan'},
-        position: {x: 50, y: 20},
-        parentNode: '2',
-        extent:'parent'
-    },
-    {
-        id:'4',
-        type:'textUpdater',
-        position:{
-            x:0,
-            y:0
-        },
-        data:{value: 123}
-    },
-    {
-        id:'5',
-        type:'parentUpdater',
-        position:{
-            x:0,
-            y:0
-        },
-        data:{value: 456}
-    },
-]
+import {initialNodes, nodeTypes} from "./atom/Nodes";
 
 let id = 0;
 const getId = () => `dndnode ${id++}`;
-const nodeTypes= {
-        textUpdater: TextUpdaterNode,
-        parentUpdater: ParentUpdaterNode,
+const getNodeName = (type: string | undefined) => {
+    if (type === "default") {
+        var labelName =  "Gateway"
+    } else if (type === "input") {
+        var labelName =  "Web Server"
+    } else if(type==="output") {
+        var labelName = "Client"
+    }else {
+        var labelName="LAN"
     }
+    return labelName
+}
+
+const getNewNode = ({type, position,nodeName}:{type:any, position:any, nodeName:any}) => {
+    if (type === 'group') {
+        var newNode:Node = {
+            id: getId(),
+            type,
+            position,
+            data: {label: `${nodeName} `},
+            style: {
+                backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                width: 200,
+                height: 200
+            },
+        }
+    }else{
+        var newNode:Node = {
+            id: getId(),
+            type,
+            position,
+            data: {label: `${nodeName} `},
+        }
+    }
+    return newNode
+}
 
 
 
@@ -94,15 +78,8 @@ export const DndFlow = () => {
             // @ts-ignore
             const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect()
             const type = event.dataTransfer.getData('application/reactflow')
-            if (type === "default") {
-                var labelName =  "Gateway"
-            } else if (type === "input") {
-                var labelName =  "Web Server"
-            } else if(type==="output") {
-                var labelName = "Client"
-            }else {
-                var labelName="LAN"
-            }
+
+            const nodeName = getNodeName(type)
 
             if (typeof type === 'undefined' || !type) {
                 return;
@@ -113,26 +90,9 @@ export const DndFlow = () => {
                 x: event.clientX - reactFlowBounds.left,
                 y: event.clientY - reactFlowBounds.top,
             })
-            if (type === 'group') {
-                var newNode:Node = {
-                    id: getId(),
-                    type,
-                    position,
-                    data: {label: `${labelName} `},
-                    style: {
-                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
-                        width: 200,
-                        height: 200
-                    },
-                }
-            }else{
-                var newNode:Node = {
-                    id: getId(),
-                    type,
-                    position,
-                    data: {label: `${labelName} `},
-                }
-            }
+
+            const newNode = getNewNode({type, position, nodeName})
+
             setNodes((nds) => nds.concat(newNode))
         },
         [reactFlowInstance]

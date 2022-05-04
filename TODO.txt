@@ -5,9 +5,14 @@ TODO:
     - When right mouse is clicked, show menu
     - Right mouse click menu associate nodes
 
+---------------------------------------------------------
 WANT:
     - When nodes are on the same position, they are parented
     - Create Custom Nodes of Network devices
+
+---------------------------------------------------------
+DONE:
     - Input form data are posted to local storage
+
 
 
