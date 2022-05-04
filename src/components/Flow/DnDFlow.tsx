@@ -14,6 +14,7 @@ import Sidebar from "./SideBar";
 import './DnDFlow.css'
 import TextUpdaterNode from "./atom/DnDFlow/TextUpdaterNode";
 import './atom/DnDFlow/text-updater-node.css'
+import ParentUpdaterNode from "./atom/DnDFlow/ParentUpdaterNode";
 
 const initialNodes: Node[] = [
     {
@@ -49,12 +50,26 @@ const initialNodes: Node[] = [
             y:0
         },
         data:{value: 123}
-    }
+    },
+    {
+        id:'5',
+        type:'parentUpdater',
+        position:{
+            x:0,
+            y:0
+        },
+        data:{value: 456}
+    },
 ]
 
 let id = 0;
 const getId = () => `dndnode ${id++}`;
-const nodeTypes={textUpdater: TextUpdaterNode}
+const nodeTypes= {
+        textUpdater: TextUpdaterNode,
+        parentUpdater: ParentUpdaterNode,
+    }
+
+
 
 export const DndFlow = () => {
     const reactFlowWrapper = useRef(null);
