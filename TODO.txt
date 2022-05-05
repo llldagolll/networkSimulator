@@ -1,6 +1,4 @@
 TODO:
-    - using getNodes() API
-        - https://reactflow.dev/docs/api/react-flow-instance/#getnodes
     - Create  parent button component
     - Manage  type "group" nodes
     - When right mouse is clicked, show menu
@@ -11,6 +9,15 @@ WANT:
     - When nodes are on the same position, they are parented
     - Create Custom Nodes of Network devices
     - commonality Function onDragStart in node codes
+
+---------------------------------------------------------
+FIXME:
+    - twice rendering not intended in "Dndflow.tsx"
+
+---------------------------------------------------------
+THINKING:
+    - usage with "zustand" API for global state management
+        - https://reactflow.dev/docs/api/hooks/use-store/
 
 ---------------------------------------------------------
 DONE:

@@ -1,5 +1,5 @@
-import React, { useCallback,  useRef, useState} from "react";
-import ReactFlow,{
+import React, {Provider, ProviderProps, useCallback, useEffect, useRef, useState} from "react";
+import ReactFlow, {
     ReactFlowProvider,
     addEdge,
     useNodesState,
@@ -7,7 +7,7 @@ import ReactFlow,{
     Controls,
     Connection,
     Edge,
-    Node
+    Node,
 } from "react-flow-renderer";
 import Sidebar from "./SideBar";
 import './DnDFlow.css'
@@ -65,6 +65,8 @@ export const DndFlow = () => {
 
     const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)),[])
 
+    const NodesContext: any= React.createContext(nodes)
+
     const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
         event.preventDefault()
         event.dataTransfer.dropEffect = 'move'
@@ -100,30 +102,35 @@ export const DndFlow = () => {
         [reactFlowInstance]
     )
 
+
     return (
         <div className="dndflow" >
-            <ReactFlowProvider>
-                <div className="reactflow-wrapper" ref={reactFlowWrapper} style={{height: 500}}>
-                    <ReactFlow
-                        nodes={nodes}
-                        edges={edges}
-                        //@ts-ignore
-                        nodeTypes={nodeTypes}
-                        onNodesChange={onNodesChange}
-                        onEdgesChange={onEdgesChange}
-                        onConnect={onConnect}
-                        // @ts-ignore
-                        onInit={setReactFlowInstance}
-                        onDrop={onDrop}
-                        onDragOver={onDragOver}
-                        fitView
-                    >
-                        <Controls/>
-                    </ReactFlow>
-                </div>
-                <Sidebar />
+               <ReactFlowProvider>
+                   <div className="reactflow-wrapper"
+                        ref={reactFlowWrapper}
+                        style={{height: 500}}
+                   >
+                       <ReactFlow
+                           nodes={nodes}
+                           edges={edges}
+                           //@ts-ignore
+                           nodeTypes={nodeTypes}
+                           onNodesChange={onNodesChange}
+                           onEdgesChange={onEdgesChange}
+                           onConnect={onConnect}
+                           // @ts-ignore
+                           onInit={setReactFlowInstance}
+                           onDrop={onDrop}
+                           onDragOver={onDragOver}
+                           fitView
+                       >
+                           <Controls/>
+                       </ReactFlow>
+                   </div>
+                   <Sidebar/>
 
-            </ReactFlowProvider>
+               </ReactFlowProvider>
+
         </div>
     )
 
