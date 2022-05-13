@@ -8,3 +8,5 @@ services:
       - ./frontend:/app:cached
     environment:
       ENV NODE_ENV: development
+    working_dir: /app
+    command: yarn install
