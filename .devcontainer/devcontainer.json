@@ -1,0 +1,9 @@
+{
+  "name": "senior-project",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "frontend-senior-project",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose"
+}
