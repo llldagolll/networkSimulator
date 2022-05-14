@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   frontend-senior-project:
+    stdin_open: true
     build: .
     ports:
       - "3000:3000"
@@ -9,4 +10,4 @@ services:
     environment:
       ENV NODE_ENV: development
     working_dir: /app
-    command: yarn install
+    # command: yarn install
