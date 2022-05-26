@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -8,14 +8,25 @@ import ReactFlow, {
   Connection,
   Edge
 } from "react-flow-renderer";
+import { ClientNode, GatewayNode, LanNode, TextUpdaterNode, WebNode } from "./atom/DnDFlow/Nodes";
 
 import Sidebar from "./Sidebar";
+
+const nodeTypes = {
+  textUpdater: TextUpdaterNode,
+  client: ClientNode,
+  gateway: GatewayNode,
+  lan: LanNode,
+  web: WebNode,
+}
+
+
 
 const initialNodes = [
   {
     id: '1',
-    type: 'input',
-    data: { label: 'input node' },
+    type: 'textUpdater',
+    data: { value: 123 },
     position: { x: 250, y: 5 },
   },
 ]
@@ -36,6 +47,7 @@ export const DndFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
+
 
   const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
 
@@ -112,6 +124,7 @@ export const DndFlow = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
+            nodeTypes={nodeTypes}
             fitView
           >
             <Controls />

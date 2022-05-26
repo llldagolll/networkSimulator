@@ -1,5 +1,4 @@
-
-const InputLanNode = () => {
+const InputClientNode = () => {
   const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {
     event.dataTransfer.setData('application/reactflow', nodeType);
     event.dataTransfer.effectAllowed = 'move'
@@ -7,11 +6,11 @@ const InputLanNode = () => {
   return (
     <>
       {/*@ts-ignore*/}
-      <div className="dndnode" onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, 'group')} draggable>
-        LAN Node
+      <div className="dndnode output" onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, 'client')} draggable>
+        Client
       </div>
     </>
   )
 }
 
-export default InputLanNode
+export default InputClientNode
