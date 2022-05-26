@@ -5,6 +5,7 @@ const Home: NextPage = () => {
   return (
     <div style={{ height: 500 }}>
       <DndFlow />
+      <p>Hell, world</p>
     </div>
   )
 }
