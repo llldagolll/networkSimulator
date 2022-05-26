@@ -48,6 +48,11 @@ export const DndFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
 
+  // useEffect(() => {
+  //   const lan = nodes.filter(node => node.type == 'lan')
+  //   console.log(lan);
+  // })
+
 
   const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
 
