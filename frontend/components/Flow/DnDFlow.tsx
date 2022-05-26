@@ -8,6 +8,7 @@ import ReactFlow, {
   Connection,
   Edge
 } from "react-flow-renderer";
+import NodeForm from "./atom/DnDFlow/Form";
 import { ClientNode, GatewayNode, LanNode, TextUpdaterNode, WebNode } from "./atom/DnDFlow/Nodes";
 
 import Sidebar from "./Sidebar";
@@ -136,8 +137,8 @@ export const DndFlow = () => {
           </ReactFlow>
         </div>
         <Sidebar />
-
       </ReactFlowProvider>
+      <NodeForm />
     </div>
   )
 
