@@ -1,9 +1,8 @@
 import { useRef, useState, useCallback } from "react";
 import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
-import { TextUpdaterNode, ClientNode, GatewayNode, LanNode, WebNode } from "../common/CustomNodes";
-import NodeForm from "../Form";
+import { TextUpdaterNode, ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes";
 import Sidebar from "../Sidebar";
-import styles from './index.module.css'
+import styles from './index.module.css';
 
 const nodeTypes = {
   textUpdater: TextUpdaterNode,
@@ -115,31 +114,30 @@ const ReactFlowArea = () => {
 
 
   return (
-    <div style={{ height: 500 }}>
-      <div className={styles.dndflow}>
-        <ReactFlowProvider>
-          <div className={styles.reactflowWrapper} ref={reactFlowWrapper} style={{ height: 500 }}>
-            <ReactFlow
-              nodes={nodes}
-              edges={edges}
-              onNodesChange={onNodesChange}
-              onEdgesChange={onEdgesChange}
-              onConnect={onConnect}
-              // @ts-ignore
-              onInit={setReactFlowInstance}
-              onDrop={onDrop}
-              onDragOver={onDragOver}
-              nodeTypes={nodeTypes}
-              fitView
-            >
-              <Controls />
-            </ReactFlow>
-          </div>
+    <>
+      <ReactFlowProvider>
+        <div className={styles.reactflow} ref={reactFlowWrapper} >
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            // @ts-ignore
+            onInit={setReactFlowInstance}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            nodeTypes={nodeTypes}
+            fitView
+          >
+            <Controls />
+          </ReactFlow>
+        </div>
+        <div className={styles.sideBar}>
           <Sidebar />
-        </ReactFlowProvider>
-        <NodeForm />
-      </div>
-    </div>
+        </div>
+      </ReactFlowProvider>
+    </>
   )
 }
 

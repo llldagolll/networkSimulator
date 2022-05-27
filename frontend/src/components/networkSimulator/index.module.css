@@ -1,0 +1,16 @@
+.flexContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.Simulator {
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+}
+
+.SimulatorForm {
+  height: 30%;
+}
