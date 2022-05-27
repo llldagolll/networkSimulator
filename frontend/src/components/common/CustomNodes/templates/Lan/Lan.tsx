@@ -1,9 +1,9 @@
-
 import { Handle, Position } from "react-flow-renderer";
+import styles from './Lan.module.css'
 
 const LanTemplates = ({ nodeName }: { nodeName: string }) => {
   return (
-    <div className="lan">
+    <div className={styles.lan}>
       <div>
         <label htmlFor="text">{nodeName}</label>
       </div>

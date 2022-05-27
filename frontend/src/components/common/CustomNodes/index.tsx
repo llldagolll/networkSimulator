@@ -1,5 +1,5 @@
-import LanTemplates from "./templates/lan";
-import NodeTemplates from "./templates/node";
+import LanTemplates from "./templates/Lan/Lan";
+import NodeTemplates from "./templates/Node/Node";
 
 export const ClientNode = () => {
   return (
