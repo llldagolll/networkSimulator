@@ -1,4 +1,4 @@
-import styles from './index.module.css'
+import styles from './Nodes.module.css'
 
 
 const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {
