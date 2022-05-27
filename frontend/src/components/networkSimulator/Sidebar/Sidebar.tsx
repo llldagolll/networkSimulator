@@ -2,7 +2,6 @@ import {
   InputClientNode,
   InputGatewayNode,
   InputLanNode,
-  InputTextUpdaterNode,
   InputWebServerNode
 } from "./Nodes/Nodes"
 import styles from './Sidebar.module.css'
@@ -14,7 +13,6 @@ const Sidebar = () => {
       <InputGatewayNode />
       <InputClientNode />
       <InputLanNode />
-      <InputTextUpdaterNode />
       <InputWebServerNode />
     </>
   )

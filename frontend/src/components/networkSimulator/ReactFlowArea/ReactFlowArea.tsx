@@ -1,11 +1,10 @@
 import { useRef, useState, useCallback } from "react";
 import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
-import { TextUpdaterNode, ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
+import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './ReactFlowArea.module.css';
 
 const nodeTypes = {
-  textUpdater: TextUpdaterNode,
   client: ClientNode,
   gateway: GatewayNode,
   lan: LanNode,
@@ -17,8 +16,7 @@ const nodeTypes = {
 const initialNodes = [
   {
     id: '1',
-    type: 'textUpdater',
-    data: { value: 123 },
+    type: 'client',
     position: { x: 250, y: 5 },
   },
 ]
@@ -81,7 +79,6 @@ const ReactFlowArea = () => {
         return;
       }
 
-      //@ts-ignore
       const position = reactFlowInstance.project({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
@@ -90,7 +87,6 @@ const ReactFlowArea = () => {
       const newNode: NewNode = {
         id: getId(),
         type,
-        data: { label: '' },
         position,
       }
 
@@ -114,6 +110,7 @@ const ReactFlowArea = () => {
       //     // data: { label: `${labelName} ` },
       //   }
       // }
+
       setNodes((nds) => nds.concat(newNode))
     },
     [reactFlowInstance]
@@ -131,7 +128,6 @@ const ReactFlowArea = () => {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
-            // @ts-ignore
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
