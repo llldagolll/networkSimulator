@@ -1,6 +1,8 @@
-import NodeForm from "./Form";
-import ReactFlowArea from "./ReactFlowArea";
-import styles from './index.module.css'
+import NodeForm from "./Form/Form";
+import ReactFlowArea from "./ReactFlowArea/ReactFlowArea";
+import styles from './NetworkSimulator.module.css'
+
+
 
 const NetworkSimulator = () => {
 

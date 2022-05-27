@@ -1,22 +1,23 @@
 import LanTemplates from "./templates/Lan/Lan";
-import NodeTemplates from "./templates/Node/Node";
+import BothTopBottomHandle from "./templates/Nodes/BothTopBottomHandle";
+import TopHandle from "./templates/Nodes/TopHandle";
 
 export const ClientNode = () => {
   return (
-    <NodeTemplates nodeName='Client' />
+    <TopHandle nodeName='Client' />
   );
 }
 
 
 export const TextUpdaterNode = () => {
   return (
-    <NodeTemplates nodeName='textUpdater' />
+    <BothTopBottomHandle nodeName='textUpdater' />
   );
 }
 
 export const GatewayNode = () => {
   return (
-    <NodeTemplates nodeName='Gateway' />
+    <BothTopBottomHandle nodeName='Gateway' />
   );
 }
 
@@ -30,6 +31,6 @@ export const LanNode = () => {
 
 export const WebNode = () => {
   return (
-    <NodeTemplates nodeName='Web Server' />
+    <BothTopBottomHandle nodeName='Web Server' />
   );
 }

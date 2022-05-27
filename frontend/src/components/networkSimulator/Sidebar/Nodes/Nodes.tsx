@@ -1,4 +1,4 @@
-import styles from './index.module.css'
+import styles from './Nodes.module.css'
 
 
 const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {
@@ -23,7 +23,7 @@ export const InputGatewayNode = () => {
     <>
       {/*@ts-ignore*/}
       <div className={styles.dndnode} onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, 'gateway')} draggable>
-        Gateway Node
+        Gateway
       </div>
     </>
   )
@@ -35,19 +35,7 @@ export const InputLanNode = () => {
     <>
       {/*@ts-ignore*/}
       <div className={styles.dndnode} onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, 'lan')} draggable>
-        LAN Node
-      </div>
-    </>
-  )
-}
-
-
-export const InputTextUpdaterNode = () => {
-  return (
-    <>
-      {/*@ts-ignore*/}
-      <div className={styles.dndnode} onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, 'textUpdater')} draggable>
-        TextUpdater
+        LAN
       </div>
     </>
   )
@@ -59,7 +47,7 @@ export const InputWebServerNode = () => {
     <>
       {/*@ts-ignore*/}
       <div className={styles.dndnode} onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, 'web')} draggable>
-        Web Server
+        Web
       </div>
     </>
   )

@@ -1,6 +1,5 @@
-import ReactFlowArea from '@/components/networkSimulator/ReactFlowArea';
+import NetworkSimulator from '@/components/networkSimulator/NetworkSimulator'
 import type { NextPage } from 'next'
-import NetworkSimulator from '@/components/networkSimulator';
 
 const Home: NextPage = () => {
   return (

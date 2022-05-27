@@ -13,4 +13,6 @@
 
 .SimulatorForm {
   height: 30%;
+  display: flex;
+  background-color: green;
 }

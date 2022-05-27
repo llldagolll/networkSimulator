@@ -1,11 +1,10 @@
 import { useRef, useState, useCallback } from "react";
 import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
-import { TextUpdaterNode, ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes";
-import Sidebar from "../Sidebar";
-import styles from './index.module.css';
+import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
+import Sidebar from "../Sidebar/Sidebar";
+import styles from './ReactFlowArea.module.css';
 
 const nodeTypes = {
-  textUpdater: TextUpdaterNode,
   client: ClientNode,
   gateway: GatewayNode,
   lan: LanNode,
@@ -17,8 +16,7 @@ const nodeTypes = {
 const initialNodes = [
   {
     id: '1',
-    type: 'textUpdater',
-    data: { value: 123 },
+    type: 'client',
     position: { x: 250, y: 5 },
   },
 ]
@@ -30,7 +28,7 @@ type NewNode = {
   id: any,
   type: any,
   position: any,
-  data: any,
+  data?: any
   style?: any,
 }
 
@@ -67,45 +65,52 @@ const ReactFlowArea = () => {
       // @ts-ignore
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect()
       const type = event.dataTransfer.getData('application/reactflow')
-      if (type === "default") {
-        var labelName = "Gateway"
-      } else if (type === "input") {
-        var labelName = "Web Server"
-      } else if (type === "output") {
-        var labelName = "Client"
-      } else {
-        var labelName = "LAN"
-      }
+      // if (type === "default") {
+      //   var labelName = "Gateway"
+      // } else if (type === "input") {
+      //   var labelName = "Web Server"
+      // } else if (type === "output") {
+      //   var labelName = "Client"
+      // } else {
+      //   var labelName = "LAN"
+      // }
 
       if (typeof type === 'undefined' || !type) {
         return;
       }
 
-      //@ts-ignore
       const position = reactFlowInstance.project({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       })
-      if (type === 'group') {
-        var newNode: NewNode = {
-          id: getId(),
-          type,
-          position,
-          data: { label: `${labelName} ` },
-          style: {
-            backgroundColor: 'rgba(255, 0, 0, 0.2)',
-            width: 200,
-            height: 200
-          },
-        }
-      } else {
-        var newNode: NewNode = {
-          id: getId(),
-          type,
-          position,
-          data: { label: `${labelName} ` },
-        }
+
+      const newNode: NewNode = {
+        id: getId(),
+        type,
+        position,
       }
+
+      // if (type === 'group') {
+      //   var newNode: NewNode = {
+      //     id: getId(),
+      //     type,
+      //     position,
+      //     // data: { label: `${labelName} ` },
+      //     style: {
+      //       backgroundColor: 'rgba(255, 0, 0, 0.2)',
+      //       width: 200,
+      //       height: 200
+      //     },
+      //   }
+      // } else {
+      //   var newNode: NewNode = {
+      //     id: getId(),
+      //     type,
+      //     position,
+      //     // data: { label: `${labelName} ` },
+      //   }
+      // }
+
       setNodes((nds) => nds.concat(newNode))
     },
     [reactFlowInstance]
@@ -123,7 +128,6 @@ const ReactFlowArea = () => {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
-            // @ts-ignore
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
