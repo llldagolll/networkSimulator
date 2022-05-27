@@ -14,3 +14,21 @@ a {
 * {
   box-sizing: border-box;
 }
+
+aside {
+  border-right: 1px solid #eee;
+  padding: 15px 10px;
+  font-size: 12px;
+  background: #fcfcfc;
+}
+
+footer {
+  border-right: 1px solid #eee;
+  padding: 15px 10px;
+  font-size: 12px;
+  background: #fcfcfc;
+}
+
+.grid-container {
+  display: grid;
+}
