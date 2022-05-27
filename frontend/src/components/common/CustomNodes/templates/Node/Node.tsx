@@ -1,8 +1,9 @@
 import { Handle, Position } from "react-flow-renderer";
+import styles from './Node.module.css'
 
 const NodeTemplates = ({ nodeName }: { nodeName: string }) => {
   return (
-    <div className="node">
+    <div className={styles.node}>
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{nodeName}</label>

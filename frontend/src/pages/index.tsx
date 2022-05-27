@@ -1,3 +1,7 @@
+import { TextUpdaterNode, ClientNode, GatewayNode, LanNode, WebNode } from '@/components/common/CustomNodes';
+import NodeForm from '@/components/Form';
+import Sidebar from '@/components/Sidebar';
+import type { NextPage } from 'next'
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ReactFlow, {
   ReactFlowProvider,
@@ -8,9 +12,8 @@ import ReactFlow, {
   Connection,
   Edge
 } from "react-flow-renderer";
-import { ClientNode, GatewayNode, LanNode, TextUpdaterNode, WebNode } from "./atom/DnDFlow/Nodes";
 
-import Sidebar from "./Sidebar";
+import styles from './index.module.css'
 
 const nodeTypes = {
   textUpdater: TextUpdaterNode,
@@ -42,7 +45,11 @@ type NewNode = {
   style?: any,
 }
 
-export const DndFlow = () => {
+
+
+const Home: NextPage = () => {
+
+
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
@@ -115,30 +122,35 @@ export const DndFlow = () => {
     [reactFlowInstance]
   )
 
-  return (
-    <div className="dndflow" >
-      <ReactFlowProvider>
-        <div className="reactflow-wrapper" ref={reactFlowWrapper} style={{ height: 500 }}>
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            // @ts-ignore
-            onInit={setReactFlowInstance}
-            onDrop={onDrop}
-            onDragOver={onDragOver}
-            nodeTypes={nodeTypes}
-            fitView
-          >
-            <Controls />
-          </ReactFlow>
-        </div>
-        <Sidebar />
 
-      </ReactFlowProvider>
+
+  return (
+    <div style={{ height: 500 }}>
+      <div className={styles.dndflow}>
+        <ReactFlowProvider>
+          <div className={styles.reactflowWrapper} ref={reactFlowWrapper} style={{ height: 500 }}>
+            <ReactFlow
+              nodes={nodes}
+              edges={edges}
+              onNodesChange={onNodesChange}
+              onEdgesChange={onEdgesChange}
+              onConnect={onConnect}
+              // @ts-ignore
+              onInit={setReactFlowInstance}
+              onDrop={onDrop}
+              onDragOver={onDragOver}
+              nodeTypes={nodeTypes}
+              fitView
+            >
+              <Controls />
+            </ReactFlow>
+          </div>
+          <Sidebar />
+        </ReactFlowProvider>
+        <NodeForm />
+      </div>
     </div>
   )
-
 }
+
+export default Home

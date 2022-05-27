@@ -6,18 +6,18 @@
   height: 100%
 }
 
-.dndflow aside {
+.dndflowAside {
   border-right: 1px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
   background: #fcfcfc;
 }
 
-.dndflow aside .description {
+.dndflowAside .description {
   margin-bottom: 10px;
 }
 
-.dndflow .dndnode {
+.dndnode {
   height: 20px;
   padding: 4px;
   border: 1px solid #1a192b;
@@ -29,18 +29,14 @@
   cursor: grab;
 }
 
-.dndflow .dndnode.input {
+.dndnodeInput {
   border-color: #0041d0;
 }
 
-.dndflow .dndnode.output {
+.dndnodeOutput {
   border-color: #ff0072
 }
 
-.dndflow .reactflow-wrapper {
-  flex-grow: 1;
-  height: 100%;
-}
 
 .dndflow .selectall {
   margin-top: 10px;
