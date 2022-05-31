@@ -5,10 +5,10 @@ import Sidebar from "../Sidebar/Sidebar";
 import styles from './ReactFlowArea.module.css';
 
 const nodeTypes = {
-  client: ClientNode,
-  gateway: GatewayNode,
-  lan: LanNode,
-  web: WebNode,
+  Client: ClientNode,
+  Gateway: GatewayNode,
+  Lan: LanNode,
+  Web: WebNode,
 }
 
 
@@ -16,7 +16,7 @@ const nodeTypes = {
 const initialNodes = [
   {
     id: '1',
-    type: 'client',
+    type: 'Client',
     position: { x: 250, y: 5 },
   },
 ]
@@ -62,18 +62,11 @@ const ReactFlowArea = () => {
       },
     ) => {
       event.preventDefault()
-      // @ts-ignore
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect()
       const type = event.dataTransfer.getData('application/reactflow')
-      // if (type === "default") {
-      //   var labelName = "Gateway"
-      // } else if (type === "input") {
-      //   var labelName = "Web Server"
-      // } else if (type === "output") {
-      //   var labelName = "Client"
-      // } else {
-      //   var labelName = "LAN"
-      // }
+      console.log(event.dataTransfer);
+
+
 
       if (typeof type === 'undefined' || !type) {
         return;
@@ -90,32 +83,25 @@ const ReactFlowArea = () => {
         position,
       }
 
-      // if (type === 'group') {
-      //   var newNode: NewNode = {
-      //     id: getId(),
-      //     type,
-      //     position,
-      //     // data: { label: `${labelName} ` },
-      //     style: {
-      //       backgroundColor: 'rgba(255, 0, 0, 0.2)',
-      //       width: 200,
-      //       height: 200
-      //     },
-      //   }
-      // } else {
-      //   var newNode: NewNode = {
-      //     id: getId(),
-      //     type,
-      //     position,
-      //     // data: { label: `${labelName} ` },
-      //   }
-      // }
-
       setNodes((nds) => nds.concat(newNode))
     },
     [reactFlowInstance]
   )
 
+
+  const onDoubleClick: any = useCallback(
+    (
+      event: any
+      ,
+    ) => {
+      event.preventDefault()
+      console.log(document.contentType);
+
+      // const type = event.target.innerText
+      // alert(`type: ${type}`);
+    },
+    []
+  )
 
 
   return (
@@ -131,6 +117,7 @@ const ReactFlowArea = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
+            onDoubleClick={onDoubleClick}
             nodeTypes={nodeTypes}
             fitView
           >

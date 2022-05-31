@@ -9,12 +9,6 @@ export const ClientNode = () => {
 }
 
 
-export const TextUpdaterNode = () => {
-  return (
-    <BothTopBottomHandle nodeName='textUpdater' />
-  );
-}
-
 export const GatewayNode = () => {
   return (
     <BothTopBottomHandle nodeName='Gateway' />
@@ -31,6 +25,6 @@ export const LanNode = () => {
 
 export const WebNode = () => {
   return (
-    <BothTopBottomHandle nodeName='Web Server' />
+    <BothTopBottomHandle nodeName='Web' />
   );
 }

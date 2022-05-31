@@ -1,6 +1,8 @@
 import { Handle, Position } from "react-flow-renderer";
 import styles from './Nodes.module.css'
 
+
+
 const BothTopBottomHandle = ({ nodeName }: { nodeName: string }) => {
   return (
     <div className={styles.node}>

@@ -1,6 +1,6 @@
 import NodeForm from "./Form/Form";
 import ReactFlowArea from "./ReactFlowArea/ReactFlowArea";
-import styles from './NetworkSimulator.module.css'
+import styles from './index.module.css'
 
 
 

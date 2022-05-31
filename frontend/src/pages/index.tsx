@@ -1,4 +1,4 @@
-import NetworkSimulator from '@/components/networkSimulator/NetworkSimulator'
+import NetworkSimulator from '@/components/networkSimulator'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
