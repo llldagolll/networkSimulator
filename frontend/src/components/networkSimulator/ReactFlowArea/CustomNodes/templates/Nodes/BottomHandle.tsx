@@ -1,14 +1,14 @@
 import { Handle, Position } from "react-flow-renderer";
-import styles from './Nodes.module.css'
+import TemplateNode from "./atom/TemplateNode";
 
 const BottomHandle = ({ nodeName }: { nodeName: string }) => {
   return (
-    <div className={styles.node}>
-      <div>
+    <TemplateNode>
+      < div >
         <label htmlFor="text">{nodeName}</label>
-      </div>
+      </div >
       <Handle type="source" position={Position.Bottom} />
-    </div>
+    </TemplateNode>
   );
 }
 

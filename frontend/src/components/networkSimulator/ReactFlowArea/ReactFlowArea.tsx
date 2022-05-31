@@ -41,6 +41,10 @@ const ReactFlowArea = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
+  const [show, setShow] = useState(false)
+  const openModal = () => {
+    setShow(true)
+  }
 
   // useEffect(() => {
   //   const lan = nodes.filter(node => node.type == 'lan')

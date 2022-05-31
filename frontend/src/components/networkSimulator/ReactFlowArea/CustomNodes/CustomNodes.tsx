@@ -1,5 +1,5 @@
 import LanTemplates from "./templates/Lan/Lan";
-import BothTopBottomHandle from "./templates/Nodes/BothTopBottomHandle";
+import BothTopBottomHandle from "./templates/Nodes/BothTopBottom";
 import TopHandle from "./templates/Nodes/TopHandle";
 
 export const ClientNode = () => {

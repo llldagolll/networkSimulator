@@ -29,7 +29,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/index.tsx.org"
+    "src/components/index.tsx.org",
+    "src/components/networkSimulator/ReactFlowArea/CustomNodes/templates/Nodes/BothTopBottomHandle.tsx.org"
   ],
   "exclude": [
     "node_modules"
