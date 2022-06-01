@@ -1,0 +1,15 @@
+
+.modal-content {
+  position: absolute;
+  width:100%;
+  top: 0px;
+  padding:1em;
+  border: 1px solid #1a192b;
+  background: rgb(59, 211, 173);
+  text-align: center;
+  font-size: 8px;
+}
+
+.modal-button {
+  font-size: 3px;
+}

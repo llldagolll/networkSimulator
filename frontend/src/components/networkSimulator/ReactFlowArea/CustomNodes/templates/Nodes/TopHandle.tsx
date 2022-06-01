@@ -1,5 +1,5 @@
 import { Handle, Position } from "react-flow-renderer";
-import TemplateNode from "./atom/TemplateNode";
+import { TemplateNode } from "../common/TemplateNode/TemplateNode";
 
 const TopHandle = ({ nodeName }: { nodeName: string }) => {
   return (

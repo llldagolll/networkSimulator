@@ -1,14 +1,15 @@
 import { Handle, Position } from "react-flow-renderer";
-import styles from './Lan.module.css'
+import { TemplateLan } from "../common/TemplateNode/TemplateNode";
+
 
 const LanTemplates = ({ nodeName }: { nodeName: string }) => {
   return (
-    <div className={styles.lan}>
+    <TemplateLan>
       <div>
         <label htmlFor="text">{nodeName}</label>
       </div>
       <Handle type="source" position={Position.Bottom} />
-    </div>
+    </TemplateLan >
   );
 }
 
