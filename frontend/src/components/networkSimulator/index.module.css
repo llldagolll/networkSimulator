@@ -6,14 +6,9 @@
 }
 
 .Simulator {
-  height: 70%;
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.SimulatorForm {
-  height: 30%;
-  display: flex;
-  background-color: green;
-}
 

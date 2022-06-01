@@ -1,6 +1,5 @@
 import { Handle, Position } from "react-flow-renderer";
 import TemplateNode from "./atom/TemplateNode";
-import styles from './Nodes.module.css'
 
 const TopHandle = ({ nodeName }: { nodeName: string }) => {
   return (
