@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/index.tsx.org",
-    "src/components/networkSimulator/ReactFlowArea/CustomNodes/templates/Nodes/BothTopBottomHandle.tsx.org"
+    "src/components/networkSimulator/ReactFlowArea/CustomNodes/templates/Nodes/BothTopBottomHandle.tsx"
   ],
   "exclude": [
     "node_modules"

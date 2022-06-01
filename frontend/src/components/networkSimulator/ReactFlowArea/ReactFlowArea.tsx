@@ -36,20 +36,10 @@ type NewNode = {
 
 const ReactFlowArea = () => {
 
-
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
-  const [show, setShow] = useState(false)
-  const openModal = () => {
-    setShow(true)
-  }
-
-  // useEffect(() => {
-  //   const lan = nodes.filter(node => node.type == 'lan')
-  //   console.log(lan);
-  // })
 
 
   const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
@@ -93,21 +83,6 @@ const ReactFlowArea = () => {
   )
 
 
-  const onDoubleClick: any = useCallback(
-    (
-      event: any
-      ,
-    ) => {
-      event.preventDefault()
-      console.log(document.contentType);
-
-      // const type = event.target.innerText
-      // alert(`type: ${type}`);
-    },
-    []
-  )
-
-
   return (
     <>
       <ReactFlowProvider>
@@ -121,7 +96,6 @@ const ReactFlowArea = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            onDoubleClick={onDoubleClick}
             nodeTypes={nodeTypes}
             fitView
           >
