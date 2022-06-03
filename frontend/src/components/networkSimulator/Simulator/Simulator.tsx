@@ -1,8 +1,9 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
 import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
-import styles from './ReactFlowArea.module.css';
+import create from "zustand";
+import styles from './Simulator.module.css'
 
 const nodeTypes = {
   Client: ClientNode,
@@ -33,14 +34,47 @@ type NewNode = {
 }
 
 
+// const useStore = create((set) => ({
+//   count: 1,
+//   inc: () => set((state: any) => ({ count: state.count + 1 })),
+//   dec: () => set((state: any) => ({ count: state.count - 1 }))
+// }))
 
-const ReactFlowArea = () => {
+// const Counter = () => {
+//   const { count, inc, dec } = useStore()
+//   return (
+//     <div className="counter">
+//       <span>{count}</span>
+//       <button onClick={inc}>one up</button>
+//       <button onClick={dec}>one down</button>
+//     </div>
+//   )
+// }
+
+
+// nodes.filter(n => n.type === 'square')
+//   .map(n => console.log(n))
+
+
+
+const useStore = create((set) => ({
+  storeNodes: [],
+  add: (obj: Object) => set((state: any) => ({ ...state.storeNodes, obj }))
+}))
+
+
+const Simulator = () => {
 
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
 
+  const { storeNodes, add } = useStore()
+
+  // useEffect(() => {
+  //   console.log(nodes);
+  // }, [nodes])
 
   const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
 
@@ -58,7 +92,9 @@ const ReactFlowArea = () => {
       event.preventDefault()
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect()
       const type = event.dataTransfer.getData('application/reactflow')
-      console.log(event.dataTransfer);
+
+      //idとtypeをstoreNodesに格納する
+
 
 
 
@@ -110,4 +146,4 @@ const ReactFlowArea = () => {
   )
 }
 
-export default ReactFlowArea
+export default Simulator;
