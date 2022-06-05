@@ -7,7 +7,11 @@ export default [
   {
     id: id,
     type: type,
-    data: { label: `${type} ${id}` },
+    data: {
+      label: `${id} ${type}`,
+      nodeId: `${type}`,
+      nodeType: `${type}`,
+    },
     position: { x: 250, y: 5 },
   },
 ] as Node[];

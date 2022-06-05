@@ -3,6 +3,10 @@ import { Handle, Position } from "react-flow-renderer";
 import { TemplateModal, GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
 import styles from './CustomNodes.module.css'
 
+
+//TODO: 重複コードが多すぎる、ノードごとのフォームが完成したら共通部品化する。
+
+
 export const ClientNode = ({ data }) => {
 
   const getNodeType = (e) => e.target.innerText
@@ -21,12 +25,13 @@ export const ClientNode = ({ data }) => {
     setShow(false)
   }
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault()
     const reqResPort = {
       'requestPort': requestRef.current.value,
       'responsePort': responseRef.current.value
     }
-    localStorage.setItem(`${data.nodeId}`, JSON.stringify(reqResPort))
+    sessionStorage.setItem(`${data.nodeId}`, JSON.stringify(reqResPort))
   }
 
 

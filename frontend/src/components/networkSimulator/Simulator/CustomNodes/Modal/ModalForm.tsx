@@ -2,6 +2,7 @@ import { RequestPortForm, ResponsePortForm } from './atom/ModalFormParts'
 import styles from './ModalForm.module.css'
 
 
+//TODO: ノードフォームが完成次第これを埋めて、適応する
 interface modal {
   show: boolean,
   onClick: (e) => void,
