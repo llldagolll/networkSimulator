@@ -9,6 +9,14 @@ interface modal {
   content: any,
 }
 
+interface modalform {
+  nodeId: string,
+  onSubmit: (e) => void,
+  requestRef?: string,
+  responseRef?: string,
+  inboundRef?: string,
+  outboundRef?: string
+}
 
 
 export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
@@ -26,26 +34,47 @@ export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) =
   )
 }
 
-export const GatewayModalForm = ({ nodeId }) => {
+export const GatewayModalForm = ({ nodeId, onSubmit, inboundRef, outboundRef }) => {
   return (
     <>
       <p>{nodeId}</p>
+      <form action='' onSubmit={onSubmit}>
+        <label htmlFor="">inbound Port: </label>
+        <input ref={inboundRef} type="text" name="inboundRef" id="" />
+        <label htmlFor="">outbound Port: </label>
+        <input ref={outboundRef} type="text" name="outbounfRef" id="" />
+        <button type="submit">保存</button>
+      </form>
     </>
   )
 }
 
-export const LanModalForm = ({ nodeId }) => {
+export const LanModalForm = ({ nodeId, onSubmit, inboundRef, outboundRef }) => {
   return (
     <>
       <p>{nodeId}</p>
+      <form action='' onSubmit={onSubmit}>
+        <label htmlFor="">inbound Port: </label>
+        <input ref={inboundRef} type="text" name="inboundRef" id="" />
+        <label htmlFor="">outbound Port: </label>
+        <input ref={outboundRef} type="text" name="outbounfRef" id="" />
+        <button type="submit">保存</button>
+      </form>
     </>
   )
 }
 
-export const WebModalForm = ({ nodeId }) => {
+export const WebModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
   return (
     <>
       <p>{nodeId}</p>
+      <form action='' onSubmit={onSubmit}>
+        <label htmlFor="">Request Port: </label>
+        <input ref={requestRef} type="text" name="requestPort" id="" />
+        <label htmlFor="">Response Port: </label>
+        <input ref={responseRef} type="text" name="responsePort" id="" />
+        <button type="submit">保存</button>
+      </form>
     </>
   )
 }
