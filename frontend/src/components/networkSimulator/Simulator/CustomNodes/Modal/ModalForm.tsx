@@ -10,34 +10,34 @@ interface modal {
 
 
 
-export const ClientModalForm = () => {
+export const ClientModalForm = ({ nodeId }) => {
   return (
     <>
-      <p>Client</p>
+      <p>{nodeId}</p>
     </>
   )
 }
 
-export const GatewayModalForm = () => {
+export const GatewayModalForm = ({ nodeId }) => {
   return (
     <>
-      <p>Gateway</p>
+      <p>{nodeId}</p>
     </>
   )
 }
 
-export const LanModalForm = () => {
+export const LanModalForm = ({ nodeId }) => {
   return (
     <>
-      <p>Lan</p>
+      <p>{nodeId}</p>
     </>
   )
 }
 
-export const WebModalForm = () => {
+export const WebModalForm = ({ nodeId }) => {
   return (
     <>
-      <p>Web</p>
+      <p>{nodeId}</p>
     </>
   )
 }

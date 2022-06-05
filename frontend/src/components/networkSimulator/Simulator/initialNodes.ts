@@ -1,9 +1,13 @@
 import { Node } from 'react-flow-renderer'
 
+const id = '0'
+const type = 'Client'
+
 export default [
   {
-    id: '1',
-    type: 'Client',
+    id: id,
+    type: type,
+    data: { label: `${type} ${id}` },
     position: { x: 250, y: 5 },
   },
 ] as Node[];

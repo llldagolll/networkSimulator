@@ -22,7 +22,7 @@ type NewNode = {
   id: any,
   type: any,
   position: any,
-  data?: any
+  data: any
   style?: any,
 }
 
@@ -72,13 +72,15 @@ const Simulator = () => {
       const newNode: NewNode = {
         id: generateId(),
         type,
+        data: {
+          label: `${type}`,
+          nodeId: `${id} ${type}`
+        },
         position,
       }
 
       //@ts-ignore
       setNodes(newNode)
-      // showAllNodes()
-      // getNodesOnNodeType('Client')
     },
     [reactFlowInstance]
   )
