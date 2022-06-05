@@ -1,9 +1,10 @@
 import { Handle, Position } from "react-flow-renderer";
 import { TemplateNode } from "../common/TemplateNode/TemplateNode";
+import { CustomNodeType } from "@/components/networkSimulator/Simulator/store"
 
 
 
-const BothTopBottomHandle = ({ nodeName }: { nodeName: string }) => {
+const BothTopBottomHandle = ({ nodeName }: { nodeName: CustomNodeType }) => {
   return (
     <TemplateNode >
       <Handle type="target" position={Position.Top} />

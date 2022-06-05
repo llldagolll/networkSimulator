@@ -1,7 +1,8 @@
 import { Handle, Position } from "react-flow-renderer";
+import { CustomNodeType } from "../../../store";
 import { TemplateNode } from "../common/TemplateNode/TemplateNode";
 
-const BottomHandle = ({ nodeName }: { nodeName: string }) => {
+const BottomHandle = ({ nodeName }: { nodeName: CustomNodeType }) => {
   return (
     <TemplateNode>
       < div >

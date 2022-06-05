@@ -2,8 +2,8 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
 import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
-import create from "zustand";
 import styles from './Simulator.module.css'
+import useStore from "./store";
 
 const nodeTypes = {
   Client: ClientNode,
@@ -14,16 +14,9 @@ const nodeTypes = {
 
 
 
-const initialNodes = [
-  {
-    id: '1',
-    type: 'Client',
-    position: { x: 250, y: 5 },
-  },
-]
 
 let id = 0;
-const getId = () => `dndnode ${id++}`;
+const generateId = () => `dndnode ${id++}`;
 
 type NewNode = {
   id: any,
@@ -34,49 +27,23 @@ type NewNode = {
 }
 
 
-// const useStore = create((set) => ({
-//   count: 1,
-//   inc: () => set((state: any) => ({ count: state.count + 1 })),
-//   dec: () => set((state: any) => ({ count: state.count - 1 }))
-// }))
-
-// const Counter = () => {
-//   const { count, inc, dec } = useStore()
-//   return (
-//     <div className="counter">
-//       <span>{count}</span>
-//       <button onClick={inc}>one up</button>
-//       <button onClick={dec}>one down</button>
-//     </div>
-//   )
-// }
-
-
-// nodes.filter(n => n.type === 'square')
-//   .map(n => console.log(n))
-
-
-
-const useStore = create((set) => ({
-  storeNodes: [],
-  add: (obj: Object) => set((state: any) => ({ ...state.storeNodes, obj }))
-}))
-
-
 const Simulator = () => {
 
   const reactFlowWrapper = useRef(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
+  const {
+    nodes,
+    edges,
+    onNodesChange,
+    onEdgesChange,
+    onConnect,
+    setNodes,
+    showAllNodes,
+    getNodesOnNodeType
+  } = useStore()
 
-  const { storeNodes, add } = useStore()
 
-  // useEffect(() => {
-  //   console.log(nodes);
-  // }, [nodes])
-
-  const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
+  // const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
 
   const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
     event.preventDefault()
@@ -93,11 +60,6 @@ const Simulator = () => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect()
       const type = event.dataTransfer.getData('application/reactflow')
 
-      //idとtypeをstoreNodesに格納する
-
-
-
-
       if (typeof type === 'undefined' || !type) {
         return;
       }
@@ -108,12 +70,15 @@ const Simulator = () => {
       })
 
       const newNode: NewNode = {
-        id: getId(),
+        id: generateId(),
         type,
         position,
       }
 
-      setNodes((nds) => nds.concat(newNode))
+      //@ts-ignore
+      setNodes(newNode)
+      showAllNodes()
+      getNodesOnNodeType('Client')
     },
     [reactFlowInstance]
   )

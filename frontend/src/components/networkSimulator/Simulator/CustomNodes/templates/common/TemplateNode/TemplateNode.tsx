@@ -4,6 +4,7 @@ import styles from "./TemplateNode.module.css";
 
 
 
+
 export const TemplateNode = (props) => {
   const [show, setShow] = useState(false)
   const openModal = (e) => {
