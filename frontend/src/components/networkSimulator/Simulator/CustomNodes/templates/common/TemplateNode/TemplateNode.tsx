@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Modal, ModalForm } from "../../common/Modal/ModalForm";
+import { Modal, ModalForm } from "../Modal/ModalForm";
 import styles from "./TemplateNode.module.css";
+
 
 
 

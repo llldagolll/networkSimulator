@@ -1,8 +1,9 @@
 import { Handle, Position } from "react-flow-renderer";
 import { TemplateLan } from "../common/TemplateNode/TemplateNode";
+import { CustomNodeType } from "@/components/networkSimulator/Simulator/store"
 
 
-const LanTemplates = ({ nodeName }: { nodeName: string }) => {
+const LanTemplates = ({ nodeName }: { nodeName: CustomNodeType }) => {
   return (
     <TemplateLan>
       <div>

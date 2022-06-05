@@ -1,15 +1,16 @@
 import { Handle, Position } from "react-flow-renderer";
+import { CustomNodeType } from "../../../store";
 import { TemplateNode } from "../common/TemplateNode/TemplateNode";
 
-const BottomHandle = ({ nodeName }: { nodeName: string }) => {
+const TopHandle = ({ nodeName }: { nodeName: CustomNodeType }) => {
   return (
     <TemplateNode>
-      < div >
+      <Handle type="target" position={Position.Top} />
+      <div>
         <label htmlFor="text">{nodeName}</label>
-      </div >
-      <Handle type="source" position={Position.Bottom} />
+      </div>
     </TemplateNode>
   );
 }
 
-export default BottomHandle
+export default TopHandle

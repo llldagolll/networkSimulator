@@ -1,8 +1,9 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
 import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
-import styles from './ReactFlowArea.module.css';
+import styles from './Simulator.module.css'
+import useStore from "./store";
 
 const nodeTypes = {
   Client: ClientNode,
@@ -13,16 +14,9 @@ const nodeTypes = {
 
 
 
-const initialNodes = [
-  {
-    id: '1',
-    type: 'Client',
-    position: { x: 250, y: 5 },
-  },
-]
 
 let id = 0;
-const getId = () => `dndnode ${id++}`;
+const generateId = () => `dndnode ${id++}`;
 
 type NewNode = {
   id: any,
@@ -33,16 +27,23 @@ type NewNode = {
 }
 
 
-
-const ReactFlowArea = () => {
+const Simulator = () => {
 
   const reactFlowWrapper = useRef(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
+  const {
+    nodes,
+    edges,
+    onNodesChange,
+    onEdgesChange,
+    onConnect,
+    setNodes,
+    showAllNodes,
+    getNodesOnNodeType
+  } = useStore()
 
 
-  const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
+  // const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
 
   const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
     event.preventDefault()
@@ -58,9 +59,6 @@ const ReactFlowArea = () => {
       event.preventDefault()
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect()
       const type = event.dataTransfer.getData('application/reactflow')
-      console.log(event.dataTransfer);
-
-
 
       if (typeof type === 'undefined' || !type) {
         return;
@@ -72,12 +70,15 @@ const ReactFlowArea = () => {
       })
 
       const newNode: NewNode = {
-        id: getId(),
+        id: generateId(),
         type,
         position,
       }
 
-      setNodes((nds) => nds.concat(newNode))
+      //@ts-ignore
+      setNodes(newNode)
+      showAllNodes()
+      getNodesOnNodeType('Client')
     },
     [reactFlowInstance]
   )
@@ -110,4 +111,4 @@ const ReactFlowArea = () => {
   )
 }
 
-export default ReactFlowArea
+export default Simulator;
