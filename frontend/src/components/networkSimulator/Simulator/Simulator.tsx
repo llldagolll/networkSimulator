@@ -74,6 +74,7 @@ const Simulator = () => {
         type,
         data: {
           label: `${type}`,
+          nodeType: `${type}`,
           nodeId: `${id} ${type}`
         },
         position,
