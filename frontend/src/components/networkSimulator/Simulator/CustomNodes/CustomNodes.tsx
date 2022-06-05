@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Handle, Position } from "react-flow-renderer";
 import { TemplateModal, GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
 import styles from './CustomNodes.module.css'
@@ -7,6 +7,8 @@ export const ClientNode = ({ data }) => {
 
   const getNodeType = (e) => e.target.innerText
   const [show, setShow] = useState(false)
+  const requestRef = useRef(null)
+  const responseRef = useRef(null)
 
 
   const openModal = (e) => {
@@ -17,6 +19,14 @@ export const ClientNode = ({ data }) => {
   const closeModal = (e) => {
     e.preventDefault()
     setShow(false)
+  }
+
+  const onSubmit = () => {
+    const reqResPort = {
+      'requestPort': requestRef.current.value,
+      'responsePort': responseRef.current.value
+    }
+    localStorage.setItem(`${data.nodeId}`, JSON.stringify(reqResPort))
   }
 
 
@@ -30,7 +40,18 @@ export const ClientNode = ({ data }) => {
         </div>
 
       </div>
-      <TemplateModal show={show} onClick={closeModal} content={<ClientModalForm nodeId={data.nodeId} />} />
+      <TemplateModal
+        show={show}
+        onClick={closeModal}
+        content={
+          <ClientModalForm
+            nodeId={data.nodeId}
+            onSubmit={onSubmit}
+            requestRef={requestRef}
+            responseRef={responseRef}
+          />
+        }
+      />
     </>
   );
 }

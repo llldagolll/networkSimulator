@@ -10,10 +10,17 @@ interface modal {
 
 
 
-export const ClientModalForm = ({ nodeId }) => {
+export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
   return (
     <>
       <p>{nodeId}</p>
+      <form action='' onSubmit={onSubmit}>
+        <label htmlFor="">Request Port: </label>
+        <input ref={requestRef} type="text" name="requestPort" id="" />
+        <label htmlFor="">Response Port: </label>
+        <input ref={responseRef} type="text" name="responsePort" id="" />
+        <button type="submit">保存</button>
+      </form>
     </>
   )
 }
