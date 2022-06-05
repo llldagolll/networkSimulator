@@ -77,8 +77,8 @@ const Simulator = () => {
 
       //@ts-ignore
       setNodes(newNode)
-      showAllNodes()
-      getNodesOnNodeType('Client')
+      // showAllNodes()
+      // getNodesOnNodeType('Client')
     },
     [reactFlowInstance]
   )
