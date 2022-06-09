@@ -17,10 +17,13 @@ export const ClientNode = ({ data }) => {
   const onSubmit = (e) => {
     e.preventDefault()
     const reqResPort = {
+      'nodeId': data.nodeId,
       'requestPort': requestRef.current.value,
       'responsePort': responseRef.current.value
     }
     sessionStorage.setItem(`${data.nodeId}`, JSON.stringify(reqResPort))
+
+    return reqResPort
   }
 
   const openModal = (e) => {

@@ -1,4 +1,5 @@
-import { RequestPortForm, ResponsePortForm } from './atom/ModalFormParts'
+import { useState } from 'react'
+import { InboundForm, OutboundForm, RequestPortForm, ResponsePortForm } from './atom/ModalFormParts'
 import styles from './ModalForm.module.css'
 
 
@@ -20,15 +21,17 @@ interface modalform {
 
 
 export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
+  const [state, setState] = useState([])
+
+
   return (
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <label htmlFor="">Request Port: </label>
-        <input ref={requestRef} type="text" name="requestPort" id="" />
-        <label htmlFor="">Response Port: </label>
-        <input ref={responseRef} type="text" name="responsePort" id="" />
-        <button type="submit">保存</button>
+        <RequestPortForm requestRef={requestRef} />
+        <ResponsePortForm responseRef={responseRef} />
+        <button type="submit" hidden />
+        <p>{state}</p>
       </form>
     </>
   )
@@ -39,10 +42,8 @@ export const GatewayModalForm = ({ nodeId, onSubmit, inboundRef, outboundRef }) 
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <label htmlFor="">inbound Port: </label>
-        <input ref={inboundRef} type="text" name="inboundRef" id="" />
-        <label htmlFor="">outbound Port: </label>
-        <input ref={outboundRef} type="text" name="outbounfRef" id="" />
+        <InboundForm inboundRef={inboundRef} />
+        <OutboundForm outboundRef={outboundRef} />
         <button type="submit">保存</button>
       </form>
     </>
@@ -54,10 +55,8 @@ export const LanModalForm = ({ nodeId, onSubmit, inboundRef, outboundRef }) => {
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <label htmlFor="">inbound Port: </label>
-        <input ref={inboundRef} type="text" name="inboundRef" id="" />
-        <label htmlFor="">outbound Port: </label>
-        <input ref={outboundRef} type="text" name="outbounfRef" id="" />
+        <InboundForm inboundRef={inboundRef} />
+        <OutboundForm outboundRef={outboundRef} />
         <button type="submit">保存</button>
       </form>
     </>
@@ -69,10 +68,8 @@ export const WebModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <label htmlFor="">Request Port: </label>
-        <input ref={requestRef} type="text" name="requestPort" id="" />
-        <label htmlFor="">Response Port: </label>
-        <input ref={responseRef} type="text" name="responsePort" id="" />
+        <RequestPortForm requestRef={requestRef} />
+        <ResponsePortForm responseRef={responseRef} />
         <button type="submit">保存</button>
       </form>
     </>

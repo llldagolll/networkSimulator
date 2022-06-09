@@ -16,7 +16,7 @@ const nodeTypes = {
 
 
 let id = 0;
-const generateId = () => `dndnode ${id++}`;
+const generateId = () => `dndnode${id++}`;
 
 type NewNode = {
   id: any,
@@ -73,9 +73,9 @@ const Simulator = () => {
         id: generateId(),
         type,
         data: {
-          label: `${type}`,
+          label: `${id} ${type}`,
           nodeType: `${type}`,
-          nodeId: `${id} ${type}`
+          nodeId: `${id}`
         },
         position,
       }

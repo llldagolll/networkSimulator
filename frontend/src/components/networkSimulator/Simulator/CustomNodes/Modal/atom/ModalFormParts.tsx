@@ -1,19 +1,19 @@
 import styles from "./ModalFormParts.module.css";
 
-export const RequestPortForm = () => {
+export const RequestPortForm = ({ requestRef }) => {
   return (
     <>
       <label htmlFor="">Request Port: </label>
-      <input className={styles['modal-form']} type="text" name="requestPort" id="requestPort" />
+      <input ref={requestRef} className={styles['modal-form']} type="text" name="requestPort" id="requestPort" />
     </>
   )
 }
 
-export const ResponsePortForm = () => {
+export const ResponsePortForm = ({ responseRef }) => {
   return (
     <>
       <label htmlFor="">Response Port: </label>
-      <input className={styles['modal-form']} type="text" name="responsePort" id="responsePort" />
+      <input ref={responseRef} className={styles['modal-form']} type="text" name="responsePort" id="responsePort" />
     </>
   )
 }
@@ -28,21 +28,21 @@ export const IpAddressForm = () => {
   )
 }
 
-export const InBound = () => {
+export const InboundForm = ({ inboundRef }) => {
   return (
     <>
-      <label htmlFor="">inBound: </label>
-      <input className={styles['modal-form']} type="text" name="inBound" id="inBound" />
+      <label htmlFor="">inbound: </label>
+      <input ref={inboundRef} className={styles['modal-form']} type="text" name="inBound" id="inBound" />
     </>
   )
 }
 
 
-export const OutBound = () => {
+export const OutboundForm = ({ outboundRef }) => {
   return (
     <>
-      <label htmlFor="">outBound: </label>
-      <input className={styles['modal-form']} type="text" name="outBound" id="outBound" />
+      <label htmlFor="">outbound: </label>
+      <input ref={outboundRef} className={styles['modal-form']} type="text" name="outBound" id="outBound" />
     </>
   )
 }
