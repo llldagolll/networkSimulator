@@ -1,4 +1,4 @@
-interface formValue {
+interface Form {
   id: string
   type: string
   requestPort?: string
@@ -14,7 +14,7 @@ const useGenerateFormValue = ({
   responsePort = '',
   inboundPort = '',
   outboundPort = '',
-}: formValue) => {
+}: Form) => {
   let formValue = {}
   switch (type) {
     case 'Client':
