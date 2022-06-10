@@ -6,7 +6,6 @@ import useGenerateFormValue from "../hooks/useGenerateFormValue";
 import TemplateNode from "./atom/TemplateNode";
 
 
-//TODO: 重複コードが多すぎる、ノードごとのフォームが完成したら共通部品化する。
 
 export const ClientNode = ({ data }) => {
   const requestRef = useRef(null)
