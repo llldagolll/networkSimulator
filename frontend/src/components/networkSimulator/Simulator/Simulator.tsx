@@ -4,6 +4,7 @@ import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomN
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
 import useStore from "./store";
+import useGenerateFormValue from "./hooks/useGenerateFormValue";
 
 const nodeTypes = {
   Client: ClientNode,
@@ -66,25 +67,22 @@ const Simulator = () => {
         y: event.clientY - reactFlowBounds.top,
       })
 
-      const nodeId = generateId()
+      const id = generateId()
 
       const newNode: NewNode = {
-        id: nodeId,
+        id,
         type,
         data: {
-          label: `${nodeId} ${type}`,
-          nodeType: `${type}`,
-          nodeId: `${nodeId}`
+          label: `${id} ${type}`,
+          type,
+          id,
         },
         position,
       }
 
-      const defaultReqResPort = {
-        'nodeId': nodeId,
-        'requestPort': "",
-        'responsePort': "",
-      }
-      sessionStorage.setItem(`${nodeId}`, JSON.stringify(defaultReqResPort))
+      const defaultFormValue = useGenerateFormValue({ id, type })
+
+      sessionStorage.setItem(`${id}`, JSON.stringify(defaultFormValue))
       setNodes(newNode)
     },
     [reactFlowInstance]
