@@ -1,5 +1,5 @@
-import { useRef, useState, useCallback, useEffect } from "react";
-import ReactFlow, { useNodesState, useEdgesState, Edge, Connection, addEdge, ReactFlowProvider, Controls } from "react-flow-renderer";
+import { useRef, useState, useCallback } from "react";
+import ReactFlow, { ReactFlowProvider, Controls } from "react-flow-renderer";
 import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
@@ -16,7 +16,7 @@ const nodeTypes = {
 
 
 let id = 0;
-const generateId = () => `dndnode${id++}`;
+const generateId = () => `${id++}`;
 
 type NewNode = {
   id: any,
@@ -38,12 +38,9 @@ const Simulator = () => {
     onEdgesChange,
     onConnect,
     setNodes,
-    showAllNodes,
-    getNodesOnNodeType
   } = useStore()
 
 
-  // const onConnect = useCallback((params: Edge<any> | Connection) => setEdges((eds) => addEdge(params, eds)), [])
 
   const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
     event.preventDefault()
@@ -69,18 +66,25 @@ const Simulator = () => {
         y: event.clientY - reactFlowBounds.top,
       })
 
+      const nodeId = generateId()
+
       const newNode: NewNode = {
-        id: generateId(),
+        id: nodeId,
         type,
         data: {
-          label: `${id} ${type}`,
+          label: `${nodeId} ${type}`,
           nodeType: `${type}`,
-          nodeId: `${id}`
+          nodeId: `${nodeId}`
         },
         position,
       }
 
-      //@ts-ignore
+      const defaultReqResPort = {
+        'nodeId': nodeId,
+        'requestPort': "",
+        'responsePort': "",
+      }
+      sessionStorage.setItem(`${nodeId}`, JSON.stringify(defaultReqResPort))
       setNodes(newNode)
     },
     [reactFlowInstance]

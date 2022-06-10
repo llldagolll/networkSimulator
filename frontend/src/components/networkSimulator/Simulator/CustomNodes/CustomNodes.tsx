@@ -9,6 +9,7 @@ import styles from './CustomNodes.module.css'
 
 export const ClientNode = ({ data }) => {
 
+
   const getNodeType = (e) => e.target.innerText
   const [show, setShow] = useState(false)
   const requestRef = useRef(null)
@@ -16,13 +17,13 @@ export const ClientNode = ({ data }) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    const reqResPort = {
+    const reqResPort: Object = {
       'nodeId': data.nodeId,
       'requestPort': requestRef.current.value,
       'responsePort': responseRef.current.value
     }
-    sessionStorage.setItem(`${data.nodeId}`, JSON.stringify(reqResPort))
 
+    sessionStorage.setItem(`${data.nodeId}`, JSON.stringify(reqResPort))
     return reqResPort
   }
 
@@ -35,6 +36,9 @@ export const ClientNode = ({ data }) => {
     e.preventDefault()
     setShow(false)
   }
+
+
+
 
 
 

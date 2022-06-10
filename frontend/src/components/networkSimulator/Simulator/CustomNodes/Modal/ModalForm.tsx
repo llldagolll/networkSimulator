@@ -21,8 +21,6 @@ interface modalform {
 
 
 export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
-  const [state, setState] = useState([])
-
 
   return (
     <>
@@ -31,7 +29,6 @@ export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) =
         <RequestPortForm requestRef={requestRef} />
         <ResponsePortForm responseRef={responseRef} />
         <button type="submit" hidden />
-        <p>{state}</p>
       </form>
     </>
   )
