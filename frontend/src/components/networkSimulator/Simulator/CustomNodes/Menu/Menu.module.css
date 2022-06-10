@@ -1,0 +1,30 @@
+/* .ParentBox {
+  font-weight: bold;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+}
+
+.MenuBox {
+  position: absolute;
+  margin: 0px;
+  padding: 5px;
+  font-size: 10px;
+  font-weight: thin;
+  width: 100px;
+  background-color: #888888;
+  color: #000000;
+  visibility: hidden;
+  border-radius: 5px;
+}
+
+.MenuBox:focus {
+  outline: none;
+}
+
+.MenuItem:hover {
+  cursor: pointer;
+  background-color: #E0E0FF;
+} */

@@ -88,7 +88,6 @@ const Simulator = () => {
     [reactFlowInstance]
   )
 
-
   return (
     <>
       <ReactFlowProvider>
