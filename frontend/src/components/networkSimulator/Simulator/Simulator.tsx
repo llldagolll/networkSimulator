@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { ReactFlowProvider, Controls } from "react-flow-renderer";
 import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
@@ -35,12 +35,19 @@ const Simulator = () => {
   const {
     nodes,
     edges,
+    lans,
     onNodesChange,
     onEdgesChange,
     onConnect,
     setNodes,
+    setLans,
   } = useStore()
 
+  useEffect(
+    () => {
+      console.log(lans);
+    }, [lans]
+  )
 
 
   const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
@@ -83,6 +90,10 @@ const Simulator = () => {
       const defaultFormValue = useGenerateFormValue({ id, type })
 
       sessionStorage.setItem(`${id}`, JSON.stringify(defaultFormValue))
+
+      if (type === 'Lan') {
+        setLans(newNode)
+      }
       setNodes(newNode)
     },
     [reactFlowInstance]

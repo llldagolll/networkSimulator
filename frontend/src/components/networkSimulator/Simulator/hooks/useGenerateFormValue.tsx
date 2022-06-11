@@ -15,7 +15,9 @@ const useGenerateFormValue = ({
   inboundPort = '',
   outboundPort = '',
 }: Form) => {
+
   let formValue = {}
+
   switch (type) {
     case 'Client':
     case 'Web': {

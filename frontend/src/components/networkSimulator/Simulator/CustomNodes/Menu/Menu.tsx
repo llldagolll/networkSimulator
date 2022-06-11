@@ -1,13 +1,21 @@
+import { useEffect } from 'react'
+import useStore from '../../store'
 import styles from './Menu.module.css'
 
-const Menu = () => {
-  const lanMenu = ['you', 'are', 'great']
+const Menu = (nodeId) => {
+  const { lans, setGroup } = useStore()
 
   return (
     <div className={styles.MenuBox}>
       {
-        lanMenu.map((lan) =>
-          <div className={styles.MenuItem}>{lan}</div>
+        lans.map((lan) =>
+          <button
+            onClick={() => {
+              setGroup(lan.id, nodeId['nodeId'])
+            }}
+            className={styles.MenuItem}>
+            {`lan ${lan.id}`}
+          </button>
         )
       }
     </div>

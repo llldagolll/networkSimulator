@@ -4,7 +4,7 @@ import Menu from "../Menu/Menu"
 import { TemplateModal } from "../Modal/ModalForm"
 import styles from '../CustomNodes.module.css'
 
-const TemplateNode = ({ type, children, content }) => {
+const TemplateNode = ({ nodeId, type, children, content }) => {
   const [showModal, setShowModal] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
 
@@ -44,7 +44,7 @@ const TemplateNode = ({ type, children, content }) => {
         show={showMenu}
         onClick={closeMenu}
         content={
-          <Menu />
+          <Menu nodeId={nodeId} />
         }
       />
     </>

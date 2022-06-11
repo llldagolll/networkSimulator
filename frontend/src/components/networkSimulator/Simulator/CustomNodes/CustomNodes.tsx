@@ -1,7 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Handle, Position } from "react-flow-renderer";
-import { TemplateModal, GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
-import styles from './CustomNodes.module.css'
+import { GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
 import useGenerateFormValue from "../hooks/useGenerateFormValue";
 import TemplateNode from "./atom/TemplateNode";
 
@@ -27,6 +26,7 @@ export const ClientNode = ({ data }) => {
   return (
     <TemplateNode
       type={data.type}
+      nodeId={data.id}
       content={
         <ClientModalForm
           nodeId={data.id}
@@ -64,6 +64,7 @@ export const WebNode = ({ data }) => {
 
   return (
     <TemplateNode
+      nodeId={data.id}
       type={data.type}
       content={
         <WebModalForm
@@ -105,6 +106,7 @@ export const GatewayNode = ({ data }) => {
 
   return (
     <TemplateNode
+      nodeId={data.id}
       type={data.type}
       content={
         <GatewayModalForm
@@ -146,6 +148,7 @@ export const LanNode = ({ data }) => {
 
   return (
     <TemplateNode
+      nodeId={data.id}
       type={data.type}
       content={
         <LanModalForm

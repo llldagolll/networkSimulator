@@ -22,9 +22,8 @@
   color: #222;
   border-width: 1px;
   border-style: solid;
-  background: rgb(168, 223, 232);
   border-color: #1a192b;
-
+  background: rgba(255, 0, 0, 0.2)
 }
 
 

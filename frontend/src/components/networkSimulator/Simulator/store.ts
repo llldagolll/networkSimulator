@@ -12,30 +12,32 @@ import {
   Connection,
 } from "react-flow-renderer";
 import create from "zustand";
-import initialEdges from "./initialEdges";
-import initialNodes from "./initialNodes";
+import { initialNodes, initialEdges, initialLans } from "./initial";
 
 export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan'
 
 type RFState = {
   nodes: Node[];
+  lans: Node[];
   edges: Edge[];
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
   setNodes: (newNode: Node) => void
-  showAllNodes: () => void,
-  getNodesOnNodeType: (nodeType: CustomNodeType) => void
+  setLans: (newLan: Node) => void
+  setGroup: (lanId, nodeId) => void
 };
 
 
 
 const useStore = create<RFState>((set, get) => ({
   nodes: initialNodes,
+  lans: initialLans,
   edges: initialEdges,
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
+      lans: applyNodeChanges(changes, get().nodes.filter(node => node.type === 'Lan'))
     });
   },
   onEdgesChange: (changes: EdgeChange[]) => {
@@ -51,22 +53,20 @@ const useStore = create<RFState>((set, get) => ({
   setNodes: (newNode: Node) => {
     set({ nodes: get().nodes.concat(newNode) })
   },
-  showAllNodes: () => {
-    get().nodes
+  setLans: (newLan: Node) => {
+    set({ lans: get().lans.concat(newLan) })
   },
-  getNodesOnNodeType: (nodeType) => {
-    get().nodes.filter((n) => n.type === nodeType)
-  },
-  debugShowAllNodes: () => {
-    console.log(
-      JSON.stringify(get().nodes)
-    );
-  },
-  debugGetNodesOnNodeType: (nodeType) => {
-    console.log(
-      JSON.stringify(get().nodes.filter((n) => n.type === nodeType))
-    );
-  },
-}));
+  setGroup: (lanId, nodeId) => {
+    get()
+      .nodes.
+      find(node => node.id == nodeId)
+      .parentNode = lanId,
+      get()
+        .nodes.
+        find(node => node.id == nodeId)
+        .extent = 'parent'
+  }
+}))
+
 
 export default useStore;
