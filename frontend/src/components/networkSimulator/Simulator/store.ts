@@ -25,7 +25,7 @@ type RFState = {
   onConnect: OnConnect;
   setNodes: (newNode: Node) => void
   setLans: (newLan: Node) => void
-  setGroup: (lanId, nodeId) => void
+  setGroup: ({ lanId, nodeId }) => void
 };
 
 
@@ -56,15 +56,15 @@ const useStore = create<RFState>((set, get) => ({
   setLans: (newLan: Node) => {
     set({ lans: get().lans.concat(newLan) })
   },
-  setGroup: (lanId, nodeId) => {
-    get()
+  setGroup: ({ lanId, nodeId }) => {
+    const n = get()
       .nodes.
       find(node => node.id == nodeId)
-      .parentNode = lanId,
-      get()
-        .nodes.
-        find(node => node.id == nodeId)
-        .extent = 'parent'
+    n.parentNode = lanId
+    n.extent = 'parent'
+    n.position = { x: 15, y: 65 }
+    console.log(n);
+
   }
 }))
 

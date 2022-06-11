@@ -11,7 +11,10 @@ const Menu = (nodeId) => {
         lans.map((lan) =>
           <button
             onClick={() => {
-              setGroup(lan.id, nodeId['nodeId'])
+              setGroup({
+                lanId: lan.id,
+                nodeId: nodeId['nodeId']
+              })
             }}
             className={styles.MenuItem}>
             {`lan ${lan.id}`}
