@@ -3,25 +3,25 @@ import { Handle, Position } from "react-flow-renderer";
 import { GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
 import useGenerateFormValue from "../hooks/useGenerateFormValue";
 import TemplateNode from "./atom/TemplateNode";
+import { useForm } from "react-hook-form";
 
 
 
 export const ClientNode = ({ data }) => {
-  const requestRef = useRef(null)
-  const responseRef = useRef(null)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const { watch, register, handleSubmit } = useForm();
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      requestPort: requestRef.current.value,
-      responsePort: responseRef.current.value
+      requestPort: dt[`${data.type}${data.id}requestPort`],
+      responsePort: dt[`${data.type}${data.id}responsePort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
     return
   }
+
+
 
   return (
     <TemplateNode
@@ -30,15 +30,23 @@ export const ClientNode = ({ data }) => {
       content={
         <ClientModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          requestRef={requestRef}
-          responseRef={responseRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{data.label}</label>
+        <p>
+          {`RequestPort: 
+        ${watch(`${data.type}${data.id}requestPort`)}`}
+        </p>
+        <p>
+          {`ResponsePort: 
+        ${watch(`${data.type}${data.id}responsePort`)}`}
+        </p>
       </div>
     </TemplateNode>
   );
@@ -46,21 +54,20 @@ export const ClientNode = ({ data }) => {
 
 
 export const WebNode = ({ data }) => {
-  const requestRef = useRef(null)
-  const responseRef = useRef(null)
+  const { watch, register, handleSubmit } = useForm();
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      requestPort: requestRef.current.value,
-      responsePort: responseRef.current.value
+      requestPort: dt[`${data.type}${data.id}requestPort`],
+      responsePort: dt[`${data.type}${data.id}responsePort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
     return
   }
+
 
   return (
     <TemplateNode
@@ -69,15 +76,23 @@ export const WebNode = ({ data }) => {
       content={
         <WebModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          requestRef={requestRef}
-          responseRef={responseRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{data.label}</label>
+        <p>
+          {`RequestPort: 
+        ${watch(`${data.type}${data.id}requestPort`)}`}
+        </p>
+        <p>
+          {`ResponsePort: 
+        ${watch(`${data.type}${data.id}responsePort`)}`}
+        </p>
       </div>
       <Handle type="source" position={Position.Bottom} />
 
@@ -86,23 +101,18 @@ export const WebNode = ({ data }) => {
 }
 
 export const GatewayNode = ({ data }) => {
-
-  const inboundRef = useRef(null)
-  const outboundRef = useRef(null)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const { watch, register, handleSubmit } = useForm();
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      inboundPort: inboundRef.current.value,
-      outboundPort: outboundRef.current.value,
+      inboundPort: dt[`${data.type}${data.id}inboundPort`],
+      outboundPort: dt[`${data.type}${data.id}outboundPort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
     return
   }
-
 
   return (
     <TemplateNode
@@ -111,15 +121,23 @@ export const GatewayNode = ({ data }) => {
       content={
         <GatewayModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          inboundRef={inboundRef}
-          outboundRef={outboundRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{data.label}</label>
+        <p>
+          {`InboundPort: 
+        ${watch(`${data.type}${data.id}inboundPort`)}`}
+        </p>
+        <p>
+          {`OutboundPort: 
+        ${watch(`${data.type}${data.id}outboundPort`)}`}
+        </p>
       </div>
       <Handle type="source" position={Position.Bottom} />
     </TemplateNode>
@@ -129,16 +147,13 @@ export const GatewayNode = ({ data }) => {
 
 export const LanNode = ({ data }) => {
 
-  const inboundRef = useRef(null)
-  const outboundRef = useRef(null)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const { watch, register, handleSubmit } = useForm();
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      inboundPort: inboundRef.current.value,
-      outboundPort: outboundRef.current.value,
+      inboundPort: dt[`${data.type}${data.id}inboundPort`],
+      outboundPort: dt[`${data.type}${data.id}outboundPort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
@@ -153,13 +168,21 @@ export const LanNode = ({ data }) => {
       content={
         <LanModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          inboundRef={inboundRef}
-          outboundRef={outboundRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
       <label htmlFor="text">{data.label}</label>
+      <p>
+        {`InboundPort: 
+        ${watch(`${data.type}${data.id}inboundPort`)}`}
+      </p>
+      <p>
+        {`OutboundPort: 
+        ${watch(`${data.type}${data.id}outboundPort`)}`}
+      </p>
       <Handle type="source" position={Position.Bottom} />
     </TemplateNode>
   );

@@ -1,48 +1,51 @@
 import styles from "./ModalFormParts.module.css";
 
-export const RequestPortForm = ({ requestRef }) => {
+
+export const RequestPortForm = ({ type, nodeId, register }) => {
   return (
     <>
-      <label htmlFor="">Request Port: </label>
-      <input ref={requestRef} className={styles['modal-form']} type="text" name="requestPort" id="requestPort" />
+      <label htmlFor="">Request Port:</label>
+      <input {...register(`${type}${nodeId}requestPort`)} className={styles['modal-form']} />
     </>
   )
 }
 
-export const ResponsePortForm = ({ responseRef }) => {
+
+
+export const ResponsePortForm = ({ type, nodeId, register }) => {
   return (
     <>
       <label htmlFor="">Response Port: </label>
-      <input ref={responseRef} className={styles['modal-form']} type="text" name="responsePort" id="responsePort" />
+      <input {...register(`${type}${nodeId}responsePort`)} className={styles['modal-form']} />
     </>
   )
 }
 
 
-export const IpAddressForm = () => {
-  return (
-    <>
-      <label htmlFor="">IP Address: </label>
-      <input className={styles['modal-form']} type="text" name="ipAddress" id="ipAddress" />
-    </>
-  )
-}
+// export const IpAddressForm = () => {
+//   return (
+//     <>
+//       <label htmlFor="">IP Address: </label>
+//       <input className={styles['modal-form']} type="text" name="ipAddress" id="ipAddress" />
+//     </>
+//   )
+// }
 
-export const InboundForm = ({ inboundRef }) => {
+export const InboundForm = ({ type, nodeId, register }) => {
   return (
     <>
       <label htmlFor="">inbound: </label>
-      <input ref={inboundRef} className={styles['modal-form']} type="text" name="inBound" id="inBound" />
+      <input {...register(`${type}${nodeId}inboundPort`)} className={styles['modal-form']} />
     </>
   )
 }
 
 
-export const OutboundForm = ({ outboundRef }) => {
+export const OutboundForm = ({ type, nodeId, register }) => {
   return (
     <>
       <label htmlFor="">outbound: </label>
-      <input ref={outboundRef} className={styles['modal-form']} type="text" name="outBound" id="outBound" />
+      <input {...register(`${type}${nodeId}outboundPort`)} className={styles['modal-form']} />
     </>
   )
 }
