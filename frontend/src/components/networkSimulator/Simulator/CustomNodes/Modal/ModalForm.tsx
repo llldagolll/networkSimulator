@@ -20,54 +20,54 @@ interface modalform {
 }
 
 
-export const ClientModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
+export const ClientModalForm = ({ type, nodeId, onSubmit, register }) => {
 
   return (
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <RequestPortForm requestRef={requestRef} />
-        <ResponsePortForm responseRef={responseRef} />
+        <RequestPortForm type={type} nodeId={nodeId} register={register} />
+        <ResponsePortForm type={type} nodeId={nodeId} register={register} />
         <button type="submit" hidden />
       </form>
     </>
   )
 }
 
-export const GatewayModalForm = ({ nodeId, onSubmit, inboundRef, outboundRef }) => {
+export const GatewayModalForm = ({ nodeId, type, onSubmit, register }) => {
   return (
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <InboundForm inboundRef={inboundRef} />
-        <OutboundForm outboundRef={outboundRef} />
-        <button type="submit">保存</button>
+        <InboundForm type={type} nodeId={nodeId} register={register} />
+        <OutboundForm type={type} nodeId={nodeId} register={register} />
+        <button type="submit" hidden />
       </form>
     </>
   )
 }
 
-export const LanModalForm = ({ nodeId, onSubmit, inboundRef, outboundRef }) => {
+export const LanModalForm = ({ type, register, nodeId, onSubmit }) => {
   return (
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <InboundForm inboundRef={inboundRef} />
-        <OutboundForm outboundRef={outboundRef} />
-        <button type="submit">保存</button>
+        <InboundForm type={type} nodeId={nodeId} register={register} />
+        <OutboundForm type={type} nodeId={nodeId} register={register} />
+        <button type="submit" hidden />
       </form>
     </>
   )
 }
 
-export const WebModalForm = ({ nodeId, onSubmit, requestRef, responseRef }) => {
+export const WebModalForm = ({ type, nodeId, onSubmit, register }) => {
   return (
     <>
       <p>{nodeId}</p>
       <form action='' onSubmit={onSubmit}>
-        <RequestPortForm requestRef={requestRef} />
-        <ResponsePortForm responseRef={responseRef} />
-        <button type="submit">保存</button>
+        <RequestPortForm type={type} nodeId={nodeId} register={register} />
+        <ResponsePortForm type={type} nodeId={nodeId} register={register} />
+        <button type="submit" hidden />
       </form>
     </>
   )

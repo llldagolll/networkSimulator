@@ -3,25 +3,25 @@ import { Handle, Position } from "react-flow-renderer";
 import { GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
 import useGenerateFormValue from "../hooks/useGenerateFormValue";
 import TemplateNode from "./atom/TemplateNode";
+import { useForm } from "react-hook-form";
 
 
 
 export const ClientNode = ({ data }) => {
-  const requestRef = useRef(null)
-  const responseRef = useRef(null)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      requestPort: requestRef.current.value,
-      responsePort: responseRef.current.value
+      requestPort: dt[`${data.type}${data.id}requestPort`],
+      responsePort: dt[`${data.type}${data.id}responsePort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
     return
   }
+
+
 
   return (
     <TemplateNode
@@ -30,9 +30,9 @@ export const ClientNode = ({ data }) => {
       content={
         <ClientModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          requestRef={requestRef}
-          responseRef={responseRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
@@ -46,21 +46,20 @@ export const ClientNode = ({ data }) => {
 
 
 export const WebNode = ({ data }) => {
-  const requestRef = useRef(null)
-  const responseRef = useRef(null)
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      requestPort: requestRef.current.value,
-      responsePort: responseRef.current.value
+      requestPort: dt[`${data.type}${data.id}requestPort`],
+      responsePort: dt[`${data.type}${data.id}responsePort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
     return
   }
+
 
   return (
     <TemplateNode
@@ -69,9 +68,9 @@ export const WebNode = ({ data }) => {
       content={
         <WebModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          requestRef={requestRef}
-          responseRef={responseRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
@@ -86,23 +85,18 @@ export const WebNode = ({ data }) => {
 }
 
 export const GatewayNode = ({ data }) => {
-
-  const inboundRef = useRef(null)
-  const outboundRef = useRef(null)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      inboundPort: inboundRef.current.value,
-      outboundPort: outboundRef.current.value,
+      inboundPort: dt[`${data.type}${data.id}inboundPort`],
+      outboundPort: dt[`${data.type}${data.id}outboundPort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
     return
   }
-
 
   return (
     <TemplateNode
@@ -111,9 +105,9 @@ export const GatewayNode = ({ data }) => {
       content={
         <GatewayModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          inboundRef={inboundRef}
-          outboundRef={outboundRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
@@ -129,16 +123,13 @@ export const GatewayNode = ({ data }) => {
 
 export const LanNode = ({ data }) => {
 
-  const inboundRef = useRef(null)
-  const outboundRef = useRef(null)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
       type: data.type,
-      inboundPort: inboundRef.current.value,
-      outboundPort: outboundRef.current.value,
+      inboundPort: dt[`${data.type}${data.id}inboundPort`],
+      outboundPort: dt[`${data.type}${data.id}outboundPort`],
     })
 
     sessionStorage.setItem(`${data.id}`, JSON.stringify(formValue))
@@ -153,9 +144,9 @@ export const LanNode = ({ data }) => {
       content={
         <LanModalForm
           nodeId={data.id}
-          onSubmit={onSubmit}
-          inboundRef={inboundRef}
-          outboundRef={outboundRef}
+          type={data.type}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
         />
       }
     >
