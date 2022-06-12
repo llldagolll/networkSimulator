@@ -63,7 +63,6 @@ const useStore = create<RFState>((set, get) => ({
     n.parentNode = lanId
     n.extent = 'parent'
     n.position = { x: 15, y: 65 }
-    console.log(n);
 
   }
 }))
