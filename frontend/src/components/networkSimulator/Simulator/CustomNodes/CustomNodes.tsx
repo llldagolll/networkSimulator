@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 
 export const ClientNode = ({ data }) => {
-  const { register, handleSubmit } = useForm();
+  const { watch, register, handleSubmit } = useForm();
   const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
@@ -39,6 +39,14 @@ export const ClientNode = ({ data }) => {
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{data.label}</label>
+        <p>
+          {`RequestPort: 
+        ${watch(`${data.type}${data.id}requestPort`)}`}
+        </p>
+        <p>
+          {`ResponsePort: 
+        ${watch(`${data.type}${data.id}responsePort`)}`}
+        </p>
       </div>
     </TemplateNode>
   );
@@ -46,7 +54,7 @@ export const ClientNode = ({ data }) => {
 
 
 export const WebNode = ({ data }) => {
-  const { register, handleSubmit } = useForm();
+  const { watch, register, handleSubmit } = useForm();
 
   const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
@@ -77,6 +85,14 @@ export const WebNode = ({ data }) => {
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{data.label}</label>
+        <p>
+          {`RequestPort: 
+        ${watch(`${data.type}${data.id}requestPort`)}`}
+        </p>
+        <p>
+          {`ResponsePort: 
+        ${watch(`${data.type}${data.id}responsePort`)}`}
+        </p>
       </div>
       <Handle type="source" position={Position.Bottom} />
 
@@ -85,7 +101,7 @@ export const WebNode = ({ data }) => {
 }
 
 export const GatewayNode = ({ data }) => {
-  const { register, handleSubmit } = useForm();
+  const { watch, register, handleSubmit } = useForm();
   const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
@@ -114,6 +130,14 @@ export const GatewayNode = ({ data }) => {
       <Handle type="target" position={Position.Top} />
       <div>
         <label htmlFor="text">{data.label}</label>
+        <p>
+          {`InboundPort: 
+        ${watch(`${data.type}${data.id}inboundPort`)}`}
+        </p>
+        <p>
+          {`OutboundPort: 
+        ${watch(`${data.type}${data.id}outboundPort`)}`}
+        </p>
       </div>
       <Handle type="source" position={Position.Bottom} />
     </TemplateNode>
@@ -123,7 +147,7 @@ export const GatewayNode = ({ data }) => {
 
 export const LanNode = ({ data }) => {
 
-  const { register, handleSubmit } = useForm();
+  const { watch, register, handleSubmit } = useForm();
   const onSubmit = (dt) => {
     const formValue = useGenerateFormValue({
       id: data.id,
@@ -151,6 +175,14 @@ export const LanNode = ({ data }) => {
       }
     >
       <label htmlFor="text">{data.label}</label>
+      <p>
+        {`InboundPort: 
+        ${watch(`${data.type}${data.id}inboundPort`)}`}
+      </p>
+      <p>
+        {`OutboundPort: 
+        ${watch(`${data.type}${data.id}outboundPort`)}`}
+      </p>
       <Handle type="source" position={Position.Bottom} />
     </TemplateNode>
   );
