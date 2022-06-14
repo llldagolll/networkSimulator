@@ -49,6 +49,7 @@ const Simulator = () => {
     }, [lans]
   )
 
+  // const generateId = () => `${nodes.length + 1}`
 
   const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
     event.preventDefault()
