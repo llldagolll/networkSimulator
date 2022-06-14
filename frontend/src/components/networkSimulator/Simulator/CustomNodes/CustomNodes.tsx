@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { Handle, Position } from "react-flow-renderer";
 import { GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
-import useGenerateFormValue from "../lib/generateFormValue";
-import TemplateNode from "./atom/TemplateNode";
+import generateFormValue from "../lib/generateFormValue";
+import TemplateNode from "./templates/TemplateNode";
 import { useForm } from "react-hook-form";
 
 
@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 export const ClientNode = ({ data }) => {
   const { watch, register, handleSubmit } = useForm();
   const onSubmit = (dt) => {
-    const formValue = useGenerateFormValue({
+    const formValue = generateFormValue({
       id: data.id,
       type: data.type,
       requestPort: dt[`${data.type}${data.id}requestPort`],
@@ -57,7 +57,7 @@ export const WebNode = ({ data }) => {
   const { watch, register, handleSubmit } = useForm();
 
   const onSubmit = (dt) => {
-    const formValue = useGenerateFormValue({
+    const formValue = generateFormValue({
       id: data.id,
       type: data.type,
       requestPort: dt[`${data.type}${data.id}requestPort`],
@@ -103,7 +103,7 @@ export const WebNode = ({ data }) => {
 export const GatewayNode = ({ data }) => {
   const { watch, register, handleSubmit } = useForm();
   const onSubmit = (dt) => {
-    const formValue = useGenerateFormValue({
+    const formValue = generateFormValue({
       id: data.id,
       type: data.type,
       inboundPort: dt[`${data.type}${data.id}inboundPort`],
@@ -149,7 +149,7 @@ export const LanNode = ({ data }) => {
 
   const { watch, register, handleSubmit } = useForm();
   const onSubmit = (dt) => {
-    const formValue = useGenerateFormValue({
+    const formValue = generateFormValue({
       id: data.id,
       type: data.type,
       inboundPort: dt[`${data.type}${data.id}inboundPort`],

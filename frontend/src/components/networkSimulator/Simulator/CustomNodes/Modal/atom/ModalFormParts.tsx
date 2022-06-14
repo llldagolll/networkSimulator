@@ -22,14 +22,6 @@ export const ResponsePortForm = ({ type, nodeId, register }) => {
 }
 
 
-// export const IpAddressForm = () => {
-//   return (
-//     <>
-//       <label htmlFor="">IP Address: </label>
-//       <input className={styles['modal-form']} type="text" name="ipAddress" id="ipAddress" />
-//     </>
-//   )
-// }
 
 export const InboundForm = ({ type, nodeId, register }) => {
   return (
