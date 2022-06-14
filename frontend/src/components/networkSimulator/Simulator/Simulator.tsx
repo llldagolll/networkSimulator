@@ -4,7 +4,7 @@ import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomN
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
 import useStore from "./store";
-import useGenerateFormValue from "./hooks/useGenerateFormValue";
+import useGenerateFormValue from "./lib/generateFormValue";
 
 const nodeTypes = {
   Client: ClientNode,

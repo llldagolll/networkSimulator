@@ -1,48 +1,30 @@
 import { useState } from "react"
-import useGenerateFormValue from "../../hooks/useGenerateFormValue"
 import Menu from "../Menu/Menu"
 import { TemplateModal } from "../Modal/ModalForm"
 import styles from '../CustomNodes.module.css'
+import { useIsShowToggle } from "../../hooks/useShowToggle"
+
+
 
 const TemplateNode = ({ nodeId, type, children, content }) => {
-  const [showModal, setShowModal] = useState(false)
-  const [showMenu, setShowMenu] = useState(false)
 
+  const { show: showModal, toggle: setShowModal } = useIsShowToggle();
+  const { show: showMenu, toggle: setShowMenu } = useIsShowToggle();
 
-  const openModal = (e) => {
-    e.preventDefault()
-    setShowModal(true)
-  }
-
-  const closeModal = (e) => {
-    e.preventDefault()
-    setShowModal(false)
-  }
-
-
-  const openMenu = (e) => {
-    e.preventDefault()
-    setShowMenu(true)
-  }
-
-  const closeMenu = (e) => {
-    e.preventDefault()
-    setShowMenu(false)
-  }
 
   return (
     <>
-      <div className={type === 'Lan' ? styles.lan : styles.node} onDoubleClick={openModal} onContextMenu={openMenu}>
+      <div className={type === 'Lan' ? styles.lan : styles.node} onDoubleClick={setShowModal} onContextMenu={setShowMenu}>
         {children}
       </div>
       <TemplateModal
         show={showModal}
-        onClick={closeModal}
+        onClick={setShowModal}
         content={content}
       />
       <TemplateModal
         show={showMenu}
-        onClick={closeMenu}
+        onClick={setShowMenu}
         content={
           <Menu nodeId={nodeId} />
         }

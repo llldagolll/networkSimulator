@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Handle, Position } from "react-flow-renderer";
 import { GatewayModalForm, WebModalForm, ClientModalForm, LanModalForm } from "./Modal/ModalForm";
-import useGenerateFormValue from "../hooks/useGenerateFormValue";
+import useGenerateFormValue from "../lib/generateFormValue";
 import TemplateNode from "./atom/TemplateNode";
 import { useForm } from "react-hook-form";
 
