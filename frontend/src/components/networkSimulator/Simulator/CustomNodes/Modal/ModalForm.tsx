@@ -10,14 +10,6 @@ interface modal {
   content: any,
 }
 
-interface modalform {
-  nodeId: string,
-  onSubmit: (e) => void,
-  requestRef?: string,
-  responseRef?: string,
-  inboundRef?: string,
-  outboundRef?: string
-}
 
 
 export const ClientModalForm = ({ type, nodeId, onSubmit, register }) => {
