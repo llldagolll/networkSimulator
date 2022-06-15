@@ -5,6 +5,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
 import useStore from "./store";
 import useGenerateFormValue from "./lib/generateFormValue";
+import { useIsShowToggle } from "./hooks/useShowToggle";
 
 const nodeTypes = {
   Client: ClientNode,
@@ -100,10 +101,11 @@ const Simulator = () => {
     [reactFlowInstance]
   )
 
+
   return (
     <>
       <ReactFlowProvider>
-        <div className={styles.reactflow} ref={reactFlowWrapper} >
+        <div className={styles.simulator} ref={reactFlowWrapper} >
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -119,7 +121,7 @@ const Simulator = () => {
             <Controls />
           </ReactFlow>
         </div>
-        <div className={styles.sideBar}>
+        <div className={styles.sidenav}>
           <Sidebar />
         </div>
       </ReactFlowProvider>

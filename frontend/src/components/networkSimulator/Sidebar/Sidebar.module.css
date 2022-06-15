@@ -1,5 +1,47 @@
-
 .description {
   margin-bottom: 10px;
+  color: #000000;
 }
 
+
+.toggle-sidebar {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+
+.sidebar {
+  height: 100%;
+  width: 0;  /* to be set in js */
+  position: fixed;
+  overflow-x: hidden;
+  z-index: var(--sidenav-z-index);
+  top: 0;
+  right: 0;
+  background: rgb(214, 212, 211);
+  padding-top: 3.5rem;
+  transition: 0.5s;
+}
+
+.sidebar p {
+  /* padding: 0.5rem 0.5rem 0.5rem 1rem; */
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #818181;
+  display: block;
+  transition: 0.53s;
+}
+
+.sidebar p:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .close-sidebar {
+  position: absolute;
+  top: 0rem;
+  right: 1rem;
+  font-size: 2.2rem;
+}
+.close-sidebar {
+  color: #818181;
+}

@@ -8,26 +8,26 @@ import { TemplateModal } from "./TemplateModal"
 
 const TemplateNode = ({ nodeId, type, children, content }) => {
 
-  const { show: showModal, toggle: setShowModal } = useIsShowToggle();
-  const { show: showMenu, toggle: setShowMenu } = useIsShowToggle();
+  const { show: showModal, toggle: setToggleModal } = useIsShowToggle();
+  const { show: showMenu, toggle: setToggleMenu } = useIsShowToggle();
 
 
   return (
     <>
-      <div className={type === 'Lan' ? styles.lan : styles.node} onDoubleClick={setShowModal} onContextMenu={setShowMenu}>
+      <div className={type === 'Lan' ? styles.lan : styles.node} onDoubleClick={setToggleModal} onContextMenu={setToggleMenu}>
         {children}
       </div>
       {showModal &&
         <TemplateModal
           show={showModal}
-          onClick={setShowModal}
+          onClick={setToggleModal}
           content={content}
         />
       }
       {showMenu &&
         <TemplateModal
           show={showMenu}
-          onClick={setShowMenu}
+          onClick={setToggleMenu}
           content={
             <Menu nodeId={nodeId} />
           }
