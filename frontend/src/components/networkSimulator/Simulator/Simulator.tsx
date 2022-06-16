@@ -1,10 +1,11 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { ReactFlowProvider, Controls } from "react-flow-renderer";
-import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
+import { ClientNode, GatewayNode, LanNode, WebNode } from "../common/CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
-import useStore from "./store";
-import useGenerateFormValue from "./lib/generateFormValue";
+import useStore from "../store";
+import useGenerateFormValue from "../lib/generateFormValue";
+import { useIsShowToggle } from "../hooks/useShowToggle";
 
 const nodeTypes = {
   Client: ClientNode,
@@ -36,11 +37,13 @@ const Simulator = () => {
     nodes,
     edges,
     lans,
+    focusNode,
     onNodesChange,
     onEdgesChange,
     onConnect,
     setNodes,
     setLans,
+    setFocusNode,
   } = useStore()
 
   useEffect(
@@ -48,6 +51,7 @@ const Simulator = () => {
       console.log(lans);
     }, [lans]
   )
+
 
   // const generateId = () => `${nodes.length + 1}`
 
@@ -100,10 +104,11 @@ const Simulator = () => {
     [reactFlowInstance]
   )
 
+
   return (
     <>
       <ReactFlowProvider>
-        <div className={styles.reactflow} ref={reactFlowWrapper} >
+        <div className={styles.simulator} ref={reactFlowWrapper} >
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -118,9 +123,6 @@ const Simulator = () => {
           >
             <Controls />
           </ReactFlow>
-        </div>
-        <div className={styles.sideBar}>
-          <Sidebar />
         </div>
       </ReactFlowProvider>
     </>

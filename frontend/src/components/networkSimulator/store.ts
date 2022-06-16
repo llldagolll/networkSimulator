@@ -12,20 +12,34 @@ import {
   Connection,
 } from "react-flow-renderer";
 import create from "zustand";
-import { initialNodes, initialEdges, initialLans } from "./initial";
+import { initialNodes, initialEdges, initialLans } from "./Simulator/initial";
 
 export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan'
+interface Form {
+  id: string,
+  type: string,
+  requestPort?: string
+  responsePort?: string
+  inboundPort?: string
+  outboundPort?: string
+}
 
 type RFState = {
   nodes: Node[];
   lans: Node[];
   edges: Edge[];
+  focusNode: Form;
+  sidebarFormState: Form;
+  showForm: boolean;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
-  setNodes: (newNode: Node) => void
-  setLans: (newLan: Node) => void
-  setGroup: ({ lanId, nodeId }) => void
+  setNodes: (newNode: Node) => void;
+  setLans: (newLan: Node) => void;
+  setGroup: ({ lanId, nodeId }) => void;
+  setFocusNode: (e, func) => void;
+  setToggleForm: (state) => void;
+  setSidebarFormState: (data) => void;
 };
 
 
@@ -34,6 +48,9 @@ const useStore = create<RFState>((set, get) => ({
   nodes: initialNodes,
   lans: initialLans,
   edges: initialEdges,
+  focusNode: { id: '', type: '' },
+  showForm: false,
+  sidebarFormState: { id: '', type: '' },
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
@@ -63,7 +80,21 @@ const useStore = create<RFState>((set, get) => ({
     n.parentNode = lanId
     n.extent = 'parent'
     n.position = { x: 15, y: 65 }
-
+  },
+  setToggleForm: (showForm) => {
+    set({ showForm: !showForm })
+  },
+  setFocusNode: (e, setToggleForm) => {
+    const nodeElm = e.target.innerText.split(' ')
+    const node = {
+      id: nodeElm[0],
+      type: nodeElm[1]
+    }
+    set({ focusNode: node })
+    setToggleForm()
+  },
+  setSidebarFormState: (data) => {
+    set({ sidebarFormState: data })
   }
 }))
 

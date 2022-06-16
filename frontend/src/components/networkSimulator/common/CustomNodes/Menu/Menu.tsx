@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import useStore from '../../store'
+import useStore from '../../../store'
 import styles from './Menu.module.css'
 
 const Menu = (nodeId) => {
