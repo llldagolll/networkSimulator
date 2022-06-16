@@ -1,32 +1,15 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { ReactFlowProvider, Controls } from "react-flow-renderer";
-import { ClientNode, GatewayNode, LanNode, WebNode } from "../common/CustomNodes/CustomNodes";
-import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
 import useStore from "../store";
 import useGenerateFormValue from "../lib/generateFormValue";
-import { useIsShowToggle } from "../hooks/useShowToggle";
-
-const nodeTypes = {
-  Client: ClientNode,
-  Gateway: GatewayNode,
-  Lan: LanNode,
-  Web: WebNode,
-}
-
+import { NewNode } from "./types";
+import { CustomNodeTypes } from "./CustomNodeTypes";
 
 
 
 let id = 0;
 const generateId = () => `${id++}`;
-
-type NewNode = {
-  id: any,
-  type: any,
-  position: any,
-  data: any
-  style?: any,
-}
 
 
 const Simulator = () => {
@@ -36,24 +19,12 @@ const Simulator = () => {
   const {
     nodes,
     edges,
-    lans,
-    focusNode,
     onNodesChange,
     onEdgesChange,
     onConnect,
     setNodes,
     setLans,
-    setFocusNode,
   } = useStore()
-
-  useEffect(
-    () => {
-      console.log(lans);
-    }, [lans]
-  )
-
-
-  // const generateId = () => `${nodes.length + 1}`
 
   const onDragOver = useCallback((event: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) => {
     event.preventDefault()
@@ -118,7 +89,7 @@ const Simulator = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            nodeTypes={nodeTypes}
+            nodeTypes={CustomNodeTypes}
             fitView
           >
             <Controls />

@@ -1,7 +1,7 @@
-import useStore from '../../../store'
+import useStore from '../../../../store'
 import styles from './Menu.module.css'
 
-const Menu = (nodeId) => {
+const Menu = ({ nodeId, setToggleMenu }) => {
   const { lans, setGroup } = useStore()
 
   return (
@@ -12,8 +12,9 @@ const Menu = (nodeId) => {
             onClick={() => {
               setGroup({
                 lanId: lan.id,
-                nodeId: nodeId['nodeId']
+                nodeId: nodeId
               })
+              setToggleMenu()
             }}
             className={styles.MenuItem}>
             {`lan ${lan.id}`}
