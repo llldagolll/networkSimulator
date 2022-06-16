@@ -1,8 +1,6 @@
 import { Handle, Position } from "react-flow-renderer";
 import TemplateNode from "./templates/TemplateNode";
-import { useForm } from "react-hook-form";
 import useStore from "../../store";
-import { useEffect } from "react";
 
 
 

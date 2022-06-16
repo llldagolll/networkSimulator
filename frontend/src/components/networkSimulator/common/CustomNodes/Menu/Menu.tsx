@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import useStore from '../../../store'
 import styles from './Menu.module.css'
 
