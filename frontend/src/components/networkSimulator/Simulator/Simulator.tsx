@@ -1,11 +1,11 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { ReactFlowProvider, Controls } from "react-flow-renderer";
-import { ClientNode, GatewayNode, LanNode, WebNode } from "./CustomNodes/CustomNodes";
+import { ClientNode, GatewayNode, LanNode, WebNode } from "../common/CustomNodes/CustomNodes";
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Simulator.module.css'
-import useStore from "./store";
-import useGenerateFormValue from "./lib/generateFormValue";
-import { useIsShowToggle } from "./hooks/useShowToggle";
+import useStore from "../store";
+import useGenerateFormValue from "../lib/generateFormValue";
+import { useIsShowToggle } from "../hooks/useShowToggle";
 
 const nodeTypes = {
   Client: ClientNode,
@@ -37,11 +37,13 @@ const Simulator = () => {
     nodes,
     edges,
     lans,
+    focusNode,
     onNodesChange,
     onEdgesChange,
     onConnect,
     setNodes,
     setLans,
+    setFocusNode,
   } = useStore()
 
   useEffect(
@@ -49,6 +51,7 @@ const Simulator = () => {
       console.log(lans);
     }, [lans]
   )
+
 
   // const generateId = () => `${nodes.length + 1}`
 
@@ -120,9 +123,6 @@ const Simulator = () => {
           >
             <Controls />
           </ReactFlow>
-        </div>
-        <div className={styles.sidenav}>
-          <Sidebar />
         </div>
       </ReactFlowProvider>
     </>
