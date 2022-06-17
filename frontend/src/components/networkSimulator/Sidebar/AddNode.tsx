@@ -8,21 +8,13 @@ export const AddNode = ({ sidebarStyle, setToggleSidebar }) => {
       <div className={styles.description}>
         You can drag these nodes to the pane on the right
       </div>
-      <a href="" onClick={setToggleSidebar} className={styles['close-sidebar']}>
+      <button onClick={setToggleSidebar} className={styles['close-sidebar']}>
         &times;
-      </a>
-      <p>
-        <NodeInSidebar nodeName='Gateway' />
-      </p>
-      <p>
-        <NodeInSidebar nodeName='Client' />
-      </p>
-      <p>
-        <NodeInSidebar nodeName='Lan' />
-      </p>
-      <p>
-        <NodeInSidebar nodeName='Web' />
-      </p>
+      </button>
+      <NodeInSidebar nodeName='Gateway' />
+      <NodeInSidebar nodeName='Client' />
+      <NodeInSidebar nodeName='Lan' />
+      <NodeInSidebar nodeName='Web' />
     </div>
 
   )

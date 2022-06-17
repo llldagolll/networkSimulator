@@ -5,7 +5,7 @@ const Menu = ({ nodeId, setToggleMenu }) => {
   const { lans, setGroup } = useStore()
 
   return (
-    <div className={styles.MenuBox}>
+    <div>
       {
         lans.map((lan) =>
           <button
@@ -16,7 +16,9 @@ const Menu = ({ nodeId, setToggleMenu }) => {
               })
               setToggleMenu()
             }}
-            className={styles.MenuItem}>
+            className={styles.MenuItem}
+            key={lan.id}
+          >
             {`lan ${lan.id}`}
           </button>
         )

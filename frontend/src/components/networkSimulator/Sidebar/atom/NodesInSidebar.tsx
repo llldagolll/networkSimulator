@@ -9,11 +9,9 @@ const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: any) => {
 
 export const NodeInSidebar = ({ nodeName }) => {
   return (
-    <>
-      <div className={`${styles.dndnode}`} onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, nodeName)} draggable>
-        {nodeName}
-      </div>
-    </>
+    <div className={`${styles.dndnode}`} onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, nodeName)} draggable>
+      {nodeName}
+    </div>
   )
 
 }

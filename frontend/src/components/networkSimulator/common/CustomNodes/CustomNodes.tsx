@@ -63,7 +63,7 @@ export const LanNode = ({ data }) => {
       data={data}
     >
       <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle type="target" position={Position.Bottom} />
     </TemplateNode>
   );
 }

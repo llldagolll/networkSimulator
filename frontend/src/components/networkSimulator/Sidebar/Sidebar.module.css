@@ -48,7 +48,10 @@
   font-size: 2.2rem;
 }
 .close-sidebar {
-  color: #818181;
+  border: none;
+  outline: none;
+  color: #1a192b;
+  background: rgb(214, 212, 211);
 }
 
 
