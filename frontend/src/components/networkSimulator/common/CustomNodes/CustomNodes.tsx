@@ -28,11 +28,11 @@ export const WebNode = ({ data }) => {
     <TemplateNode
       data={data}
     >
-      <Handle type="target" position={Position.Top} />
+      <Handle type="source" position={Position.Top} />
       <div>
         <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
       </div>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle type="target" position={Position.Bottom} />
 
     </TemplateNode>
   );
@@ -45,11 +45,11 @@ export const GatewayNode = ({ data }) => {
     <TemplateNode
       data={data}
     >
-      <Handle type="target" position={Position.Top} />
+      <Handle type="source" position={Position.Top} />
       <div>
         <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
       </div>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle type="target" position={Position.Bottom} />
     </TemplateNode>
   );
 }
@@ -63,7 +63,7 @@ export const LanNode = ({ data }) => {
       data={data}
     >
       <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
-      <Handle type="target" position={Position.Bottom} />
+      <Handle type="source" position={Position.Bottom} />
     </TemplateNode>
   );
 }

@@ -2,7 +2,7 @@ import useStore from '../../../../store'
 import styles from './Menu.module.css'
 
 const Menu = ({ nodeId, setToggleMenu }) => {
-  const { lans, setGroup } = useStore()
+  const { lans, isGroup, setGroup, unSetGroup } = useStore()
 
   return (
     <div>
@@ -10,10 +10,11 @@ const Menu = ({ nodeId, setToggleMenu }) => {
         lans.map((lan) =>
           <button
             onClick={() => {
-              setGroup({
-                lanId: lan.id,
-                nodeId: nodeId
-              })
+
+              isGroup(nodeId)
+                ? unSetGroup({ lanId: lan.id, nodeId })
+                : setGroup({ lanId: lan.id, nodeId })
+
               setToggleMenu()
             }}
             className={styles.MenuItem}

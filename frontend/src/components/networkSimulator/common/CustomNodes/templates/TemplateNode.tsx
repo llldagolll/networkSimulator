@@ -7,12 +7,18 @@ const TemplateNode = ({ data, children }) => {
   const { show: showMenu, toggle: setToggleMenu } = useIsShowToggle();
   const { id, type } = data
 
+  const toggleMenu = () => {
+    if (type == 'Lan') {
+      return
+    }
+    setToggleMenu()
+  }
 
   return (
     <div className={styles['flex-container']} >
       <div
         className={type === 'Lan' ? styles.lan : styles.node}
-        onContextMenu={setToggleMenu}>
+        onContextMenu={toggleMenu}>
         {children}
       </div>
       {
