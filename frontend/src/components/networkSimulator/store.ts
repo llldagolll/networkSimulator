@@ -74,6 +74,11 @@ const useStore = create<RFState>((set, get) => ({
     set({ lans: get().lans.concat(newLan) })
   },
   setGroup: ({ lanId, nodeId }) => {
+    const l = get()
+      .nodes
+      .find(node => node.id == lanId)
+    l.expandParent = true
+
     const n = get()
       .nodes.
       find(node => node.id == nodeId)
@@ -81,14 +86,6 @@ const useStore = create<RFState>((set, get) => ({
     n.extent = 'parent'
     n.position = { x: 15, y: 65 }
 
-    console.log(get().nodes);
-
-    // const l = get()
-    //   .nodes
-    //   .find(node => node.id == lanId)
-    // l.data.childNode = nodeId
-
-    // console.log(get().nodes);
   },
   setToggleForm: (showForm) => {
     set({ showForm: !showForm })
