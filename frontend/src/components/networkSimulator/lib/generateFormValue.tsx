@@ -39,7 +39,8 @@ const useGenerateFormValue = ({
       }
       break;
     }
-    default: alert(`error`)
+    default: throw new Error();
+
   }
 
   return formValue

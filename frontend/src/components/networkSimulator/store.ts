@@ -36,7 +36,9 @@ type RFState = {
   onConnect: OnConnect;
   setNodes: (newNode: Node) => void;
   setLans: (newLan: Node) => void;
+  isGroup: (nodeId) => boolean;
   setGroup: ({ lanId, nodeId }) => void;
+  unSetGroup: ({ lanId, nodeId }) => void;
   setFocusNode: (e, func) => void;
   setToggleForm: (state) => void;
   setSidebarFormState: (data) => void;
@@ -73,13 +75,40 @@ const useStore = create<RFState>((set, get) => ({
   setLans: (newLan: Node) => {
     set({ lans: get().lans.concat(newLan) })
   },
+  isGroup: (nodeId) => {
+    const n = get()
+      .nodes.
+      find(node => node.id == nodeId)
+
+    if (n.parentNode) {
+      return true
+    }
+
+  },
   setGroup: ({ lanId, nodeId }) => {
+    const l = get()
+      .nodes
+      .find(node => node.id == lanId)
+    l.expandParent = true
+
     const n = get()
       .nodes.
       find(node => node.id == nodeId)
     n.parentNode = lanId
     n.extent = 'parent'
     n.position = { x: 15, y: 65 }
+  },
+  unSetGroup: ({ lanId, nodeId }) => {
+    const l = get()
+      .nodes
+      .find(node => node.id == lanId)
+    delete l.expandParent
+
+    const n = get()
+      .nodes.
+      find(node => node.id == nodeId)
+    delete n.parentNode
+    delete n.extent
   },
   setToggleForm: (showForm) => {
     set({ showForm: !showForm })

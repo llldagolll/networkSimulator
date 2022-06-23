@@ -2,7 +2,7 @@
 .node {
   padding: 10px;
   border-radius: 3px;
-  width: 100px;
+  width: 60px;
   font-size: 12px;
   color: #222;
   text-align: center;
@@ -23,12 +23,13 @@
   border-width: 1px;
   border-style: solid;
   border-color: #1a192b;
-  background: rgba(255, 0, 0, 0.2)
+  background: rgba(255, 0, 0, 0.2);
 }
 
 
 
 .modal-content {
+  justify-content: flex-end;
   width:100%;
   height:100%;
   top: 0px;
@@ -43,3 +44,6 @@
   font-size: 3px;
 }
 
+.flex-container {
+  display: flex;
+}

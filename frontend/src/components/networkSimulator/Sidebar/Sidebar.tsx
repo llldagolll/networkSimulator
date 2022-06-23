@@ -1,8 +1,5 @@
 import { useIsShowToggle } from "../hooks/useShowToggle";
 import { AddNode } from "./AddNode";
-import {
-  NodeInSidebar
-} from "./atom/NodesInSidebar"
 import styles from './Sidebar.module.css'
 import { SidebarForm } from "./SidebarForm";
 import useStore from '@/components/networkSimulator/store'
@@ -22,7 +19,7 @@ interface Form {
 
 
 const Sidebar = () => {
-  const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle();
+  const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { showForm, setToggleForm, focusNode, setSidebarFormState } = useStore()
   const { register, handleSubmit } = useForm();
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
