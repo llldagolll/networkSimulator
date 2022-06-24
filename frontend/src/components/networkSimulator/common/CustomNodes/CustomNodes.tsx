@@ -1,37 +1,28 @@
 import { Handle, Position } from "react-flow-renderer";
 import TemplateNode from "./templates/TemplateNode";
-import useStore from "../../store";
+import { Label } from "./Label";
 
 
 
 export const ClientNode = ({ data }) => {
-  const { setFocusNode, setToggleForm } = useStore()
-
   return (
     <TemplateNode
       data={data}
     >
       <Handle type="target" position={Position.Top} />
-      <div>
-        <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
-      </div>
+      <Label data={data} />
     </TemplateNode>
   );
 }
 
 
 export const WebNode = ({ data }) => {
-  const { setFocusNode, setToggleForm } = useStore()
-
-
   return (
     <TemplateNode
       data={data}
     >
       <Handle type="source" position={Position.Top} />
-      <div>
-        <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
-      </div>
+      <Label data={data} />
       <Handle type="target" position={Position.Bottom} />
 
     </TemplateNode>
@@ -39,16 +30,12 @@ export const WebNode = ({ data }) => {
 }
 
 export const GatewayNode = ({ data }) => {
-  const { setFocusNode, setToggleForm } = useStore()
-
   return (
     <TemplateNode
       data={data}
     >
       <Handle type="source" position={Position.Top} />
-      <div>
-        <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
-      </div>
+      <Label data={data} />
       <Handle type="target" position={Position.Bottom} />
     </TemplateNode>
   );
@@ -56,13 +43,11 @@ export const GatewayNode = ({ data }) => {
 
 
 export const LanNode = ({ data }) => {
-  const { setFocusNode, setToggleForm } = useStore()
-
   return (
     <TemplateNode
       data={data}
     >
-      <label onDoubleClick={(e) => setFocusNode(e, setToggleForm)} htmlFor="text">{data.label}</label>
+      <Label data={data} />
       <Handle type="source" position={Position.Bottom} />
     </TemplateNode>
   );
