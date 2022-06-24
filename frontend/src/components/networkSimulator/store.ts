@@ -80,20 +80,16 @@ const useStore = create<RFState>((set, get) => ({
       .nodes.
       find(node => node.id == nodeId)
 
-    if (n.parentNode) {
-      return true
-    }
-
+    return n.parentNode ? true : false
   },
   setGroup: ({ lanId, nodeId }) => {
-    const l = get()
-      .nodes
+
+    const l = get().nodes
       .find(node => node.id == lanId)
     l.expandParent = true
 
-    const n = get()
-      .nodes.
-      find(node => node.id == nodeId)
+    const n = get().nodes
+      .find(node => node.id == nodeId)
     n.parentNode = lanId
     n.extent = 'parent'
     n.position = { x: 15, y: 65 }

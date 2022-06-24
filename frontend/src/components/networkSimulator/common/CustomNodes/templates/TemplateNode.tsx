@@ -26,7 +26,7 @@ const TemplateNode = ({ data, children }) => {
         <div className={styles['modal-content']} >
           <Menu
             nodeId={id}
-            setToggleMenu={setToggleMenu}
+            toggleMenu={toggleMenu}
           />
           <br />
           <button className={styles['modal-button']} onClick={setToggleMenu}>Close</button>

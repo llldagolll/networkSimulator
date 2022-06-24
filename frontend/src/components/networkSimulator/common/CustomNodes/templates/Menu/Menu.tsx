@@ -1,21 +1,16 @@
 import useStore from '../../../../store'
 import styles from './Menu.module.css'
 
-const Menu = ({ nodeId, setToggleMenu }) => {
-  const { lans, isGroup, setGroup, unSetGroup } = useStore()
 
+const Group = ({ lans, nodeId, setGroup, toggleMenu }) => {
   return (
-    <div>
+    <>
       {
         lans.map((lan) =>
           <button
-            onClick={() => {
-
-              isGroup(nodeId)
-                ? unSetGroup({ lanId: lan.id, nodeId })
-                : setGroup({ lanId: lan.id, nodeId })
-
-              setToggleMenu()
+            onClick={async () => {
+              await setGroup({ lanId: lan.id, nodeId })
+              toggleMenu()
             }}
             className={styles.MenuItem}
             key={lan.id}
@@ -24,7 +19,42 @@ const Menu = ({ nodeId, setToggleMenu }) => {
           </button>
         )
       }
-    </div>
+    </>
+  )
+}
+
+const UnGroup = ({ nodes, nodeId, unSetGroup, toggleMenu }) => {
+  const getLanId = ({ nodes, nodeId }) => nodes.find(node => node.id === nodeId).parentNode
+
+  const lanId = getLanId({ nodes, nodeId })
+  return (
+    <button
+      onClick={async () => {
+        await unSetGroup({ lanId, nodeId })
+        toggleMenu()
+      }}
+      className={styles.MenuItem}
+    >
+      解除
+    </button>
+  )
+}
+
+
+
+const Menu = ({ nodeId, toggleMenu }) => {
+  const { nodes, lans, isGroup, setGroup, unSetGroup } = useStore()
+  const props = {
+    lans,
+    nodes,
+    nodeId,
+    setGroup,
+    unSetGroup,
+    toggleMenu
+  }
+
+  return (
+    isGroup(nodeId) ? UnGroup(props) : Group(props)
   )
 }
 
