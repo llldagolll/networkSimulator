@@ -20,7 +20,7 @@ interface Form {
 
 const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
-  const { showForm, setToggleForm, focusNode, setSidebarFormState } = useStore()
+  const { showForm, setToggleForm, focusNode, setSidebarFormState, setFormToNode } = useStore()
   const { register, handleSubmit } = useForm();
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
 
@@ -49,8 +49,9 @@ const Sidebar = () => {
         break;
     }
 
-    sessionStorage.setItem(`${id}`, JSON.stringify(Form))
-    setSidebarFormState(JSON.stringify(Form))
+    setFormToNode(Form)
+    // sessionStorage.setItem(`${id}`, JSON.stringify(Form))
+    // setSidebarFormState(JSON.stringify(Form))
     return
   }
 

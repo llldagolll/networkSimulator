@@ -50,6 +50,7 @@ type RFState = {
   onConnect: OnConnect;
   setNodes: (newNode: Node) => void;
   setLans: (newLan: Node) => void;
+  setFormToNode: any;
   isGroup: (nodeId) => boolean;
   setGroup: ({ lanId, nodeId }) => void;
   unSetGroup: ({ lanId, nodeId }) => void;
@@ -151,6 +152,14 @@ const useStore = create<RFState>((set, get) => ({
   },
   setSidebarFormState: (data) => {
     set({ sidebarFormState: data })
+  },
+  setFormToNode: (Form) => {
+    set({
+      nodes: Object.defineProperties(
+        get().nodes,
+        Form
+      )
+    })
   }
 }))
 
