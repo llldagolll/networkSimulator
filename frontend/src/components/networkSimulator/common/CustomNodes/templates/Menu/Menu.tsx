@@ -1,15 +1,27 @@
-import useStore from '../../../../store'
+import { memo } from 'react';
+import useStore, { CustomNode } from '../../../../store'
 import styles from './Menu.module.css'
 
 
-const Group = ({ lans, nodeId, setGroup, toggleMenu }) => {
+interface Group {
+  nodeId: string;
+  toggleMenu: () => void
+  lans?: CustomNode[]
+  nodes?: CustomNode[]
+  setGroup?: ({ lanId, nodeId }) => void;
+  unSetGroup?: ({ lanId, nodeId }) => void;
+}
+
+
+const Group = memo(({ lans, nodeId, setGroup, toggleMenu }: Group) => {
+
   return (
     <>
       {
         lans.map((lan) =>
           <button
-            onClick={async () => {
-              await setGroup({ lanId: lan.id, nodeId })
+            onClick={() => {
+              setGroup({ lanId: lan.id, nodeId })
               toggleMenu()
             }}
             className={styles.MenuItem}
@@ -22,15 +34,20 @@ const Group = ({ lans, nodeId, setGroup, toggleMenu }) => {
     </>
   )
 }
+)
 
-const UnGroup = ({ nodes, nodeId, unSetGroup, toggleMenu }) => {
+
+const UnGroup = memo(({ nodes, nodeId, unSetGroup, toggleMenu }: Group) => {
+
   const getLanId = ({ nodes, nodeId }) => nodes.find(node => node.id === nodeId).parentNode
+
+  console.log(`UnGroup`);
 
   const lanId = getLanId({ nodes, nodeId })
   return (
     <button
       onClick={async () => {
-        await unSetGroup({ lanId, nodeId })
+        unSetGroup({ lanId, nodeId })
         toggleMenu()
       }}
       className={styles.MenuItem}
@@ -39,12 +56,13 @@ const UnGroup = ({ nodes, nodeId, unSetGroup, toggleMenu }) => {
     </button>
   )
 }
-
+)
 
 
 const Menu = ({ nodeId, toggleMenu }) => {
   const { nodes, lans, isGroup, setGroup, unSetGroup } = useStore()
-  const props = {
+
+  const props: Group = {
     lans,
     nodes,
     nodeId,
@@ -53,8 +71,11 @@ const Menu = ({ nodeId, toggleMenu }) => {
     toggleMenu
   }
 
+  console.log(`Menu`);
+
+
   return (
-    isGroup(nodeId) ? UnGroup(props) : Group(props)
+    isGroup(nodeId) ? <UnGroup {...props} /> : <Group {...props} />
   )
 }
 
