@@ -24,9 +24,23 @@ interface Form {
   outboundPort?: string
 }
 
+export interface CustomNode extends Node {
+  data: {
+    id: string,
+    type: string,
+    label: string,
+    form: {
+      requestPort?: string
+      responsePort?: string
+      inboundPort?: string
+      outboundPort?: string
+    }
+  };
+}
+
 type RFState = {
-  nodes: Node[];
-  lans: Node[];
+  nodes: CustomNode[];
+  lans: CustomNode[];
   edges: Edge[];
   focusNode: Form;
   sidebarFormState: Form;
@@ -44,6 +58,22 @@ type RFState = {
   setSidebarFormState: (data) => void;
 };
 
+const getLan = ({ get, lanId }) => get().nodes.find(node => node.id == lanId)
+
+const getNode = ({ get, nodeId }) => get().nodes.find(node => node.id == nodeId)
+
+const addExpandParentProperty = (lan) => {
+  lan.expandParent = true
+  console.log(lan);
+
+}
+const addParentNodeProperty = ({ node, lanId }) => {
+  node.parentNode = lanId
+  node.extent = 'parent'
+  node.position = { x: 15, y: 65 }
+  console.log(node);
+
+}
 
 
 const useStore = create<RFState>((set, get) => ({
@@ -82,17 +112,18 @@ const useStore = create<RFState>((set, get) => ({
 
     return n.parentNode ? true : false
   },
-  setGroup: ({ lanId, nodeId }) => {
+  setGroup: async ({ lanId, nodeId }) => {
 
-    const l = get().nodes
-      .find(node => node.id == lanId)
-    l.expandParent = true
+    const lan = getLan({ get, lanId })
+    const node = getNode({ get, nodeId })
 
-    const n = get().nodes
-      .find(node => node.id == nodeId)
-    n.parentNode = lanId
-    n.extent = 'parent'
-    n.position = { x: 15, y: 65 }
+    await Promise.all([lan, node])
+    console.log(`1`);
+    await addExpandParentProperty(lan)
+    console.log(`2`);
+    await addParentNodeProperty({ node, lanId })
+    console.log(`3`);
+
   },
   unSetGroup: ({ lanId, nodeId }) => {
     const l = get()
