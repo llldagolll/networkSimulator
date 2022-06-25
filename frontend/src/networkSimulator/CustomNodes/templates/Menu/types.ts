@@ -1,4 +1,4 @@
-import { CustomNode } from "../../../store";
+import { CustomNode } from "../../../store/store";
 
 export interface group {
   nodeId: string;
