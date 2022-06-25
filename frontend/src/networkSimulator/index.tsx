@@ -3,7 +3,6 @@ import styles from './index.module.css'
 import Sidebar from "./Sidebar/Sidebar";
 
 
-
 const NetworkSimulator = () => {
 
   return (

@@ -4,7 +4,6 @@ import styles from './Sidebar.module.css'
 import { SidebarForm } from "./SidebarForm";
 import useStore from '@/networkSimulator/store'
 import { useForm } from "react-hook-form";
-import { useRef } from "react";
 
 
 

@@ -5,10 +5,42 @@ import { UnGroup } from './UnGroup';
 
 
 
-const Menu = ({ nodeId, toggleMenu }) => {
+
+const NodeMenu = ({ props, isGroup, nodeId }) => {
+
+  return (
+    isGroup(nodeId) ? <UnGroup {...props} /> : <Group {...props} />
+  )
+}
+
+const LanMenu = ({ nodes, nodeId, unSetGroup, toggleMenu }: group) => {
+  const lanId = nodeId
+  return (
+    <>
+      {
+        nodes
+          .filter(node => node.type !== 'Lan')
+          .map(node =>
+            <button
+              onClick={async () => {
+                await unSetGroup({ nodeId: node.id, lanId })
+                await toggleMenu
+              }}
+            >
+              {`node ${node.id}`}
+            </button>
+          )
+      }
+    </>
+  )
+}
+
+
+
+
+
+const Menu = ({ nodeId, toggleMenu, type }) => {
   const { nodes, lans, isGroup, setGroup, unSetGroup } = useStore()
-
-
   const props: group = {
     lans,
     nodes,
@@ -20,7 +52,9 @@ const Menu = ({ nodeId, toggleMenu }) => {
 
 
   return (
-    isGroup(nodeId) ? <UnGroup {...props} /> : <Group {...props} />
+    type == 'Lan'
+      ? <LanMenu {...props} />
+      : <NodeMenu props={props} isGroup={isGroup} nodeId={nodeId} />
   )
 }
 

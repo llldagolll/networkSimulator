@@ -8,9 +8,7 @@ const TemplateNode = ({ data, children }) => {
   const { id, type } = data
 
   const toggleMenu = () => {
-    if (type == 'Lan') {
-      return
-    }
+    // if (type == 'Lan') { }
     setToggleMenu()
   }
 
@@ -27,6 +25,7 @@ const TemplateNode = ({ data, children }) => {
           <Menu
             nodeId={id}
             toggleMenu={toggleMenu}
+            type={type}
           />
           <br />
           <button className={styles['modal-button']} onClick={setToggleMenu}>Close</button>
