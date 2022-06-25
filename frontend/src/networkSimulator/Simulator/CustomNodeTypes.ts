@@ -1,4 +1,4 @@
-import { ClientNode, GatewayNode, LanNode, WebNode } from "../common/CustomNodes/CustomNodes";
+import { ClientNode, GatewayNode, LanNode, WebNode } from "../CustomNodes/CustomNodes";
 
 export const CustomNodeTypes = {
   Client: ClientNode,

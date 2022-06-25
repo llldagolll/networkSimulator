@@ -51,16 +51,12 @@ type RFState = {
   setNodes: (newNode: Node) => void;
   setLans: (newLan: Node) => void;
   isGroup: (nodeId) => boolean;
-  setGroup: ({ lanId, nodeId }) => void;
-  unSetGroup: ({ lanId, nodeId }) => void;
+  setGroup: (any) => void
+  unSetGroup: (any) => void
   setFocusNode: (e, func) => void;
   setToggleForm: (state) => void;
-  setSidebarFormState: (data) => void;
 };
 
-const getLan = ({ get, lanId }) => get().nodes.find(node => node.id == lanId)
-
-const getNode = ({ get, nodeId }) => get().nodes.find(node => node.id == nodeId)
 
 const addExpandParentProperty = (lan) => {
   lan.expandParent = true
@@ -74,6 +70,10 @@ const addParentNodeProperty = ({ node, lanId }) => {
   console.log(node);
 
 }
+
+
+const getLan = ({ get, lanId }) => get().nodes.find(node => node.id == lanId)
+const getNode = ({ get, nodeId }) => get().nodes.find(node => node.id == nodeId)
 
 
 const useStore = create<RFState>((set, get) => ({
@@ -116,13 +116,10 @@ const useStore = create<RFState>((set, get) => ({
 
     const lan = getLan({ get, lanId })
     const node = getNode({ get, nodeId })
-
     await Promise.all([lan, node])
-    console.log(`1`);
-    await addExpandParentProperty(lan)
-    console.log(`2`);
-    await addParentNodeProperty({ node, lanId })
-    console.log(`3`);
+
+    addExpandParentProperty(lan)
+    addParentNodeProperty({ node, lanId })
 
   },
   unSetGroup: ({ lanId, nodeId }) => {
@@ -149,9 +146,6 @@ const useStore = create<RFState>((set, get) => ({
     set({ focusNode: node })
     setToggleForm()
   },
-  setSidebarFormState: (data) => {
-    set({ sidebarFormState: data })
-  }
 }))
 
 
