@@ -43,7 +43,6 @@ type RFState = {
   lans: CustomNode[];
   edges: Edge[];
   focusNode: Form;
-  sidebarFormState: Form;
   showForm: boolean;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
@@ -82,7 +81,6 @@ const useStore = create<RFState>((set, get) => ({
   edges: initialEdges,
   focusNode: { id: '', type: '' },
   showForm: false,
-  sidebarFormState: { id: '', type: '' },
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),

@@ -23,7 +23,6 @@ const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { showForm, setToggleForm, focusNode, } = useStore()
   const { register, handleSubmit } = useForm();
-  const { nodes } = useStore()
 
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
 
@@ -59,32 +58,27 @@ const Sidebar = () => {
 
   return (
     <>
-      <span onClick={setToggleSidebar} className={styles['toggle-sidebar']}>
-        &#9776;
-      </span>
       <div className={styles.content}>
-        {showSidebar &&
-          <AddNode
-            sidebarStyle={sidebarStyle}
-            setToggleSidebar={setToggleSidebar}
-          />
-        }
+        <span onClick={setToggleSidebar} className={styles['toggle-sidebar']}>
+          &#9776;
+        </span>
         {
-          showForm &&
-          <SidebarForm
-            id={id}
-            type={type}
-            onSubmit={handleSubmit(onSubmit)}
-            onClick={setToggleForm}
-            register={register}
-            sidebarStyle={sidebarStyle}
-          />
+          showForm
+            ? <SidebarForm
+              id={id}
+              type={type}
+              onSubmit={handleSubmit(onSubmit)}
+              onClick={setToggleSidebar}
+              setToggleForm={setToggleForm}
+              register={register}
+              sidebarStyle={sidebarStyle}
+            />
+            : <AddNode
+              sidebarStyle={sidebarStyle}
+              onClick={setToggleSidebar}
+            />
         }
 
-        <button style={{
-
-        }} onClick={() => console.log(nodes)
-        }>回答</button>
       </div>
     </>
   )
