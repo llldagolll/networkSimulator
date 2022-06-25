@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import useStore, { CustomNode } from '../../../../store'
+import useStore, { CustomNode } from '../../../store'
 import styles from './Menu.module.css'
 
 
