@@ -21,14 +21,15 @@ interface Form {
 
 const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
-  const { showForm, setToggleForm, focusNode, setSidebarFormState, setFormToNode } = useStore()
+  const { showForm, setToggleForm, focusNode, } = useStore()
   const { register, handleSubmit } = useForm();
-  const ref = useRef()
+  const { nodes } = useStore()
 
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
 
   const { id, type } = focusNode
 
+  //TODO: Form の宣言を消す
   const Form: Form = {
     id,
     type
@@ -51,14 +52,9 @@ const Sidebar = () => {
       default:
         break;
     }
-
-    // setFormToNode(Form)
     sessionStorage.setItem(`${id}`, JSON.stringify(Form))
-    setSidebarFormState(JSON.stringify(Form))
-    return
   }
 
-  console.log(ref.current);
 
 
   return (
@@ -66,7 +62,7 @@ const Sidebar = () => {
       <span onClick={setToggleSidebar} className={styles['toggle-sidebar']}>
         &#9776;
       </span>
-      <div ref={ref} className={styles.content}>
+      <div className={styles.content}>
         {showSidebar &&
           <AddNode
             sidebarStyle={sidebarStyle}
@@ -84,6 +80,11 @@ const Sidebar = () => {
             sidebarStyle={sidebarStyle}
           />
         }
+
+        <button style={{
+
+        }} onClick={() => console.log(nodes)
+        }>回答</button>
       </div>
     </>
   )

@@ -8,9 +8,9 @@ export const Group = ({ lans, nodeId, setGroup, toggleMenu }: group) => {
       {
         lans.map((lan) =>
           <button
-            onClick={() => {
-              setGroup({ lanId: lan.id, nodeId })
-              toggleMenu()
+            onClick={async () => {
+              await setGroup({ lanId: lan.id, nodeId })
+              await toggleMenu()
             }}
             className={styles.MenuItem}
             key={lan.id}

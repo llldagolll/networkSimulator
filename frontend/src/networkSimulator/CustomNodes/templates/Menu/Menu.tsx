@@ -1,4 +1,4 @@
-import useStore, { CustomNode } from '../../../store'
+import useStore from '@/networkSimulator/store';
 import { Group } from './Group';
 import { group } from './types';
 import { UnGroup } from './UnGroup';
@@ -6,7 +6,7 @@ import { UnGroup } from './UnGroup';
 
 
 const Menu = ({ nodeId, toggleMenu }) => {
-  const { nodes, lans, isGroup, setGroup, unSetGroup, getLan, getNode } = useStore()
+  const { nodes, lans, isGroup, setGroup, unSetGroup } = useStore()
 
 
   const props: group = {
@@ -17,8 +17,6 @@ const Menu = ({ nodeId, toggleMenu }) => {
     unSetGroup,
     toggleMenu
   }
-
-  console.log(`Menu`);
 
 
   return (
