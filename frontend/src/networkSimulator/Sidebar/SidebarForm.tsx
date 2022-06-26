@@ -11,6 +11,7 @@ export const SidebarForm = ({
   onClick,
   sidebarStyle,
   setToggleForm }) => {
+
   let Form
 
   switch (type) {

@@ -50,6 +50,8 @@ const Sidebar = () => {
       default:
         break;
     }
+    // TODO: 最終的にこうしたい
+    // submitForm(Form)
     sessionStorage.setItem(`${id}`, JSON.stringify(Form))
   }
 

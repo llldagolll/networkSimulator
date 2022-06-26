@@ -144,6 +144,9 @@ const useStore = create<RFState>((set, get) => ({
     set({ focusNode: node })
     setToggleForm()
   },
+  submitForm: (form) => {
+
+  }
 }))
 
 
