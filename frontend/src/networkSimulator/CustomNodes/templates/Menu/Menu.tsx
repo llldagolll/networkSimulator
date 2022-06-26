@@ -24,8 +24,9 @@ const LanMenu = ({ nodes, nodeId, unSetGroup, toggleMenu }: group) => {
             <button
               onClick={async () => {
                 await unSetGroup({ nodeId: node.id, lanId })
-                await toggleMenu
+                await toggleMenu()
               }}
+              key={node.id}
             >
               {`node ${node.id}`}
             </button>
