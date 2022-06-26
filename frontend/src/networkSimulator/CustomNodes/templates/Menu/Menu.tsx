@@ -20,6 +20,7 @@ const LanMenu = ({ nodes, nodeId, unSetGroup, toggleMenu }: group) => {
       {
         nodes
           .filter(node => node.type !== 'Lan')
+          .filter(node => node.parentNode == lanId)
           .map(node =>
             <button
               onClick={async () => {
