@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 
 
 
-interface Form {
+export interface Form {
   id: string,
   type: string,
   requestPort?: string
@@ -20,18 +20,15 @@ interface Form {
 
 const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
-  const { showForm, setToggleForm, focusNode, } = useStore()
+  const { showForm, setToggleForm, focusNode, submitForm, nodes } = useStore()
   const { register, handleSubmit } = useForm();
 
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
 
   const { id, type } = focusNode
 
-  //TODO: Form の宣言を消す
-  const Form: Form = {
-    id,
-    type
-  }
+  let Form: Form = { id, type }
+
   const onSubmit = (dt) => {
     switch (type) {
       case 'Client':
@@ -51,8 +48,7 @@ const Sidebar = () => {
         break;
     }
     // TODO: 最終的にこうしたい
-    // submitForm(Form)
-    sessionStorage.setItem(`${id}`, JSON.stringify(Form))
+    submitForm(Form)
   }
 
 
