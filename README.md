@@ -5,4 +5,6 @@ my senior project
 ./init.sh
 
 # 開発方法
- devcontainer open .
+ devcontainer open frontend
+ // or
+ devcontainer open backend
