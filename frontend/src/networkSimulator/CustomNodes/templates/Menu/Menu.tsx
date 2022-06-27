@@ -13,18 +13,19 @@ const NodeMenu = ({ props, isGroup, nodeId }) => {
   )
 }
 
-const LanMenu = ({ nodes, nodeId, unSetGroup, toggleMenu }: group) => {
+const LanMenu = ({ nodes, nodeId, unSetGroup, setToggleMenu }: group) => {
   const lanId = nodeId
   return (
     <>
       {
         nodes
           .filter(node => node.type !== 'Lan')
+          .filter(node => node.parentNode == lanId)
           .map(node =>
             <button
               onClick={async () => {
                 await unSetGroup({ nodeId: node.id, lanId })
-                await toggleMenu()
+                await setToggleMenu()
               }}
               key={node.id}
             >
@@ -40,7 +41,7 @@ const LanMenu = ({ nodes, nodeId, unSetGroup, toggleMenu }: group) => {
 
 
 
-const Menu = ({ nodeId, toggleMenu, type }) => {
+const Menu = ({ nodeId, setToggleMenu, type }) => {
   const { nodes, lans, isGroup, setGroup, unSetGroup } = useStore()
   const props: group = {
     lans,
@@ -48,7 +49,7 @@ const Menu = ({ nodeId, toggleMenu, type }) => {
     nodeId,
     setGroup,
     unSetGroup,
-    toggleMenu
+    setToggleMenu
   }
 
 

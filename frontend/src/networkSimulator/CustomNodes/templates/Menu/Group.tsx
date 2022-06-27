@@ -1,7 +1,7 @@
 import styles from './Menu.module.css'
 import { group } from './types'
 
-export const Group = ({ lans, nodeId, setGroup, toggleMenu }: group) => {
+export const Group = ({ lans, nodeId, setGroup, setToggleMenu }: group) => {
 
   return (
     <>
@@ -10,7 +10,7 @@ export const Group = ({ lans, nodeId, setGroup, toggleMenu }: group) => {
           <button
             onClick={async () => {
               await setGroup({ lanId: lan.id, nodeId })
-              await toggleMenu()
+              await setToggleMenu()
             }}
             className={styles.MenuItem}
             key={lan.id}

@@ -12,30 +12,23 @@ import {
   Connection,
 } from "react-flow-renderer";
 import create from "zustand";
+import { Form } from "./Sidebar/Sidebar";
 import { initialNodes, initialEdges, initialLans } from "./Simulator/initial";
 
 export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan'
-interface Form {
-  id: string,
-  type: string,
-  requestPort?: string
-  responsePort?: string
-  inboundPort?: string
-  outboundPort?: string
-}
+
 
 export interface CustomNode extends Node {
   data: {
     id: string,
     type: string,
     label: string,
-    form: {
-      requestPort?: string
-      responsePort?: string
-      inboundPort?: string
-      outboundPort?: string
-    }
   };
+  requestPort?: string
+  responsePort?: string
+  inboundPort?: string
+  outboundPort?: string
+
 }
 
 type RFState = {
@@ -54,6 +47,7 @@ type RFState = {
   unSetGroup: (any) => void
   setFocusNode: (e, func) => void;
   setToggleForm: (state) => void;
+  submitForm: (Form) => void
 };
 
 
@@ -144,6 +138,11 @@ const useStore = create<RFState>((set, get) => ({
     set({ focusNode: node })
     setToggleForm()
   },
+  submitForm: (Form) => {
+    set({
+      nodes: get().nodes.map(node => node.id === Form.id ? Object.assign(node, Form) : node)
+    })
+  }
 }))
 
 
