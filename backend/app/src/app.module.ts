@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { RecipesModule } from './recipes/recipes.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { NodesModule } from './nodes/nodes.module';
+import { MyLoggerModule } from './my-logger/my-logger.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { NodesModule } from './nodes/nodes.module';
       autoSchemaFile: (process.cwd(), 'src/schema.gql')
     }),
     RecipesModule,
-    // NodesModule,
+    MyLoggerModule,
+    NodesModule,
   ],
 })
 export class AppModule { }

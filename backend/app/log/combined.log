@@ -1,0 +1,4 @@
+{"level":"info","message":"Mapped {/graphql, POST} route","service":"user-service","timestamp":"2022-06-28T06:39:15.204Z"}
+{"level":"info","message":"Nest application successfully started","service":"user-service","timestamp":"2022-06-28T06:39:15.216Z"}
+{"level":"info","message":"Mapped {/graphql, POST} route","service":"user-service","timestamp":"2022-06-28T06:43:08.632Z"}
+{"level":"info","message":"Nest application successfully started","service":"user-service","timestamp":"2022-06-28T06:43:08.642Z"}
