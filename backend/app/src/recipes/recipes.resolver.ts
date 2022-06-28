@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { Recipe } from './recipe';
 
@@ -19,8 +20,13 @@ const recipeTable = [
 
 @Resolver()
 export class RecipesResolver {
+  private readonly logger = new Logger()
+
+
+
   @Query(returns => [Recipe])
   async recipes(): Promise<Recipe[]> {
+    this.logger.log('Hello, world')
     return recipeTable;
   }
 }

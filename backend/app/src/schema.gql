@@ -7,6 +7,12 @@ type Recipe {
   title: String!
 }
 
+type Node {
+  id: ID!
+  type: String!
+}
+
 type Query {
   recipes: [Recipe!]!
+  nodes: [Node!]!
 }

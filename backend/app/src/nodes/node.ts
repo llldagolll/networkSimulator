@@ -9,15 +9,15 @@ export class Node {
   @Field(type => ID)
   id: string;
 
-  @Field()
-  position: XYPosition;
+  // @Field()
+  // position: XYPosition;
 
-  @Field()
-  data: {
-    id: string,
-    type: string,
-    label: string,
-  }
+  // @Field()
+  // data: {
+  //   id: string,
+  //   type: string,
+  //   label: string,
+  // }
 
   // @Field()
   // requestPort: string
