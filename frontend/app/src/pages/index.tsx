@@ -3,7 +3,7 @@ import Simulator from '@/components/Simulator/Simulator'
 import type { NextPage } from 'next'
 import styles from './index.module.css'
 
-const Home: NextPage = () => {
+const QuestionOne: NextPage = () => {
   return (
     <div className={styles.networkSimulator}>
       <Simulator />
@@ -13,4 +13,4 @@ const Home: NextPage = () => {
 }
 
 
-export default Home
+export default QuestionOne
