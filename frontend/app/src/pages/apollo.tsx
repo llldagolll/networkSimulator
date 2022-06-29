@@ -1,41 +1,33 @@
 import { gql } from "@apollo/client"
+import axios from "axios"
+import { genetarteQuery } from "lib/generateQuery"
+import { useState } from "react"
 import client from '../../lib/apolloClient'
 
+const query = `
+  nodes {
+    data {
+      id
+      type
+      label
+    }
+  }
+`
 
-export const getStaticProps = async () => {
-  const { data } = await client.query({
-    query: gql`
-      query pets {
-        id
-        name
-      }
-    `,
-  });
+const Home = () => {
+  const [res, setRes] = useState(null)
 
-  return {
-    props: {
-      pets: data.pets.slice(0, 1),
-    },
-  };
-}
-
-
-
-const Home = ({ pets }) => {
-  console.log(pets);
+  const callApi = async () => {
+    const data = await genetarteQuery(query)
+    setRes(JSON.stringify(data))
+  }
 
   return (
     <div>
-      {pets.map(pet => (
-        <div key={pet.id}>
-          <h3>
-            {pet.id}
-          </h3>
-          <p>
-            {pet.name}
-          </p>
-        </div>
-      ))}
+      <button onClick={() => callApi()}>
+        Click me!
+      </button>
+      <p>{res}</p>
     </div>
   )
 }
