@@ -7,9 +7,34 @@ type Recipe {
   title: String!
 }
 
+type XYPosition {
+  x: Float!
+  y: Float!
+}
+
+type Data {
+  id: String!
+  type: String!
+  label: String!
+}
+
 type Node {
   id: ID!
+  position: XYPosition!
+  data: Data!
   type: String!
+  requestPort: String!
+  responsePort: String!
+  inboundPort: String!
+  outboundPort: String!
+  targetPosition: String!
+  sourcePosition: String!
+  width: Float!
+  height: Float!
+  parentNode: String!
+  zIndex: Float!
+  expandParent: Boolean!
+  positionAbsolute: XYPosition!
 }
 
 type Query {
