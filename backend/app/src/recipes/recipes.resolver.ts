@@ -26,7 +26,7 @@ export class RecipesResolver {
 
   @Query(returns => [Recipe])
   async recipes(): Promise<Recipe[]> {
-    this.logger.log('Hello, world')
+    console.log('Hello, world')
     return recipeTable;
   }
 }

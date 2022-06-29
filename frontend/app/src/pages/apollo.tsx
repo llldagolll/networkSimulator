@@ -5,37 +5,34 @@ import client from '../../lib/apolloClient'
 export const getStaticProps = async () => {
   const { data } = await client.query({
     query: gql`
-      query Countries {
-        countries {
-          code
-          name
-          emoji
-        }
+      query pets {
+        id
+        name
       }
     `,
   });
 
   return {
     props: {
-      countries: data.countries.slice(0, 4),
+      pets: data.pets.slice(0, 1),
     },
   };
 }
 
 
 
-const Home = ({ countries }) => {
-  console.log(countries);
+const Home = ({ pets }) => {
+  console.log(pets);
 
   return (
     <div>
-      {countries.map(country => (
-        <div key={country.code}>
+      {pets.map(pet => (
+        <div key={pet.id}>
           <h3>
-            {country.name}
+            {pet.id}
           </h3>
           <p>
-            {country.code} - {country.emoji}
+            {pet.name}
           </p>
         </div>
       ))}
