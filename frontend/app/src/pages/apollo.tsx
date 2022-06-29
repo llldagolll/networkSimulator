@@ -1,8 +1,5 @@
-import { gql } from "@apollo/client"
-import axios from "axios"
 import { genetarteQuery } from "lib/generateQuery"
 import { useState } from "react"
-import client from '../../lib/apolloClient'
 
 const query = `
   nodes {
