@@ -7,4 +7,7 @@ my senior project
 # 開発方法
  devcontainer open frontend  
  // or  
- devcontainer open backend
+ devcontainer open backend　　
+
+# ログ確認
+docker compose logs -f
