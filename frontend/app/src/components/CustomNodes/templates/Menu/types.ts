@@ -1,4 +1,4 @@
-import { CustomNode } from "@/networkSimulator/store";
+import { CustomNode } from "@/store";
 
 export interface group {
   nodeId: string;

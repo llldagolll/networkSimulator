@@ -1,4 +1,4 @@
-import useStore from '@/networkSimulator/store';
+import useStore from '@/store';
 import { Group } from './Group';
 import { group } from './types';
 import { UnGroup } from './UnGroup';

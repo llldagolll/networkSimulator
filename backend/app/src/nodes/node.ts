@@ -36,29 +36,31 @@ export class Node {
   @Field()
   outboundPort?: string
 
+
+  @Field()
+  parentNode?: string;
+
+
+  @Field()
+  expandParent?: boolean;
+
   @Field()
   targetPosition?: Position;
 
   @Field()
   sourcePosition?: Position;
 
-  @Field()
-  width?: number | null;
+  // @Field()
+  // width?: number | null;
 
-  @Field()
-  height?: number | null;
+  // @Field()
+  // height?: number | null;
 
-  @Field()
-  parentNode?: string;
+  // @Field()
+  // positionAbsolute?: XYPosition;
 
-  @Field()
-  zIndex?: number;
-
-  @Field()
-  expandParent?: boolean;
-
-  @Field()
-  positionAbsolute?: XYPosition;
+  // @Field()
+  // zIndex?: number;
 
   // @Field()
   // extent?: 'parent' | CoordinateExtent

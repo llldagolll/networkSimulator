@@ -27,14 +27,10 @@ type Node {
   responsePort: String!
   inboundPort: String!
   outboundPort: String!
+  parentNode: String!
+  expandParent: Boolean!
   targetPosition: String!
   sourcePosition: String!
-  width: Float!
-  height: Float!
-  parentNode: String!
-  zIndex: Float!
-  expandParent: Boolean!
-  positionAbsolute: XYPosition!
 }
 
 type Query {

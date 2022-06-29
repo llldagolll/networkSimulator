@@ -1,10 +1,10 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import ReactFlow, { ReactFlowProvider, Controls } from "react-flow-renderer";
 import styles from './Simulator.module.css'
-import useGenerateFormValue from "../lib/generateFormValue";
+import useGenerateFormValue from "../../../lib/generateFormValue";
 import { NewNode } from "./types";
 import { CustomNodeTypes } from "./CustomNodeTypes";
-import useStore from "../store";
+import useStore from "../../store";
 
 
 

@@ -1,4 +1,4 @@
-import useStore from "../store"
+import useStore from "../../store"
 
 export const Label = ({ data }) => {
   const { setFocusNode, setToggleForm } = useStore()

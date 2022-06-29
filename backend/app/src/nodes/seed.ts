@@ -12,7 +12,9 @@ export const nodeState = [
       id: '0',
       type: 'Client',
       label: '0 Client',
-    }
+    },
+    requestPort: '80',
+    responsePort: '80',
   },
   {
     id: '1',
@@ -25,7 +27,9 @@ export const nodeState = [
       id: '1',
       type: 'Lan',
       label: '1 Lan',
-    }
+    },
+    inboundPort: '80',
+    outboundPort: '80',
   },
   {
     id: '2',
@@ -38,6 +42,8 @@ export const nodeState = [
       id: '2',
       type: 'Web',
       label: '2 Web',
-    }
+    },
+    requestPort: '80',
+    responsePort: '80',
   },
 ]

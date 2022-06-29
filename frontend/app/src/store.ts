@@ -12,8 +12,8 @@ import {
   Connection,
 } from "react-flow-renderer";
 import create from "zustand";
-import { Form } from "./Sidebar/Sidebar";
-import { initialNodes, initialEdges, initialLans } from "./Simulator/initial";
+import { Form } from "./components/Sidebar/Sidebar";
+import { initialNodes, initialEdges, initialLans } from "./components/Simulator/initial";
 
 export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan'
 
