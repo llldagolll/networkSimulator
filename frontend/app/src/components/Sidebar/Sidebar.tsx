@@ -20,7 +20,7 @@ export interface Form {
 
 const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
-  const { showForm, setToggleForm, focusNode, submitForm, nodes } = useStore()
+  const { showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
 
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
