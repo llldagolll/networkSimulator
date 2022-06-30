@@ -2,12 +2,11 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { RecipesModule } from './recipes/recipes.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { NodesModule } from './nodes/nodes.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
-import { NodesResolver } from './nodes/nodes.resolver';
-import { PetsModule } from './pets/pets.module';
+import { CatsModule } from './cats/cats.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -21,10 +20,10 @@ import { PetsModule } from './pets/pets.module';
         Credentials: true,
       }
     }),
-    RecipesModule,
+    MongooseModule.forRoot('mongodb://nobuya:nbadmin@networksimulator-mongo-1:27017/test'),
     MyLoggerModule,
     NodesModule,
-    PetsModule,
+    // CatsModule,
   ],
   providers: [
     AppService,

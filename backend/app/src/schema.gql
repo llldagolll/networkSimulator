@@ -2,11 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Recipe {
-  id: ID!
-  title: String!
-}
-
 type XYPosition {
   x: Float!
   y: Float!
@@ -33,14 +28,6 @@ type Node {
   sourcePosition: String!
 }
 
-type Pet {
-  id: Int!
-  name: String!
-  type: String
-}
-
 type Query {
-  recipes: [Recipe!]!
   nodes: [Node!]!
-  pets: [Pet!]!
 }
