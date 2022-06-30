@@ -23,7 +23,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forRoot('mongodb://nobuya:nbadmin@networksimulator-mongo-1:27017/test'),
     MyLoggerModule,
     NodesModule,
-    // CatsModule,
+    CatsModule,
   ],
   providers: [
     AppService,
