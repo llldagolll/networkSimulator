@@ -33,7 +33,14 @@ type Node {
   sourcePosition: String!
 }
 
+type Pet {
+  id: Int!
+  name: String!
+  type: String
+}
+
 type Query {
   recipes: [Recipe!]!
   nodes: [Node!]!
+  pets: [Pet!]!
 }
