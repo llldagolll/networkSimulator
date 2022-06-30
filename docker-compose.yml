@@ -3,7 +3,7 @@ services:
   frontend-senior-project:
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "${FRONTEND}:${FRONTEND}"
     volumes:
       - ./frontend/app:/app:cached
     environment:
@@ -11,8 +11,17 @@ services:
   backend-senior-project:
     build: ./backend
     ports:
-      - "5000:5000"
+      - "${BACKEND}:${BACKEND}"
     volumes:
       - ./backend/app:/app:cached
     environment:
       ENV NODE_ENV: development
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017/
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
