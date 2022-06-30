@@ -24,6 +24,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+          - db_data:/data/db
   mongo-express:
     image: mongo-express
     restart: always
