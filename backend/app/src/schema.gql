@@ -2,29 +2,47 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type XYPosition {
-  x: Float!
-  y: Float!
-}
-
-type Data {
-  id: String!
-  type: String!
-  label: String!
-}
-
 type Node {
-  id: ID!
-  position: XYPosition!
-  data: Data!
+  """user id"""
+  userId: String!
+
+  """user name"""
+  username: String!
+
+  """node id"""
+  id: String!
+
+  """position"""
+  position: String!
+
+  """label"""
+  data: String!
+
+  """node type"""
   type: String!
+
+  """request port"""
   requestPort: String!
+
+  """response port"""
   responsePort: String!
+
+  """inbound port"""
   inboundPort: String!
+
+  """outbound port"""
   outboundPort: String!
+
+  """parentNode """
   parentNode: String!
-  expandParent: Boolean!
+
+  """expand parent"""
+  expandParent: String!
+
+  """target position"""
   targetPosition: String!
+
+  """source position"""
   sourcePosition: String!
 }
 
@@ -39,21 +57,22 @@ type Blog {
 }
 
 type Query {
-  nodes: [Node!]!
+  node(userId: String!): Node!
   blog(_id: String!): Blog!
 }
 
 type Mutation {
-  createBlog(createBlogInput: CreateBlogInput!): Blog!
+  createNode(createNodeInput: CreateNodeInput!): Node!
   update(updateBlogInput: UpdateBlogInput!): Blog!
+  createBlog(createBlogInput: CreateBlogInput!): Blog!
 }
 
-input CreateBlogInput {
-  """Blog Title"""
-  title: String!
+input CreateNodeInput {
+  """user id"""
+  userId: String!
 
-  """Blog Description"""
-  description: String!
+  """user name"""
+  username: String!
 }
 
 input UpdateBlogInput {
@@ -63,4 +82,12 @@ input UpdateBlogInput {
   """Blog Description"""
   description: String
   _id: String!
+}
+
+input CreateBlogInput {
+  """Blog Title"""
+  title: String!
+
+  """Blog Description"""
+  description: String!
 }

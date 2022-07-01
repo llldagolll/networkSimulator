@@ -1,10 +1,6 @@
 import { Field, ObjectType, registerEnumType } from "@nestjs/graphql";
 import { Prop, SchemaFactory } from "@nestjs/mongoose";
-import {
-  Data,
-  Position,
-  XYPosition,
-} from '../types'
+import { Position, XYPosition, Data } from "./types";
 
 
 registerEnumType(Position, {
@@ -136,5 +132,6 @@ export class Node {
 
 }
 
+export type NodeDocument = Node & Document;
 
 export const NodeSchema = SchemaFactory.createForClass(Node);

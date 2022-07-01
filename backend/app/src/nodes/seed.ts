@@ -2,6 +2,8 @@
 
 export const nodeState = [
   {
+    userId: 'faoe',
+    username: 'nobu',
     id: '0',
     type: 'Client',
     position: {
@@ -17,6 +19,8 @@ export const nodeState = [
     responsePort: '80',
   },
   {
+    userId: 'fe;ahefa',
+    username: 'hiyori',
     id: '1',
     type: 'Lan',
     position: {
@@ -32,6 +36,8 @@ export const nodeState = [
     outboundPort: '80',
   },
   {
+    userId: 'ffeiahfealh',
+    username: 'wow',
     id: '2',
     type: 'Web',
     position: {

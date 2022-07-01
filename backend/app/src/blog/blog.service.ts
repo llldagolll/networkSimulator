@@ -46,7 +46,7 @@ export class BlogService {
   }
 
 
-  update(id: string, UpdateBlogInput: UpdateBlogInput) {
+  update(id: string, updateBlogInput: UpdateBlogInput) {
     return `This action updates a #${id} blog`;
   }
 
