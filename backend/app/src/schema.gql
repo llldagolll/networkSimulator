@@ -28,6 +28,39 @@ type Node {
   sourcePosition: String!
 }
 
+type Blog {
+  _id: String!
+
+  """Blog Title"""
+  title: String!
+
+  """Blog Description"""
+  description: String!
+}
+
 type Query {
   nodes: [Node!]!
+  blog(_id: String!): Blog!
+}
+
+type Mutation {
+  createBlog(createBlogInput: CreateBlogInput!): Blog!
+  update(updateBlogInput: UpdateBlogInput!): Blog!
+}
+
+input CreateBlogInput {
+  """Blog Title"""
+  title: String!
+
+  """Blog Description"""
+  description: String!
+}
+
+input UpdateBlogInput {
+  """Blog Title"""
+  title: String
+
+  """Blog Description"""
+  description: String
+  _id: String!
 }

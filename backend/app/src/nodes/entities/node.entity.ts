@@ -3,7 +3,7 @@ import {
   Data,
   Position,
   XYPosition,
-} from './types'
+} from '../types'
 
 
 registerEnumType(Position, {

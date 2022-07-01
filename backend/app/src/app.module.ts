@@ -7,6 +7,7 @@ import { NodesModule } from './nodes/nodes.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
 import { CatsModule } from './cats/cats.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     MyLoggerModule,
     NodesModule,
     CatsModule,
+    BlogModule,
   ],
   providers: [
     AppService,
