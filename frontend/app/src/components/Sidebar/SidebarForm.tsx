@@ -14,18 +14,16 @@ export const SidebarForm = ({
 
   let Form
 
+
+
   switch (type) {
-    case 'Client':
-    case 'Web': {
-      Form = <ReqResForm type={type} nodeId={id} register={register} />
-      break
-    }
     case 'Lan':
     case 'Gateway': {
       Form = <InboundOutboundForm type={type} nodeId={id} register={register} />
       break;
     }
     default:
+      Form = <ReqResForm type={type} nodeId={id} register={register} />
       break;
   }
 

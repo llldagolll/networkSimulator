@@ -1,9 +1,13 @@
 
 export type NewNode = {
-  id: any,
-  type: any,
-  position: any,
-  data: any
+  id: string,
+  type: string,
+  position: { x: number, y: number },
+  data: {
+    label: string,
+    id: string,
+    type: string,
+  }
   style?: any,
 }
 

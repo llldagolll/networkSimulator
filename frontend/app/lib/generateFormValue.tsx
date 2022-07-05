@@ -16,30 +16,23 @@ const useGenerateFormValue = ({
   outboundPort = '',
 }: Form) => {
 
-  let formValue = {}
+  const formValue: Form = {
+    id,
+    type,
+  }
 
   switch (type) {
-    case 'Client':
-    case 'Web': {
-      formValue = {
-        id,
-        type,
-        requestPort,
-        responsePort,
-      }
-      break;
-    }
     case 'Lan':
     case 'Gateway': {
-      formValue = {
-        id,
-        type,
-        inboundPort,
-        outboundPort,
-      }
+      formValue.inboundPort = inboundPort;
+      formValue.outboundPort = outboundPort;
       break;
     }
-    default: throw new Error();
+    default: {
+      formValue.requestPort = requestPort;
+      formValue.responsePort = responsePort;
+      break;
+    }
 
   }
 

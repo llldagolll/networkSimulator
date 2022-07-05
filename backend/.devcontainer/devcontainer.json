@@ -5,5 +5,12 @@
   ],
   "service": "backend-senior-project",
   "workspaceFolder": "/app",
-  "shutdownAction": "stopCompose"
+"shutdownAction": "stopCompose",
+"customizations": {
+	"vscode": {
+		"extensions": [
+			"rangav.vscode-thunder-client"
+		]
+	}
+}
 }
