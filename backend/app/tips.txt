@@ -1,0 +1,12 @@
+
+# データをDBにいれたいときはplayground でmutationを実行する
+mutation {
+  createBlog(createBlogInput:
+    {
+      title: "first", 
+    description: "first post"}
+  ) {
+    title
+    description
+  }
+}

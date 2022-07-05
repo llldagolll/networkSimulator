@@ -1,6 +1,7 @@
 import { NodeInSidebar } from "./atom/NodesInSidebar"
 import { TemplateSidebar } from "./atom/TemplateSidebar"
 import styles from './Sidebar.module.css'
+import { CustomNodeTypes } from "../Simulator/CustomNodeTypes"
 
 export const AddNode = ({ sidebarStyle, onClick }) => {
   return (
@@ -9,10 +10,12 @@ export const AddNode = ({ sidebarStyle, onClick }) => {
       <div className={styles.description}>
         You can drag these nodes to the pane on the right
       </div>
-      <NodeInSidebar nodeName='Gateway' />
-      <NodeInSidebar nodeName='Client' />
-      <NodeInSidebar nodeName='Lan' />
-      <NodeInSidebar nodeName='Web' />
+      {
+        Object.keys(CustomNodeTypes)
+          .map(
+            node => <NodeInSidebar key={node} nodeName={node} />
+          )
+      }
     </TemplateSidebar>
 
   )

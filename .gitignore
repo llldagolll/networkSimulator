@@ -26,6 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -43,4 +44,6 @@ package-lock.json
 /log/*
 *.log
 
+# db directory
+>>>>>>> 2599d208111d8c9e5d79eedccf9c4f050231712d
 db/
