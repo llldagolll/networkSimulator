@@ -1,5 +1,6 @@
-export { default as ClientNode } from './ClientNode';
-export { default as GatewayNode } from './GatewayNode';
-export { default as WebNode } from './WebNode';
-export { default as LanNode } from './LanNode';
-export { default as DatabaseNode } from './DatabaseNode';
+export { default as Client } from './Client';
+export { default as Gateway } from './Gateway';
+export { default as Web } from './Web';
+export { default as Lan } from './Lan';
+export { default as Database } from './Database';
+export { default as LoadBalancer } from './LoadBalancer';

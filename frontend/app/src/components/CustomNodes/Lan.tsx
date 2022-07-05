@@ -1,7 +1,7 @@
 import { Label } from "./Label";
 import TemplateNode from "./templates/TemplateNode";
 
-const LanNode = ({ data }) => {
+const Lan = ({ data }) => {
   return (
     <TemplateNode
       data={data}
@@ -11,4 +11,4 @@ const LanNode = ({ data }) => {
   );
 }
 
-export default LanNode
+export default Lan
