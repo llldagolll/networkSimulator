@@ -11,9 +11,10 @@ export const AddNode = ({ sidebarStyle, onClick }) => {
         You can drag these nodes to the pane on the right
       </div>
       {
-        Object.keys(CustomNodeTypes).map(
-          node => <NodeInSidebar key={node} nodeName={node} />
-        )
+        Object.keys(CustomNodeTypes)
+          .map(
+            node => <NodeInSidebar key={node} nodeName={node} />
+          )
       }
     </TemplateSidebar>
 
