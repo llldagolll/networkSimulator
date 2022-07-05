@@ -42,3 +42,5 @@ package-lock.json
 # log file
 /log/*
 *.log
+
+db/
