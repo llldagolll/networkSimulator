@@ -13,6 +13,7 @@ export const AddNode = ({ sidebarStyle, onClick }) => {
       <NodeInSidebar nodeName='Client' />
       <NodeInSidebar nodeName='Lan' />
       <NodeInSidebar nodeName='Web' />
+      <NodeInSidebar nodeName='Database' />
     </TemplateSidebar>
 
   )
