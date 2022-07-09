@@ -1,3 +1,4 @@
+import { NodeStyle } from "lib/Style"
 
 export type NewNode = {
   id: string,
@@ -8,6 +9,7 @@ export type NewNode = {
     id: string,
     type: string,
   }
-  style?: any,
+  style?: NodeStyle,
+  zindex?: number
 }
 

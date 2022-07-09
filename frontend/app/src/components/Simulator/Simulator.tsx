@@ -2,23 +2,11 @@ import { useRef, useState, useCallback } from 'react';
 import ReactFlow, { ReactFlowProvider, Controls } from 'react-flow-renderer';
 import useGenerateFormValue from 'lib/generateFormValue';
 import styles from './Simulator.module.css'
-import { NewNode } from './types';
 import { CustomNodeTypes } from './CustomNodeTypes';
 import useStore from '@/store';
+import { generateNewNode } from 'lib/generateNewNode';
 
 
-interface Style {
-  padding: number;
-  borderRadius: number;
-  borderWidth: number;
-  borderStyle: string;
-  borderColor: string;
-  fontSize: string;
-  color?: string;
-  textAlign?: string
-  width?: string;
-  height?: string;
-}
 
 let id = 0;
 const generateId = () => `${id++}`;
@@ -63,46 +51,7 @@ const Simulator = () => {
       });
 
       const id = generateId()
-
-      const baseStyle: Style = {
-        padding: 10,
-        borderRadius: 3,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#1a192b',
-        fontSize: '12px',
-        color: '#222',
-      }
-
-      const nodeStyle = {
-        ...baseStyle,
-        width: '60px',
-        background: '#fff',
-        textAlign: 'center',
-      }
-
-      const lanStyle = {
-        ...baseStyle,
-        width: '150px',
-        height: '200px',
-        background: 'rgba(255,0,0,0.2)'
-      }
-
-      let style
-      type === 'Lan' ? style = lanStyle : style = nodeStyle
-
-      const newNode: NewNode = {
-        id,
-        type,
-        data: {
-          label: `${id} ${type}`,
-          type,
-          id,
-        },
-        position,
-        style,
-      }
-
+      const newNode = generateNewNode({ id, type, position })
       const defaultFormValue = useGenerateFormValue({ id, type })
 
       sessionStorage.setItem(`${id}`, JSON.stringify(defaultFormValue))
