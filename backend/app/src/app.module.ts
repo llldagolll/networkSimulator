@@ -5,9 +5,9 @@ import { AppService } from './app.service';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { NodesModule } from './nodes/nodes.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
-import { CatsModule } from './cats/cats.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BlogModule } from './blog/blog.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,9 +23,9 @@ import { BlogModule } from './blog/blog.module';
     }),
     MongooseModule.forRoot('mongodb://nobuya:nbadmin@networksimulator-mongo-1:27017/test'),
     MyLoggerModule,
-    NodesModule,
-    CatsModule,
     BlogModule,
+    UsersModule,
+    NodesModule,
   ],
   providers: [
     AppService,

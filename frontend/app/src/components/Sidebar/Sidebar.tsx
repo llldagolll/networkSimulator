@@ -18,7 +18,7 @@ export interface Form {
 
 
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
@@ -47,7 +47,6 @@ const Sidebar = () => {
       default:
         break;
     }
-    // TODO: 最終的にこうしたい
     submitForm(Form)
   }
 
@@ -61,24 +60,27 @@ const Sidebar = () => {
         </span>
         {
           showForm
-            ? <SidebarForm
-              id={id}
-              type={type}
-              onSubmit={handleSubmit(onSubmit)}
-              onClick={setToggleSidebar}
-              setToggleForm={setToggleForm}
-              register={register}
-              sidebarStyle={sidebarStyle}
-            />
-            : <AddNode
-              sidebarStyle={sidebarStyle}
-              onClick={setToggleSidebar}
-            />
+            ?
+            <>
+              <SidebarForm
+                id={id}
+                type={type}
+                onSubmit={handleSubmit(onSubmit)}
+                onClick={setToggleSidebar}
+                setToggleForm={setToggleForm}
+                register={register}
+                sidebarStyle={sidebarStyle}
+              />
+            </>
+            :
+            <>
+              <AddNode
+                sidebarStyle={sidebarStyle}
+                onClick={setToggleSidebar}
+              />
+            </>
         }
-
       </div>
     </>
   )
 }
-
-export default Sidebar

@@ -1,34 +1,39 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateNodeInput } from './dto/create-node.input';
-import { UpdateNodeInput } from './dto/update-node-input';
-import { Node } from './entities/node.entity';
+import { GetNodeArgs } from './dto/args/get-node.args';
+import { GetNodesArgs } from './dto/args/get-nodes.args';
+import { CreateNodeInput } from './dto/input/create-node.input';
+import { DeleteNodeInput } from './dto/input/delete-node.input';
+import { UpdateNodeInput } from './dto/input/update-node.input';
+import { Node } from './model/node'
 import { NodesService } from './nodes.service';
 
-
-
-@Resolver()
+@Resolver(() => Node)
 export class NodesResolver {
   constructor(private readonly nodesService: NodesService) { }
 
-
-  @Mutation(() => Node)
-  createNode(@Args('createNodeInput') createNodeInput: CreateNodeInput) {
-    return this.nodesService.create(createNodeInput)
+  @Query(() => Node, { name: 'node', nullable: true })
+  getNode(@Args() getNodeArgs: GetNodeArgs): Node {
+    return this.nodesService.getNode(getNodeArgs);
   }
 
-  @Query(() => [Node], { name: 'node' })
-  findAll() {
-    return this.nodesService.findAll();
-  }
-
-  @Query(() => Node, { name: 'node' })
-  findOne(@Args('userId', { type: () => String }) userId: string) {
-    return this.nodesService.findOne(userId);
+  @Query(() => [Node], { name: 'nodes', nullable: 'items' })
+  getNodes(@Args() getNodesArgs: GetNodesArgs): Node[] {
+    return this.nodesService.getNodes(getNodesArgs);
   }
 
   @Mutation(() => Node)
-  update(@Args('updateNodeInput') updateNodeInput: UpdateNodeInput) {
-    return this.nodesService.update(updateNodeInput.userId, updateNodeInput);
+  createNode(@Args('createNodeData') createNodeData: CreateNodeInput): Node {
+    return this.nodesService.createNode(createNodeData);
+  }
+
+  @Mutation(() => Node)
+  updateNode(@Args('updateNodeData') updateNodeData: UpdateNodeInput): Node {
+    return this.nodesService.updateNode(updateNodeData)
+  }
+
+  @Mutation(() => Node)
+  deleteNode(@Args('deleteNodeData') deleteNodeData: DeleteNodeInput): Node {
+    return this.nodesService.deleteNode(deleteNodeData)
   }
 
 }

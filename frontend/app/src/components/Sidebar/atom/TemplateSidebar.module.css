@@ -1,4 +1,6 @@
 .sidebar {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 0;  
   position: fixed;
@@ -24,4 +26,9 @@
   outline: none;
   color: #1a192b;
   background: rgb(214, 212, 211);
+}
+
+
+.btn {
+  margin-top: auto;
 }

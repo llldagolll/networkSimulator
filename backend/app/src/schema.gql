@@ -10,40 +10,40 @@ type Node {
   username: String!
 
   """node id"""
-  id: String!
+  id: String
 
   """position"""
-  position: String!
+  position: String
 
   """label"""
-  data: String!
+  data: String
 
   """node type"""
-  type: String!
+  type: String
 
   """request port"""
-  requestPort: String!
+  requestPort: String
 
   """response port"""
-  responsePort: String!
+  responsePort: String
 
   """inbound port"""
-  inboundPort: String!
+  inboundPort: String
 
   """outbound port"""
-  outboundPort: String!
+  outboundPort: String
 
   """parentNode """
-  parentNode: String!
+  parentNode: String
 
   """expand parent"""
-  expandParent: String!
+  expandParent: String
 
   """target position"""
-  targetPosition: String!
+  targetPosition: String
 
   """source position"""
-  sourcePosition: String!
+  sourcePosition: String
 }
 
 type Blog {
@@ -56,23 +56,38 @@ type Blog {
   description: String!
 }
 
+type User {
+  userId: String!
+  email: String!
+  age: Int!
+  isSubsceribed: Boolean
+}
+
 type Query {
-  node(userId: String!): Node!
   blog(_id: String!): Blog!
+  user(userId: String!): User
+  users(userIds: [String!]!): [User]!
+  node(userId: String!): Node
+  nodes(userIds: [String!]!): [Node]!
 }
 
 type Mutation {
-  createNode(createNodeInput: CreateNodeInput!): Node!
-  update(updateBlogInput: UpdateBlogInput!): Blog!
   createBlog(createBlogInput: CreateBlogInput!): Blog!
+  update(updateBlogInput: UpdateBlogInput!): Blog!
+  createUser(createUserData: CreateUserInput!): User!
+  updateUser(updateUserData: UpdateUserInput!): User!
+  deleteUser(deleteUserData: DeleteUserInput!): User!
+  createNode(createNodeData: CreateNodeInput!): Node!
+  updateNode(updateNodeData: UpdateNodeInput!): Node!
+  deleteNode(deleteNodeData: DeleteNodeInput!): Node!
 }
 
-input CreateNodeInput {
-  """user id"""
-  userId: String!
+input CreateBlogInput {
+  """Blog Title"""
+  title: String!
 
-  """user name"""
-  username: String!
+  """Blog Description"""
+  description: String!
 }
 
 input UpdateBlogInput {
@@ -84,10 +99,65 @@ input UpdateBlogInput {
   _id: String!
 }
 
-input CreateBlogInput {
-  """Blog Title"""
-  title: String!
+input CreateUserInput {
+  email: String!
+  age: Float!
+}
 
-  """Blog Description"""
-  description: String!
+input UpdateUserInput {
+  userId: String!
+  age: Float!
+  isSubscribed: Boolean
+}
+
+input DeleteUserInput {
+  userId: String!
+}
+
+input CreateNodeInput {
+  username: String!
+}
+
+input UpdateNodeInput {
+  userId: String!
+
+  """node id"""
+  id: String
+
+  """position"""
+  position: String
+
+  """label"""
+  data: String
+
+  """node type"""
+  type: String
+
+  """request port"""
+  requestPort: String
+
+  """response port"""
+  responsePort: String
+
+  """inbound port"""
+  inboundPort: String
+
+  """outbound port"""
+  outboundPort: String
+
+  """parentNode """
+  parentNode: String
+
+  """expand parent"""
+  expandParent: String
+
+  """target position"""
+  targetPosition: String
+
+  """source position"""
+  sourcePosition: String
+}
+
+input DeleteNodeInput {
+  userId: String!
 }
