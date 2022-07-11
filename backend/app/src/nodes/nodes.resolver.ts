@@ -12,27 +12,27 @@ export class NodesResolver {
   constructor(private readonly nodesService: NodesService) { }
 
   @Query(() => Node, { name: 'node', nullable: true })
-  getNode(@Args() getNodeArgs: GetNodeArgs): Node {
+  getNode(@Args() getNodeArgs: GetNodeArgs) {
     return this.nodesService.getNode(getNodeArgs);
   }
 
   @Query(() => [Node], { name: 'nodes', nullable: 'items' })
-  getNodes(@Args() getNodesArgs: GetNodesArgs): Node[] {
-    return this.nodesService.getNodes(getNodesArgs);
+  getNodes() {
+    return this.nodesService.getNodes();
   }
 
   @Mutation(() => Node)
-  createNode(@Args('createNodeData') createNodeData: CreateNodeInput): Node {
+  createNode(@Args('createNodeData') createNodeData: CreateNodeInput) {
     return this.nodesService.createNode(createNodeData);
   }
 
   @Mutation(() => Node)
-  updateNode(@Args('updateNodeData') updateNodeData: UpdateNodeInput): Node {
+  updateNode(@Args('updateNodeData') updateNodeData: UpdateNodeInput) {
     return this.nodesService.updateNode(updateNodeData)
   }
 
   @Mutation(() => Node)
-  deleteNode(@Args('deleteNodeData') deleteNodeData: DeleteNodeInput): Node {
+  deleteNode(@Args('deleteNodeData') deleteNodeData: DeleteNodeInput) {
     return this.nodesService.deleteNode(deleteNodeData)
   }
 
