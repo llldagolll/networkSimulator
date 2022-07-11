@@ -9,11 +9,11 @@ registerEnumType(Position, {
 
 @ObjectType()
 export class Node {
-  @Field(() => String, { description: 'user id' })
+  @Field({ description: 'user id', nullable: true })
   userId: string;
 
   @Prop()
-  @Field(() => String, { description: 'user name' })
+  @Field({ description: 'user name', nullable: true })
   username: string;
 
 
@@ -132,3 +132,5 @@ export class Node {
 
 }
 
+
+export const NodeSchema = SchemaFactory.createForClass(Node);
