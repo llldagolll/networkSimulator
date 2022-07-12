@@ -12,7 +12,6 @@ export const SidebarForm = ({
   let Form
 
 
-
   switch (type) {
     case 'Lan':
     case 'Gateway': {
@@ -35,7 +34,6 @@ export const SidebarForm = ({
         {Form}
         <button type='submit' hidden />
       </form>
-      <button className={styles['modal-button']} onClick={setToggleForm}>Back</button>
     </>
   )
 }

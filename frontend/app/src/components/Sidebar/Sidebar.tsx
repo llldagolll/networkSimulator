@@ -20,7 +20,7 @@ export interface Form {
 
 export const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
-  const { showForm, setToggleForm, focusNode, submitForm, } = useStore()
+  const { nodes, edges, showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
 
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
@@ -52,8 +52,15 @@ export const Sidebar = () => {
 
   const submitAnswer = (e: React.MouseEvent) => {
     e.preventDefault()
-    console.log(`hello, your answer`);
+    const username = sessionStorage.getItem('username')
 
+    const ans = {
+      [username]: {
+        nodes: [nodes],
+        edges: [edges],
+      }
+    }
+    console.log(ans);
   }
 
 
