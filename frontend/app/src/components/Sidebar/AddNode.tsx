@@ -1,12 +1,14 @@
 import { NodeInSidebar } from "./atom/NodesInSidebar"
-import { TemplateSidebar } from "./atom/TemplateSidebar"
 import styles from './Sidebar.module.css'
 import { CustomNodeTypes } from "../Simulator/CustomNodeTypes"
 
-export const AddNode = ({ sidebarStyle, onClick }) => {
+export const AddNode = ({ setToggleSidebar }) => {
   return (
 
-    <TemplateSidebar sidebarStyle={sidebarStyle} onClick={onClick}>
+    <>
+      <button onClick={setToggleSidebar} className={styles['close-sidebar']}>
+        &times;
+      </button>
       <div className={styles.description}>
         You can drag these nodes to the pane on the right
       </div>
@@ -16,7 +18,7 @@ export const AddNode = ({ sidebarStyle, onClick }) => {
             node => <NodeInSidebar key={node} nodeName={node} />
           )
       }
-    </TemplateSidebar>
+    </>
 
   )
 }

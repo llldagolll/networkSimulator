@@ -40,8 +40,8 @@ type RFState = {
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
-  setNodes: (newNode: Node) => void;
-  setLans: (newLan: Node) => void;
+  setNodes: (newNode: CustomNode) => void;
+  setLans: (newLan: CustomNode) => void;
   isGroup: (nodeId) => boolean;
   setGroup: (any) => void
   unSetGroup: (any) => void
@@ -53,15 +53,11 @@ type RFState = {
 
 const addExpandParentProperty = (lan) => {
   lan.expandParent = true
-  console.log(lan);
-
 }
 const addParentNodeProperty = ({ node, lanId }) => {
   node.parentNode = lanId
   node.extent = 'parent'
   node.position = { x: 15, y: 65 }
-  console.log(node);
-
 }
 
 
@@ -142,7 +138,7 @@ const useStore = create<RFState>((set, get) => ({
     set({
       nodes: get().nodes.map(node => node.id === Form.id ? Object.assign(node, Form) : node)
     })
-  }
+  },
 }))
 
 

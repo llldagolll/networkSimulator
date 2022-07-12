@@ -50,6 +50,11 @@ export const Sidebar = () => {
     submitForm(Form)
   }
 
+  const submitAnswer = (e: React.MouseEvent) => {
+    e.preventDefault()
+    console.log(`hello, your answer`);
+
+  }
 
 
   return (
@@ -58,28 +63,24 @@ export const Sidebar = () => {
         <span onClick={setToggleSidebar} className={styles['toggle-sidebar']}>
           &#9776;
         </span>
-        {
-          showForm
-            ?
-            <>
+        <div className={styles.sidebar} style={sidebarStyle}>
+          {
+            showForm
+              ?
               <SidebarForm
                 id={id}
                 type={type}
                 onSubmit={handleSubmit(onSubmit)}
-                onClick={setToggleSidebar}
                 setToggleForm={setToggleForm}
                 register={register}
-                sidebarStyle={sidebarStyle}
               />
-            </>
-            :
-            <>
+              :
               <AddNode
-                sidebarStyle={sidebarStyle}
-                onClick={setToggleSidebar}
+                setToggleSidebar={setToggleSidebar}
               />
-            </>
-        }
+          }
+          <button className={styles.btn} onClick={submitAnswer}>回答</button>
+        </div>
       </div>
     </>
   )

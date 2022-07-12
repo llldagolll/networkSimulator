@@ -1,5 +1,4 @@
 import { ReqResForm, InboundOutboundForm } from "./atom/ModalFormParts"
-import { TemplateSidebar } from "./atom/TemplateSidebar"
 import styles from './Sidebar.module.css'
 
 
@@ -8,8 +7,6 @@ export const SidebarForm = ({
   type,
   onSubmit,
   register,
-  onClick,
-  sidebarStyle,
   setToggleForm }) => {
 
   let Form
@@ -28,13 +25,17 @@ export const SidebarForm = ({
   }
 
   return (
-    <TemplateSidebar sidebarStyle={sidebarStyle} onClick={onClick}>
+    <>
+      <button onClick={setToggleForm} className={styles['close-sidebar']}>
+        &times;
+      </button>
+
       <p>{id}</p>
       <form action="" onSubmit={onSubmit}>
         {Form}
         <button type='submit' hidden />
       </form>
       <button className={styles['modal-button']} onClick={setToggleForm}>Back</button>
-    </TemplateSidebar>
+    </>
   )
 }
