@@ -1,3 +1,4 @@
+import { setFormValue } from "lib/setFormValue";
 import {
   Node,
   Edge,
@@ -23,12 +24,11 @@ export interface CustomNode extends Node {
     id: string,
     type: string,
     label: string,
+    requestPort?: string,
+    responsePort?: string,
+    inboundPort?: string,
+    outboundPort?: string,
   };
-  requestPort?: string
-  responsePort?: string
-  inboundPort?: string
-  outboundPort?: string
-
 }
 
 type RFState = {
@@ -136,7 +136,7 @@ const useStore = create<RFState>((set, get) => ({
   },
   submitForm: (Form) => {
     set({
-      nodes: get().nodes.map(node => node.id === Form.id ? Object.assign(node, Form) : node)
+      nodes: get().nodes.map(node => node.id === Form.id ? setFormValue({ node, Form }) : node)
     })
   },
 }))

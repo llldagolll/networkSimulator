@@ -47,6 +47,8 @@ export const Sidebar = () => {
       default:
         break;
     }
+    console.log(Form);
+
     submitForm(Form)
   }
 
