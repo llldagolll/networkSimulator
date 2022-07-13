@@ -1,4 +1,4 @@
-import { Client, Gateway, Lan, Web, Database, LoadBalancer } from "../CustomNodes";
+import { Client, Gateway, Lan, Web, Database, LoadBalancer, Application } from "../CustomNodes";
 
 export const CustomNodeTypes = {
   Client,
@@ -7,4 +7,5 @@ export const CustomNodeTypes = {
   Web,
   Database,
   LoadBalancer,
+  Application,
 }

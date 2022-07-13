@@ -1,4 +1,4 @@
-import { ReqResForm, InboundOutboundForm } from "./atom/ModalFormParts"
+import { ReqResForm, InboundOutboundForm } from "./atom/SidebarFormParts"
 import styles from './Sidebar.module.css'
 
 

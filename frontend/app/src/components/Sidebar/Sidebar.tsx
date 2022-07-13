@@ -56,8 +56,7 @@ export const Sidebar = () => {
     submitForm(Form)
   }
 
-  const submitAnswer = (e: React.MouseEvent) => {
-    e.preventDefault()
+  const submitAnswer = () => {
     const username = sessionStorage.getItem('username')
 
     const ans = {
@@ -99,7 +98,7 @@ export const Sidebar = () => {
           }
           <div className={styles.bottom}>
             <CheckList />
-            <SubmitButton Loading={Loading} onClick={submitAnswer} />
+            <SubmitButton Loading={Loading} submitAnswer={submitAnswer} />
           </div>
         </div>
       </div>
