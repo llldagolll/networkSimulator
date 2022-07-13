@@ -4,6 +4,9 @@ import styles from './Sidebar.module.css'
 import { SidebarForm } from "./SidebarForm";
 import useStore from '@/store'
 import { useForm } from "react-hook-form";
+import CheckList from "./CheckList";
+import { useState } from "react";
+import SubmitButton from "./SubmitButton";
 
 
 
@@ -22,6 +25,7 @@ export const Sidebar = () => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { nodes, edges, showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
+  const [Loading, setLoading] = useState(false)
 
   let sidebarStyle = { width: showSidebar ? '30%' : '0' }
 
@@ -63,6 +67,11 @@ export const Sidebar = () => {
       }
     }
     console.log(ans);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000);
+
   }
 
 
@@ -88,7 +97,10 @@ export const Sidebar = () => {
                 setToggleSidebar={setToggleSidebar}
               />
           }
-          <button className={styles.btn} onClick={submitAnswer}>回答</button>
+          <div className={styles.bottom}>
+            <CheckList />
+            <SubmitButton Loading={Loading} onClick={submitAnswer} />
+          </div>
         </div>
       </div>
     </>
