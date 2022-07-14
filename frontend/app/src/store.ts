@@ -42,16 +42,16 @@ type RFState = {
   onConnect: OnConnect;
   setNodes: (newNode: CustomNode) => void;
   setLans: (newLan: CustomNode) => void;
-  isGroup: (nodeId) => boolean;
-  setGroup: (any) => void
-  unSetGroup: (any) => void
-  setFocusNode: (e, func) => void;
-  setToggleForm: (state) => void;
-  submitForm: (Form) => void
+  isGroup: (nodeId: string) => boolean;
+  setGroup: ({ lanId, nodeId }: { lanId: string, nodeId: string }) => void
+  unSetGroup: ({ lanId, nodeId }: { lanId: string, nodeId: string }) => void
+  setFocusNode: (e: any, func: () => void) => void;
+  setToggleForm: (state: boolean) => void;
+  submitForm: (Form: any) => void
 };
 
 
-const addExpandParentProperty = (lan) => {
+const addExpandParentProperty = (lan: CustomNode) => {
   lan.expandParent = true
 }
 const addParentNodeProperty = ({ node, lanId }) => {
@@ -61,8 +61,8 @@ const addParentNodeProperty = ({ node, lanId }) => {
 }
 
 
-const getLan = ({ get, lanId }) => get().nodes.find(node => node.id == lanId)
-const getNode = ({ get, nodeId }) => get().nodes.find(node => node.id == nodeId)
+const getLan = ({ get, lanId }) => get().nodes.find((node: { id: string; }) => node.id == lanId)
+const getNode = ({ get, nodeId }) => get().nodes.find((node: { id: string; }) => node.id == nodeId)
 
 
 const useStore = create<RFState>((set, get) => ({
