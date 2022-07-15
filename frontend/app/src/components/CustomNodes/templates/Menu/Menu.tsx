@@ -23,9 +23,9 @@ const LanMenu = ({ nodes, nodeId, unSetGroup, setToggleMenu }: group) => {
           .filter(node => node.parentNode == lanId)
           .map(node =>
             <button
-              onClick={async () => {
-                await unSetGroup({ nodeId: node.id, lanId })
-                await setToggleMenu()
+              onClick={() => {
+                unSetGroup({ nodeId: node.id, lanId })
+                setToggleMenu()
               }}
               key={node.id}
             >

@@ -3,7 +3,7 @@ import Simulator from '@/components/Simulator/Simulator'
 import { MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import type { NextPage } from 'next'
-import styles from './index.module.css'
+import styles from './simulator.module.css'
 
 const QuestionOne: NextPage = () => {
   return (

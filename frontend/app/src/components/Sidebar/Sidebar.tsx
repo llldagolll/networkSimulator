@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import CheckList from "./CheckList";
 import { useState } from "react";
 import SubmitButton from "./SubmitButton";
+import PloblemStatement from "./PloblemStatement";
 
 
 
@@ -81,6 +82,11 @@ export const Sidebar = () => {
           &#9776;
         </span>
         <div className={styles.sidebar} style={sidebarStyle}>
+          <div>
+            <PloblemStatement />
+          </div>
+          {/* <hr style={{ border: "1px solid red" }} /> */}
+
           {
             showForm
               ?

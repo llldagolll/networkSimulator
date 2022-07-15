@@ -1,7 +1,7 @@
+import { Center } from '@mantine/core'
 import type { NextPage } from 'next'
 import Router from 'next/router'
 import { useRef } from 'react'
-import styles from './index.module.css'
 
 const Signin: NextPage = () => {
   const ref: React.RefObject<HTMLInputElement> = useRef()
@@ -10,7 +10,7 @@ const Signin: NextPage = () => {
     Router.push(path)
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.MouseEvent) => {
     e.preventDefault()
     sessionStorage.setItem('username', ref.current.value)
     handler('/simulator')
@@ -18,13 +18,12 @@ const Signin: NextPage = () => {
 
 
   return (
-    <>
+    <Center style={{ height: '100vh', width: '100vw' }}>
       <form>
         <input type="text" placeholder='your name' ref={ref} />
         <button type="submit" onClick={onSubmit} hidden />
       </form>
-      <br />
-    </>
+    </Center>
   )
 }
 
