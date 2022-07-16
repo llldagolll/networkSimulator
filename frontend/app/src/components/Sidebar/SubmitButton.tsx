@@ -1,8 +1,9 @@
 import { useModals } from "@mantine/modals"
 import { ArrowUpCircle } from "tabler-icons-react"
 import { Button, Text } from '@mantine/core';
+import Router from "next/router";
 
-const SubmitButton = ({ Loading, submitAnswer }) => {
+const SubmitButton = ({ Loading, submitAnswer, path }) => {
   const modals = useModals()
 
   const openSubmitModal = () => modals.openConfirmModal({
@@ -14,7 +15,7 @@ const SubmitButton = ({ Loading, submitAnswer }) => {
     ),
     labels: { confirm: '次の問題へ', cancel: '解きなおす' },
     onCancel: () => console.log('Cancel'),
-    onConfirm: () => console.log('Submit'),
+    onConfirm: () => Router.push(path),
   });
 
   const onClick = (e: React.MouseEvent) => {
@@ -30,7 +31,6 @@ const SubmitButton = ({ Loading, submitAnswer }) => {
       {Loading ?
         <Button
           leftIcon={<ArrowUpCircle size={14} />}
-          onClick={onClick}
           fullWidth
           loading
         >

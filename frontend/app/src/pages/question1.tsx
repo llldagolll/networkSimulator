@@ -5,13 +5,13 @@ import { ModalsProvider } from '@mantine/modals'
 import type { NextPage } from 'next'
 import styles from './simulator.module.css'
 
-const QuestionOne: NextPage = () => {
+const Question: NextPage = () => {
   return (
     <MantineProvider>
       <ModalsProvider>
         <div className={styles.networkSimulator}>
           <Simulator />
-          <Sidebar />
+          <Sidebar question="question1" />
         </div>
       </ModalsProvider>
     </MantineProvider>
@@ -19,4 +19,4 @@ const QuestionOne: NextPage = () => {
 }
 
 
-export default QuestionOne
+export default Question

@@ -6,14 +6,11 @@ import { useRef } from 'react'
 const Signin: NextPage = () => {
   const ref: React.RefObject<HTMLInputElement> = useRef()
 
-  const handler = (path: string) => {
-    Router.push(path)
-  }
 
   const onSubmit = (e: React.MouseEvent) => {
     e.preventDefault()
     sessionStorage.setItem('username', ref.current.value)
-    handler('/simulator')
+    Router.push('/question1')
   }
 
 

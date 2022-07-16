@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import CheckList from "./CheckList";
 import { useState } from "react";
 import SubmitButton from "./SubmitButton";
-import PloblemStatement from "./PloblemStatement";
+import PloblemStatement from "./SidebarPloblemStatement";
 
 
 
@@ -22,7 +22,7 @@ export interface Form {
 
 
 
-export const Sidebar = () => {
+export const Sidebar = ({ question }: { question: string }) => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { nodes, edges, showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
@@ -75,6 +75,7 @@ export const Sidebar = () => {
   }
 
 
+
   return (
     <>
       <div className={styles.content}>
@@ -83,7 +84,7 @@ export const Sidebar = () => {
         </span>
         <div className={styles.sidebar} style={sidebarStyle}>
           <div>
-            <PloblemStatement />
+            <PloblemStatement question={question} />
           </div>
           {/* <hr style={{ border: "1px solid red" }} /> */}
 
@@ -104,7 +105,7 @@ export const Sidebar = () => {
           }
           <div className={styles.bottom}>
             <CheckList />
-            <SubmitButton Loading={Loading} submitAnswer={submitAnswer} />
+            <SubmitButton Loading={Loading} submitAnswer={submitAnswer} path="/question2" />
           </div>
         </div>
       </div>
