@@ -22,7 +22,7 @@ export interface Form {
 
 
 
-export const Sidebar = ({ question }: { question: string }) => {
+export const Sidebar = ({ question, nextPage }: { question: string, nextPage: string }) => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { nodes, edges, showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
@@ -105,7 +105,7 @@ export const Sidebar = ({ question }: { question: string }) => {
           }
           <div className={styles.bottom}>
             <CheckList />
-            <SubmitButton Loading={Loading} submitAnswer={submitAnswer} path="/question2" />
+            <SubmitButton Loading={Loading} submitAnswer={submitAnswer} path={nextPage} />
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const Question: NextPage = () => {
       <ModalsProvider>
         <div className={styles.networkSimulator}>
           <Simulator />
-          <Sidebar question='question2' />
+          <Sidebar question='question2' nextPage="/result" />
         </div>
       </ModalsProvider>
     </MantineProvider>

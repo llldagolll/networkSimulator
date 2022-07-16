@@ -9,7 +9,6 @@
 
 
 const SidebarPloblemStatement = ({question}: {question: string}) => {
-  // const statements = setQuestionStatements(question)
 
   return (
     <>
