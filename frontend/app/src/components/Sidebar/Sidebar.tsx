@@ -34,26 +34,20 @@ export const Sidebar = ({ question, nextPage }: { question: string, nextPage: st
 
   let Form: Form = { id, type }
 
-  const onSubmit = (dt) => {
+  const onSubmit = (dt: { [x: string]: string; }) => {
     switch (type) {
-      case 'Client':
-      case 'Web': {
-        Form.requestPort = dt[`${type}${id}requestPort`]
-        Form.responsePort = dt[`${type}${id}responsePort`]
-        break;
-      }
       case 'Gateway':
       case 'Lan': {
         Form.inboundPort = dt[`${type}${id}inboundPort`]
         Form.outboundPort = dt[`${type}${id}outboundPort`]
         break;
       }
-
-      default:
+      default: {
+        Form.requestPort = dt[`${type}${id}requestPort`]
+        Form.responsePort = dt[`${type}${id}responsePort`]
         break;
+      }
     }
-    console.log(Form);
-
     submitForm(Form)
   }
 

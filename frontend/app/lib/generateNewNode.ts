@@ -20,5 +20,6 @@ export const generateNewNode = ({ id, type, position }: { id: string, type: Cust
     style,
   }
 
-  return type === 'Lan' ? { ...newNode, zindex: 1 } : newNode
+  // return type === 'Lan' ? { ...newNode, zindex: 1 } : newNode
+  return newNode
 }

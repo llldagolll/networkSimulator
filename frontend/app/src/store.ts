@@ -16,7 +16,7 @@ import create from "zustand";
 import { Form } from "./components/Sidebar/Sidebar";
 import { initialNodes, initialEdges, initialLans } from "./components/Simulator/initial";
 
-export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan'
+export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan' | 'Application' | 'Database' | 'LoadBalancer'
 
 
 export interface CustomNode extends Node {
@@ -47,7 +47,7 @@ type RFState = {
   unSetGroup: ({ lanId, nodeId }: { lanId: string, nodeId: string }) => void
   setFocusNode: (e: any, func: () => void) => void;
   setToggleForm: (state: boolean) => void;
-  submitForm: (Form: any) => void
+  submitForm: (Form: any) => void;
 };
 
 
@@ -139,6 +139,7 @@ const useStore = create<RFState>((set, get) => ({
       nodes: get().nodes.map(node => node.id === Form.id ? setFormValue({ node, Form }) : node)
     })
   },
+
 }))
 
 

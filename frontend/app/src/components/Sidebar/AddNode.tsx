@@ -10,7 +10,7 @@ export const AddNode = ({ setToggleSidebar }) => {
         &times;
       </button>
       <div className={styles.description}>
-        You can drag these nodes to the pane on the right
+        以下の要素をドラッグ&ドロップして構成図を作成してください
       </div>
       {
         Object.keys(CustomNodeTypes)

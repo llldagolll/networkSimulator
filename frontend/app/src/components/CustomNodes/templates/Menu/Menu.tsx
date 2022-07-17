@@ -13,7 +13,7 @@ const NodeMenu = ({ props, isGroup, nodeId }) => {
   )
 }
 
-const LanMenu = ({ nodes, nodeId, unSetGroup, setToggleMenu }: group) => {
+const LanMenu = ({ nodes, nodeId, unSetGroup, setToggleMenu, }: group) => {
   const lanId = nodeId
   return (
     <>
@@ -49,7 +49,7 @@ const Menu = ({ nodeId, setToggleMenu, type }) => {
     nodeId,
     setGroup,
     unSetGroup,
-    setToggleMenu
+    setToggleMenu,
   }
 
 
