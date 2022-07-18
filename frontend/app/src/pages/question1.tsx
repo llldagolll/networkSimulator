@@ -1,6 +1,6 @@
 import { Sidebar } from '@/components/Sidebar/Sidebar'
 import Simulator from '@/components/Simulator/Simulator'
-import { questionStatements } from '@/questionStatements'
+import { question1 } from '@/questionStatements'
 import { MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import type { NextPage } from 'next'
@@ -12,7 +12,7 @@ const Question: NextPage = () => {
       <ModalsProvider>
         <div className={styles.networkSimulator}>
           <Simulator />
-          <Sidebar question={questionStatements["question1"]} nextPage="/question2" />
+          <Sidebar question={question1} nextPage="/question2" />
         </div>
       </ModalsProvider>
     </MantineProvider>

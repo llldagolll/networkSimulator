@@ -22,7 +22,7 @@ export interface Form {
 
 
 
-export const Sidebar = ({ question, nextPage }: { question: string[], nextPage: string }) => {
+export const Sidebar = ({ question, nextPage }: { question: Object, nextPage: string }) => {
   const { show: showSidebar, toggle: setToggleSidebar } = useIsShowToggle(true);
   const { nodes, edges, showForm, setToggleForm, focusNode, submitForm, } = useStore()
   const { register, handleSubmit } = useForm();
