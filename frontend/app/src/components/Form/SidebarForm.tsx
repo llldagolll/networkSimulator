@@ -1,6 +1,5 @@
 import { InboundOutboundForm, LanForm, EC2Form } from "./SidebarFormParts"
 import styles from '../Sidebar/Sidebar.module.css'
-import { NodeData } from "./interface"
 
 
 export const SidebarForm = ({

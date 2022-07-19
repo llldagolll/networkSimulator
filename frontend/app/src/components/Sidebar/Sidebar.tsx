@@ -8,7 +8,7 @@ import CheckList from "./CheckList";
 import { useState } from "react";
 import SubmitButton from "./SubmitButton";
 import PloblemStatement from "./SidebarPloblemStatement";
-import { NodeData } from "../Form/interface";
+import { FormContents } from "../Form/interface";
 
 
 
@@ -22,7 +22,7 @@ export const Sidebar = ({ question, nextPage }: { question: Object, nextPage: st
 
   const { id, type } = focusNode
 
-  let Form: NodeData = { id, type }
+  let Form: FormContents = { id, type }
 
   const onSubmit = (dt: { [x: string]: string; }) => {
     switch (type) {

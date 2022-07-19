@@ -13,15 +13,14 @@ import {
   Connection,
 } from "react-flow-renderer";
 import create from "zustand";
-import { NodeData } from "./components/Form/interface";
-import { Form } from "./components/Sidebar/Sidebar";
+import { FormContents } from "./components/Form/interface";
 import { initialNodes, initialEdges, initialLans } from "./components/Simulator/initial";
 
 export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan' | 'Application' | 'Database' | 'LoadBalancer'
 
 
 export interface CustomNode extends Node {
-  data: NodeData
+  data: FormContents
 
 }
 
@@ -29,7 +28,7 @@ type RFState = {
   nodes: CustomNode[];
   lans: CustomNode[];
   edges: Edge[];
-  focusNode: Form;
+  focusNode: FormContents;
   showForm: boolean;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;

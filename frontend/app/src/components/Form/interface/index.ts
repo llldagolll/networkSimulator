@@ -5,7 +5,7 @@ export interface FormInterface {
   register: any;
 }
 
-export interface NodeData {
+export interface FormContents {
   type: string;
   id?: string;
   nodeId?: string;
