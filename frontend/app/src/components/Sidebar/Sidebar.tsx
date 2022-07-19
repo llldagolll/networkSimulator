@@ -8,18 +8,7 @@ import CheckList from "./CheckList";
 import { useState } from "react";
 import SubmitButton from "./SubmitButton";
 import PloblemStatement from "./SidebarPloblemStatement";
-
-
-
-export interface Form {
-  id: string,
-  type: string,
-  requestPort?: string
-  responsePort?: string
-  inboundPort?: string
-  outboundPort?: string
-  ipAddress?: string
-}
+import { NodeData } from "../Form/interface";
 
 
 
@@ -33,21 +22,26 @@ export const Sidebar = ({ question, nextPage }: { question: Object, nextPage: st
 
   const { id, type } = focusNode
 
-  let Form: Form = { id, type }
+  let Form: NodeData = { id, type }
 
   const onSubmit = (dt: { [x: string]: string; }) => {
     switch (type) {
-      case 'Gateway':
-      case 'Lan': {
+      case 'Gateway': {
         Form.inboundPort = dt[`${type}${id}inboundPort`]
         Form.outboundPort = dt[`${type}${id}outboundPort`]
         Form.ipAddress = dt[`${type}${id}ipAddress`]
+      }
+      case 'Lan': {
+        Form.subnetMask = dt[`${type}${id}subnetMask`]
+        Form.networkACL = dt[`${type}${id}networkACL`]
+        Form.routeTable = dt[`${type}${id}routeTable`]
         break;
       }
       default: {
         Form.requestPort = dt[`${type}${id}requestPort`]
         Form.responsePort = dt[`${type}${id}responsePort`]
         Form.ipAddress = dt[`${type}${id}ipAddress`]
+        Form.securityGroup = dt[`${type}${id}securityGroup`]
         break;
       }
     }

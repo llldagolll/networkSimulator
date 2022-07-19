@@ -1,5 +1,6 @@
-import { ReqResForm, InboundOutboundForm } from "./SidebarFormParts"
+import { InboundOutboundForm, LanForm, EC2Form } from "./SidebarFormParts"
 import styles from '../Sidebar/Sidebar.module.css'
+import { NodeData } from "./interface"
 
 
 export const SidebarForm = ({
@@ -13,13 +14,15 @@ export const SidebarForm = ({
 
 
   switch (type) {
-    case 'Lan':
     case 'Gateway': {
       Form = <InboundOutboundForm type={type} nodeId={id} register={register} />
       break;
     }
+    case 'Lan': {
+      Form = <LanForm type={type} nodeId={id} register={register} />
+    }
     default:
-      Form = <ReqResForm type={type} nodeId={id} register={register} />
+      Form = <EC2Form type={type} nodeId={id} register={register} />
       break;
   }
 

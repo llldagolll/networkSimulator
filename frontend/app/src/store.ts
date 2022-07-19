@@ -13,6 +13,7 @@ import {
   Connection,
 } from "react-flow-renderer";
 import create from "zustand";
+import { NodeData } from "./components/Form/interface";
 import { Form } from "./components/Sidebar/Sidebar";
 import { initialNodes, initialEdges, initialLans } from "./components/Simulator/initial";
 
@@ -20,16 +21,8 @@ export type CustomNodeType = 'Client' | 'Web' | 'Gateway' | 'Lan' | 'Application
 
 
 export interface CustomNode extends Node {
-  data: {
-    id: string,
-    type: string,
-    label: string,
-    requestPort?: string,
-    responsePort?: string,
-    inboundPort?: string,
-    outboundPort?: string,
-    ipAddress?: string
-  };
+  data: NodeData
+
 }
 
 type RFState = {
