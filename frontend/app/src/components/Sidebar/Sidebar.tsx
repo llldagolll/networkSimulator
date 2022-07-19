@@ -1,7 +1,7 @@
 import { useIsShowToggle } from "../../hooks/useShowToggle";
 import { AddNode } from "./AddNode";
 import styles from './Sidebar.module.css'
-import { SidebarForm } from "./SidebarForm";
+import { SidebarForm } from "../Form/SidebarForm";
 import useStore from '@/store'
 import { useForm } from "react-hook-form";
 import CheckList from "./CheckList";
@@ -18,6 +18,7 @@ export interface Form {
   responsePort?: string
   inboundPort?: string
   outboundPort?: string
+  ipAddress?: string
 }
 
 
@@ -40,11 +41,13 @@ export const Sidebar = ({ question, nextPage }: { question: Object, nextPage: st
       case 'Lan': {
         Form.inboundPort = dt[`${type}${id}inboundPort`]
         Form.outboundPort = dt[`${type}${id}outboundPort`]
+        Form.ipAddress = dt[`${type}${id}ipAddress`]
         break;
       }
       default: {
         Form.requestPort = dt[`${type}${id}requestPort`]
         Form.responsePort = dt[`${type}${id}responsePort`]
+        Form.ipAddress = dt[`${type}${id}ipAddress`]
         break;
       }
     }

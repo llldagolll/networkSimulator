@@ -1,5 +1,5 @@
-import { ReqResForm, InboundOutboundForm } from "./atom/SidebarFormParts"
-import styles from './Sidebar.module.css'
+import { ReqResForm, InboundOutboundForm } from "./SidebarFormParts"
+import styles from '../Sidebar/Sidebar.module.css'
 
 
 export const SidebarForm = ({

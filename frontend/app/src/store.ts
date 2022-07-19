@@ -28,6 +28,7 @@ export interface CustomNode extends Node {
     responsePort?: string,
     inboundPort?: string,
     outboundPort?: string,
+    ipAddress?: string
   };
 }
 

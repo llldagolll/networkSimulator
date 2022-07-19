@@ -11,7 +11,7 @@ export const question1 = {
 export const question2 = {
   title: "問題2",
   statements: [
-    "クライアントからhttps接続とhttp接続でリクエストを受け取って、レスポンスを返す",
+    "クライアントからhttps接続でリクエストを受け取って、レスポンスを返す",
     "Lan内はhttp接続でやり取りをする",
     "web三層構造をなしている",
   ]
