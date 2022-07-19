@@ -1,4 +1,4 @@
-import { InboundOutboundForm, LanForm, EC2Form } from "./SidebarFormParts"
+import { InboundOutboundForm, LanForm, EC2Form } from "./FormParts"
 import styles from '../Sidebar/Sidebar.module.css'
 
 
@@ -19,6 +19,7 @@ export const SidebarForm = ({
     }
     case 'Lan': {
       Form = <LanForm type={type} nodeId={id} register={register} />
+      break;
     }
     default:
       Form = <EC2Form type={type} nodeId={id} register={register} />

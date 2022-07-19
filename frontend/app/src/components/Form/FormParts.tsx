@@ -1,11 +1,15 @@
 import Form from "./atom/Form"
 
-export const ReqResForm = ({ type, nodeId, register }) => {
-  const props = {
-    type,
-    nodeId,
-    register
-  }
+
+interface Props {
+  type:string;
+  nodeId:string;
+  register:any;
+}
+
+
+
+export const ReqResForm = (props:Props) => {
   return (
     <>
       <Form label="Request Port" {...props} />
@@ -15,12 +19,7 @@ export const ReqResForm = ({ type, nodeId, register }) => {
   )
 }
 
-export const InboundOutboundForm = ({ type, nodeId, register }) => {
-  const props = {
-    type,
-    nodeId,
-    register
-  }
+export const InboundOutboundForm = (props:Props) => {
   return (
     <>
       <Form label="Inbound Port " {...props} />
@@ -30,13 +29,7 @@ export const InboundOutboundForm = ({ type, nodeId, register }) => {
   )
 }
 
-export const EC2Form = ({ type, nodeId, register }) => {
-  const props = {
-    type,
-    nodeId,
-    register
-  }
-
+export const EC2Form = (props:Props) => {
   return (
     <>
       <ReqResForm {...props} />
@@ -49,12 +42,7 @@ export const EC2Form = ({ type, nodeId, register }) => {
 }
 
 
-export const LanForm = ({ type, nodeId, register }) => {
-  const props = {
-    type,
-    nodeId,
-    register
-  }
+export const LanForm = (props:Props) => {
 
   return (
     <>
